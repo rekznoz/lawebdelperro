@@ -83,25 +83,25 @@ y esta ultima [Mascota y Salud](https://blog.mascotaysalud.com/), se parece a lo
 
 - ## Frontend
 
-* **React**: Porque es perfecto para la creación de interfaces dinámicas y tiene un enfoque basado en componentes reutilizables que es muy útil.
+* **[React](https://es.react.dev/)**: Porque es perfecto para la creación de interfaces dinámicas y tiene un enfoque basado en componentes reutilizables que es muy útil.
 
-*  **Vite**: Ya que ofrece un entorno de desarrollo rápido y la capacidad de iniciar el servidor de forma rápida, además que permite interactuar con la web mientras se desarrolla en tiempo real.
+*  **[Vite](https://es.vitejs.dev/)**: Ya que ofrece un entorno de desarrollo rápido y la capacidad de iniciar el servidor de forma rápida, además que permite interactuar con la web mientras se desarrolla en tiempo real.
 
-* **JavaScript**: ya que permite la ejecución de funciones, promesas y módulos
+* **[JavaScript](https://developer.mozilla.org/es/docs/Web/JavaScript)**: ya que permite la ejecución de funciones, promesas y módulos
 
-* **CSS Modular**: Porque el estilo basado del diferentes módulos permite la reutilización de los estilos y permite un tener un HTML mas limpio.
+* **[CSS Modular](https://developer.mozilla.org/es/docs/Web/CSS)**: Porque el estilo basado del diferentes módulos permite la reutilización de los estilos y permite un tener un HTML mas limpio.
 
 - ## Información
 
-* **IndexedDB**: Para el guardado de información relevante y al no ser SQL permite alojar gran cantidad de datos estructurados como objetos.
+* **[IndexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API)**: Para el guardado de información relevante y al no ser SQL permite alojar gran cantidad de datos estructurados como objetos.
 
 * **API**: Para el cargado de datos sobre las mascotas ([https://registry.dog/](https://registry.dog/))
 
 - ## Desarrollo
 
-* **GitHub**: para realizar el control de versiones y guardado de material.
+* **[GitHub](https://github.com/)**: para realizar el control de versiones y guardado de material.
 
-* **WebStorm**: para el desarrollo de la web, gracias a su gran compatibilidad con JavaScript, HTML y CSS.
+* **[WebStorm](https://www.jetbrains.com/es-es/webstorm/)**: para el desarrollo de la web, gracias a su gran compatibilidad con JavaScript, HTML y CSS.
 
 * **Navegadores**: El uso de navegadores diferentes para ver el tratamiento individual de la tecnología en cada navegador
 
