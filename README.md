@@ -7,7 +7,7 @@
 
 1. [💡 Idea de la Aplicación](#-idea-de-la-aplicación)
    - [🎯 Propósito](#-propósito)
-   - [⚠️ Problema](#-problema)
+   - [⚠️ Problema](#%EF%B8%8F-problema)
    - [💡 Solución](#-solución)
 
 2. [👥 Audiencia Objetivo](#-audiencia-objetivo)
@@ -18,12 +18,14 @@
 
 3. [📊 Análisis de Mercado](#-análisis-de-mercado)
 
-4. [🛠️ Funcionalidades](#-funcionalidades)
+4. [🛠️ Funcionalidades](#%EF%B8%8F-funcionalidades)
 
 5. [💻 Tecnologías](#-tecnologías)
    - [🌐 Frontend](#-frontend)
    - [📚 Información](#-información)
    - [🔧 Desarrollo](#-desarrollo)
+
+6. [🗂️ Repositorio API](#%EF%B8%8F-repositorio-api)
 
 ---
 
