@@ -100,9 +100,61 @@ Existen varias webs dedicadas a los perros, pero la mayoría se centran en la ve
 
 # 🛠️ **Funcionalidades**
 
-- **📚 Base de Datos:** una colección de razas de perros con descripciones, que incluyen el temperamento, tamaño aproximado, necesidades de actividad, información relacionada con la salud, etc…
-- **🔍 Filtrado:** Posibilidad de filtrar por tamaño, peso, popularidad, entre otros criterios.
-- **⭐ Favoritos:** Opción para guardar las razas preferidas para revisarlas más tarde.
+### 1. 🗂️ **Visualización de Información General**
+
+- Mostrar una **tarjeta informativa** con los detalles esenciales de cada raza, incluyendo:
+    - 🐕 **Nombre de la raza**
+    - 🏅 **Grupo de raza**
+    - 📋 **Breve descripción**
+    - 📝 **Descripción completa**
+    - 📈 **Popularidad**
+    - 📏 **Altura y peso**
+    - ⏳ **Esperanza de vida**
+
+**Objetivo:** Proporcionar una visión general rápida y completa para los usuarios interesados en conocer las características principales de la raza.
+
+### 2. 🖼️ **Galería de Imágenes**
+
+- Una **galería interactiva** para cada raza con diferentes tipos de imágenes:
+    - 🏡 **Imágenes en interiores**: Para mostrar cómo se comportan los perros en espacios cerrados.
+    - 🌳 **Imágenes en exteriores**: Para ver su apariencia en diferentes ambientes y actividades al aire libre.
+    - 📸 **Imágenes de estudio**: Fotos detalladas para ver las características físicas del perro.
+
+
+- Permitir a los usuarios **alternar entre versiones pequeñas y grandes** de las imágenes:
+    - 🔍 **Vista previa**: Imágenes pequeñas para navegación rápida.
+    - 📅 **Detalles completos**: Imágenes grandes para una vista más clara.
+
+**Objetivo:** Facilitar la visualización detallada y variada de cada raza para que los usuarios puedan evaluar su aspecto y personalidad.
+
+### 3. 🔍 **Filtro y Comparador de Razas**
+
+- Herramienta para **filtrar y comparar razas** basándose en diversas características:
+    - 📏 **Características físicas**: Tamaño, peso, altura.
+    - 🧠 **Comportamiento**: Nivel de energía, inteligencia, temperamento.
+    - 🩺 **Cuidados necesarios**: Requisitos de salud, cepillado, necesidades de ejercicio.
+
+**Objetivo:** Ayudar a los usuarios a encontrar la raza que mejor se adapta a sus necesidades o a comparar diferentes opciones antes de tomar una decisión.
+
+### 4. 📝 **Recomendaciones de Cuidado, Entrenamiento y Adaptabilidad**
+
+- Ofrecer **consejos personalizados** para el cuidado y entrenamiento de la raza seleccionada:
+    - 🏃 **Actividad física**: Cantidad de ejercicio que requiere la raza (baja, moderada, alta).
+    - 🧴 **Frecuencia de cepillado**: Para ayudar en el mantenimiento del pelaje.
+    - 🎓 **Dificultad para entrenar**: Indicador para aconsejar a los propietarios primerizos o experimentados.
+    - 🏠 **Adaptabilidad**: Evaluación de la raza en diferentes contextos:
+        - 👶 **Familias con niños pequeños**
+        - 🏢 **Personas que viven en apartamentos**
+        - 🌲 **Personas con acceso a espacios abiertos**
+
+**Objetivo:** Guiar a los usuarios en el cuidado adecuado de su perro y proporcionar consejos específicos según las características de la raza y las circunstancias del propietario.
+
+### 5. 📚 **Favoritos**
+
+- **Función de favoritos** para guardar las razas de perros favoritas y acceder a ellas fácilmente:
+    - 📂 **Lista de favoritos**: Mostrar las razas guardadas en una sección especial.
+
+**Objetivo:** Permitir a los usuarios marcar y organizar las razas que les interesan para futuras consultas y comparaciones.
 
 ---
 
@@ -114,16 +166,19 @@ Existen varias webs dedicadas a los perros, pero la mayoría se centran en la ve
 - **[Vite](https://es.vitejs.dev/):** Proporciona un entorno de desarrollo rápido y eficiente.
 - **[JavaScript](https://developer.mozilla.org/es/docs/Web/JavaScript):** Para la lógica del sitio, manejo de funciones y promesas.
 - **[CSS Modular](https://developer.mozilla.org/es/docs/Web/CSS):** Para un diseño limpio y reutilizable.
+- **[HTML5](https://developer.mozilla.org/es/docs/Web/HTML):** Estructura básica de la web y marcado semántico.
 
 ### 📚 **Información**
 
 - **[IndexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API):** Almacenamiento de datos estructurados en el navegador.
+- **[Fetch API](https://developer.mozilla.org/es/docs/Web/API/Fetch_API):** Para obtener datos de la API de forma asíncrona.
 - **API:** Datos obtenidos de [Open Dog Registry](https://registry.dog/).
 
 ### 🔧 **Desarrollo**
 
 - **[GitHub](https://github.com/):** Control de versiones y colaboración.
 - **[WebStorm](https://www.jetbrains.com/es-es/webstorm/):** IDE especializado para desarrollo web.
+- **[Netlify](https://www.netlify.com/):** Despliegue y alojamiento de la aplicación.
 - **Navegadores:** Pruebas en diferentes navegadores para asegurar compatibilidad.
 
 ---
