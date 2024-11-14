@@ -5,25 +5,25 @@
 
 ### 📑 **Índice**
 
-1. [💡 Idea de la Aplicación](#idea-de-la-aplicación)
-   - [🎯 Propósito](#propósito)
-   - [⚠️ Problema](#problema)
-   - [💡 Solución](#solución)
+1. [💡 Idea de la Aplicación](#-idea-de-la-aplicación)
+   - [🎯 Propósito](#-propósito)
+   - [⚠️ Problema](#-problema)
+   - [💡 Solución](#-solución)
 
-2. [👥 Audiencia Objetivo](#audiencia-objetivo)
-   - [🐶 Futuras Mascotas](#mascotas-futuras)
-   - [🏡 Propietarios](#propietarios)
-   - [💛 Amigos de los Animales](#amigos-de-los-animales)
-   - [🩺 Profesionales](#profesionales)
+2. [👥 Audiencia Objetivo](#-audiencia-objetivo)
+   - [🐶 Futuras Mascotas](#-mascotas-futuras)
+   - [🏡 Propietarios](#-propietarios)
+   - [💛 Amigos de los Animales](#-amigos-de-los-animales)
+   - [🩺 Profesionales](#-profesionales)
 
-3. [📊 Análisis de Mercado](#análisis-de-mercado)
+3. [📊 Análisis de Mercado](#-análisis-de-mercado)
 
-4. [🛠️ Funcionalidades](#funcionalidades)
+4. [🛠️ Funcionalidades](#-funcionalidades)
 
-5. [💻 Tecnologías](#tecnologías)
-   - [🌐 Frontend](#frontend)
-   - [📚 Información](#información)
-   - [🔧 Desarrollo](#desarrollo)
+5. [💻 Tecnologías](#-tecnologías)
+   - [🌐 Frontend](#-frontend)
+   - [📚 Información](#-información)
+   - [🔧 Desarrollo](#-desarrollo)
 
 ---
 
