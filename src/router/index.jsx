@@ -5,6 +5,7 @@ import Inicio from "../pages/Inicio.jsx";
 import Nosotros from "../pages/Nosotros.jsx";
 import ListaRazas from "../pages/ListaRazas.jsx";
 import Raza from "../pages/Raza.jsx";
+import Contacto from "../pages/Contacto.jsx";
 
 export const router = createBrowserRouter([
     {
@@ -17,10 +18,6 @@ export const router = createBrowserRouter([
                 element: <Inicio />,
             },
             {
-                path: '/about',
-                element: <Nosotros />,
-            },
-            {
                 path: '/razas',
                 element: <ListaRazas />,
                 //loader: cargarBlog,
@@ -29,7 +26,16 @@ export const router = createBrowserRouter([
                 path: '/razas/:id',
                 element: <Raza />,
                 //loader: cargarPost,
+            },
+            {
+                path: '/nosotros',
+                element: <Nosotros />,
+            },
+            {
+                path: '/contacto',
+                element: <Contacto />,
             }
+
         ],
     },
     ]

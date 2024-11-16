@@ -4,12 +4,12 @@ import {Outlet} from "react-router-dom";
 
 export default function Principal() {
     return (
-        <div>
+        <>
             <Header />
-            <main>
+            <main className='main'>
                 <Outlet />
             </main>
             <Footer />
-        </div>
+        </>
     )
 }
