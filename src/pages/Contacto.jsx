@@ -83,11 +83,6 @@ export default function Contacto() {
                     </form>
                 </div>
             </div>
-            <div id='area3'>
-                <h2>Información de Contacto</h2>
-                <p>¿Prefieres contactarnos de otra forma?</p>
-                <p>Envíanos un correo electrónico a <a href='mailto:correo@ejemplo.com'/></p>
-            </div>
         </>
     )
 }
