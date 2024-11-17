@@ -22,6 +22,7 @@ h1 {
 .contFormContacto p {
     text-align: center;
     margin-bottom: 20px;
+    padding: 0 10%;
 }
 
 .contFormContacto .requiere {
@@ -30,7 +31,6 @@ h1 {
 
 .contFormContacto .opciones {
     margin-bottom: 15px;
-
 }
 
 .contFormContacto label {
@@ -45,6 +45,15 @@ h1 {
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
+}
+
+.contFormContacto .opciones select:hover {
+    outline: none;
+}
+
+.contFormContacto .opciones input[type="text"]:focus, input[type="email"]:focus, input[type="number"]:focus, input[type="date"]:focus, textarea:focus, select:focus {
+    border: 2px solid #007bff;
+    outline: none;
 }
 
 .contFormContacto textarea {

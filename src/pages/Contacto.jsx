@@ -14,33 +14,101 @@ const forumarioDefecto = {
 }
 
 function validarNombre(nombre) {
-    let verificacion = true
-    let error = ''
-    if (nombre === '') {
-        verificacion = false
-        error = 'El nombre es un campo requerido'
+    if (nombre !== '') {
+        let verificacion = true
+        let error = ''
+        if (nombre.length < 3) {
+            verificacion = false
+            error = 'El nombre debe tener al menos 3 caracteres'
+        }
+        if (nombre.length > 50) {
+            verificacion = false
+            error = 'El nombre debe tener como máximo 50 caracteres'
+        }
+        if (!/^[a-zA-Z ]+$/.test(nombre)) {
+            verificacion = false
+            error = 'El nombre solo puede contener letras y espacios'
+        }
+        if (!verificacion) {
+            Swal.fire({
+                title: 'Error',
+                text: error,
+                icon: 'error',
+                confirmButtonText: 'Aceptar'
+            })
+        }
+        return verificacion
     }
-    if (nombre.length < 3) {
-        verificacion = false
-        error = 'El nombre debe tener al menos 3 caracteres'
+}
+
+function validarEmail(email) {
+    if (email !== '') {
+        let verificacion = true
+        let error = ''
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            verificacion = false
+            error = 'El correo electrónico no es válido'
+        }
+        if (!verificacion) {
+            Swal.fire({
+                title: 'Error',
+                text: error,
+                icon: 'error',
+                confirmButtonText: 'Aceptar'
+            })
+        }
+        return verificacion
     }
-    if (nombre.length > 50) {
-        verificacion = false
-        error = 'El nombre debe tener como máximo 50 caracteres'
+}
+
+function validarTelefono(telefono) {
+    if (telefono !== '') {
+        let verificacion = true
+        let error = ''
+        if (telefono.length < 8) {
+            verificacion = false
+            error = 'El teléfono debe tener al menos 8 caracteres'
+        }
+        if (telefono.length > 15) {
+            verificacion = false
+            error = 'El teléfono debe tener como máximo 15 caracteres'
+        }
+        if (!/^[0-9]+$/.test(telefono)) {
+            verificacion = false
+            error = 'El teléfono solo puede contener números'
+        }
+        if (!verificacion) {
+            Swal.fire({
+                title: 'Error',
+                text: error,
+                icon: 'error',
+                confirmButtonText: 'Aceptar'
+            })
+        }
+        return verificacion
     }
-    if (!/^[a-zA-Z ]+$/.test(nombre)) {
-        verificacion = false
-        error = 'El nombre solo puede contener letras y espacios'
+}
+
+function validarFecha(fecha) {
+    if (fecha !== '') {
+        let verificacion = true
+        let error = ''
+        let fechaActual = new Date()
+        let fechaIngresada = new Date(fecha)
+        if (fechaIngresada < fechaActual) {
+            verificacion = false
+            error = 'La fecha debe ser mayor a la fecha actual'
+        }
+        if (!verificacion) {
+            Swal.fire({
+                title: 'Error',
+                text: error,
+                icon: 'error',
+                confirmButtonText: 'Aceptar'
+            })
+        }
+        return verificacion
     }
-    if (!verificacion) {
-        Swal.fire({
-            title: 'Error',
-            text: error,
-            icon: 'error',
-            confirmButtonText: 'Aceptar'
-        })
-    }
-    return verificacion
 }
 
 export default function Contacto() {
@@ -52,6 +120,21 @@ export default function Contacto() {
     const handleBlur = (e) => {
         if (e.target.name === 'nombre') {
             if (!validarNombre(e.target.value)) {
+                return
+            }
+        }
+        if (e.target.name === 'email') {
+            if (!validarEmail(e.target.value)) {
+                return
+            }
+        }
+        if (e.target.name === 'telefono') {
+            if (!validarTelefono(e.target.value)) {
+                return
+            }
+        }
+        if (e.target.name === 'fecha') {
+            if (!validarFecha(e.target.value)) {
                 return
             }
         }
@@ -75,11 +158,15 @@ export default function Contacto() {
                 ...formulario,
                 intereses: [...intereses, e.target.value]
             })
+            console.log('PONER')
+            console.log(formulario.intereses)
         } else {
             setFormulario({
                 ...formulario,
-                intereses: intereses.filter(interes => interes !== e.target.value)
+                intereses: intereses.filter(interes => interes !== e.target.value),
             })
+            console.log('QUITAR')
+            console.log(formulario.intereses)
         }
     }
 
@@ -112,7 +199,8 @@ export default function Contacto() {
             <div id='area2'>
                 <div className="contFormContacto">
                     <h2>Formulario de Contacto</h2>
-                    <p>¿Tienes alguna duda o comentario sobre razas de perros? ¡Nos encantaría ayudarte!</p>
+                    <p>¿Tienes alguna duda o comentario sobre razas de perros?</p>
+                    <p>¡Nos encantaría ayudarte!</p>
                     <form onSubmit={handleSubmit}>
 
                         <div className="opciones">
@@ -153,19 +241,19 @@ export default function Contacto() {
 
                             <div className="grupocheck">
                                 <label className="contenedorCheck">
-                                    <input type="checkbox" name="intereses" value="razas" onChange={hadnleChange}/>
+                                    <input type="checkbox" name="intereses" value="razas" onChange={handleCheck}/>
                                     <span>Razas de Perros </span>
                                 </label>
                                 <label className="contenedorCheck">
-                                    <input type="checkbox" name="intereses" value="cuidados" onChange={hadnleChange}/>
+                                    <input type="checkbox" name="intereses" value="cuidados" onChange={handleCheck}/>
                                     <span>Cuidados de Perros </span>
                                 </label>
                                 <label className="contenedorCheck">
-                                    <input type="checkbox" name="intereses" value="alimentacion" onChange={hadnleChange}/>
+                                    <input type="checkbox" name="intereses" value="alimentacion" onChange={handleCheck}/>
                                     <span>Alimentación de Perros </span>
                                 </label>
                                 <label className="contenedorCheck">
-                                    <input type="checkbox" name="intereses" value="salud" onChange={hadnleChange}/>
+                                    <input type="checkbox" name="intereses" value="salud" onChange={handleCheck}/>
                                     <span>Salud de Perros </span>
                                 </label>
                             </div>
@@ -175,7 +263,7 @@ export default function Contacto() {
                         <div className="opciones">
                             <label htmlFor="razaFavorita"><span className='requiere'>*</span> Raza de Perro Favorita:</label>
                             <select id="razaFavorita" name="razaFavorita" onChange={hadnleChange}>
-                                <option value="" disabled selected>Selecciona una raza</option>
+                                <option value="" disabled>Selecciona una raza</option>
                                 <option value="labrador">Labrador Retriever</option>
                                 <option value="pastorAleman">Pastor Alemán</option>
                                 <option value="bulldog">Bulldog</option>
