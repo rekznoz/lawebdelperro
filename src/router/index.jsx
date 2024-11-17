@@ -2,10 +2,10 @@ import { createBrowserRouter } from "react-router-dom";
 import { Suspense, lazy } from "react";
 import Error from "../pages/Error.jsx";
 
-// Carga perezosa del componente Principal
+// Carga del componente Principal
 const Principal = lazy(() => import("../layouts/Principal.jsx"));
 
-// Carga perezosa de los componentes
+// Carga de los componentes
 const Inicio = lazy(() => import("../pages/Inicio.jsx"));
 const Nosotros = lazy(() => import("../pages/Nosotros.jsx"));
 const ListaRazas = lazy(() => import("../pages/ListaRazas.jsx"));
