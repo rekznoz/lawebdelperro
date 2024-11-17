@@ -143,3 +143,31 @@ h1 {
 .contFormContacto .contenedorRadio span {
     color: #555;
 }
+
+
+/* Si la anchura de la pantalla es menor a 1200px */
+@media (max-width: 1200px) {
+    .contFormContacto .centrarcuadros {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .contFormContacto {
+        max-width: 95%;
+    }
+}
+
+/* Si la anchura de la pantalla es menor a 800px */
+@media (max-width: 768px) {
+    .contFormContacto .grupocheck, .gruporadio {
+        padding: 10px;
+    }
+    .contFormContacto .grupocheck h3, .contFormContacto .gruporadio h3 {
+        font-size: 1.5em;
+    }
+    .contFormContacto .contenedorCheck, .contFormContacto .contenedorRadio {
+        padding: 5px;
+    }
+    .contFormContacto .contenedorCheck span, .contFormContacto .contenedorRadio span {
+        font-size: 1.2em;
+    }
+}
