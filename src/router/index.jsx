@@ -1,11 +1,22 @@
-import {createBrowserRouter} from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
+import React, { Suspense } from "react";
 import Error from "../pages/Error.jsx";
 import Principal from "../layouts/Principal.jsx";
-import Inicio from "../pages/Inicio.jsx";
-import Nosotros from "../pages/Nosotros.jsx";
-import ListaRazas from "../pages/ListaRazas.jsx";
-import Raza from "../pages/Raza.jsx";
-import Contacto from "../pages/Contacto.jsx";
+
+// Carga perezosa de los componentes
+const Inicio = React.lazy(() => import("../pages/Inicio.jsx"));
+const Nosotros = React.lazy(() => import("../pages/Nosotros.jsx"));
+const ListaRazas = React.lazy(() => import("../pages/ListaRazas.jsx"));
+const Raza = React.lazy(() => import("../pages/Raza.jsx"));
+const Contacto = React.lazy(() => import("../pages/Contacto.jsx"));
+
+// Componente de carga mientras se cargan los demás componentes
+const Loading = () => (
+    <div className="loading">
+        <p>Cargando...</p>
+        <div className="spinner"></div>
+    </div>
+);
 
 export const router = createBrowserRouter([
     {
@@ -15,28 +26,44 @@ export const router = createBrowserRouter([
         children: [
             {
                 index: true,
-                element: <Inicio />,
+                element: (
+                    <Suspense fallback={<Loading />}>
+                        <Inicio />
+                    </Suspense>
+                ),
             },
             {
                 path: '/razas',
-                element: <ListaRazas />,
-                //loader: cargarBlog,
+                element: (
+                    <Suspense fallback={<Loading />}>
+                        <ListaRazas />
+                    </Suspense>
+                ),
             },
             {
                 path: '/razas/:id',
-                element: <Raza />,
-                //loader: cargarPost,
+                element: (
+                    <Suspense fallback={<Loading />}>
+                        <Raza />
+                    </Suspense>
+                ),
             },
             {
                 path: '/nosotros',
-                element: <Nosotros />,
+                element: (
+                    <Suspense fallback={<Loading />}>
+                        <Nosotros />
+                    </Suspense>
+                ),
             },
             {
                 path: '/contacto',
-                element: <Contacto />,
-            }
-
+                element: (
+                    <Suspense fallback={<Loading />}>
+                        <Contacto />
+                    </Suspense>
+                ),
+            },
         ],
     },
-    ]
-)
+]);
