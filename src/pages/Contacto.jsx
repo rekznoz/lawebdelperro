@@ -1,6 +1,109 @@
-import '../css/formulario.css';
+import '../css/formulario.css'
+import {useState} from "react"
+import Swal from "sweetalert2"
+
+const forumarioDefecto = {
+    nombre: '',
+    email: '',
+    telefono: '',
+    fecha: '',
+    intereses: [],
+    tienePerros: 'no',
+    razaFavorita: '',
+    mensaje: ''
+}
+
+function validarNombre(nombre) {
+    let verificacion = true
+    let error = ''
+    if (nombre === '') {
+        verificacion = false
+        error = 'El nombre es un campo requerido'
+    }
+    if (nombre.length < 3) {
+        verificacion = false
+        error = 'El nombre debe tener al menos 3 caracteres'
+    }
+    if (nombre.length > 50) {
+        verificacion = false
+        error = 'El nombre debe tener como máximo 50 caracteres'
+    }
+    if (!/^[a-zA-Z ]+$/.test(nombre)) {
+        verificacion = false
+        error = 'El nombre solo puede contener letras y espacios'
+    }
+    if (!verificacion) {
+        Swal.fire({
+            title: 'Error',
+            text: error,
+            icon: 'error',
+            confirmButtonText: 'Aceptar'
+        })
+    }
+    return verificacion
+}
 
 export default function Contacto() {
+
+    const [formulario, setFormulario] = useState(forumarioDefecto)
+
+    const {nombre, email, telefono, fecha, intereses, tienePerros, razaFavorita, mensaje} = formulario
+
+    const handleBlur = (e) => {
+        if (e.target.name === 'nombre') {
+            if (!validarNombre(e.target.value)) {
+                return
+            }
+        }
+        setFormulario({
+            ...formulario,
+            [e.target.name]: e.target.value
+        })
+    }
+
+    const hadnleChange = (e) => {
+        setFormulario({
+            ...formulario,
+            [e.target.name]: e.target.value
+        })
+    }
+
+    // Funcion que se ejecuta cada vez que se cambia un checkbox
+    const handleCheck = (e) => {
+        if (e.target.checked) {
+            setFormulario({
+                ...formulario,
+                intereses: [...intereses, e.target.value]
+            })
+        } else {
+            setFormulario({
+                ...formulario,
+                intereses: intereses.filter(interes => interes !== e.target.value)
+            })
+        }
+    }
+
+    // Funcion que se ejecuta cada vez que se cambia un radio
+    const handleRadio = (e) => {
+        setFormulario({
+            ...formulario,
+            tienePerros: e.target.value
+        })
+    }
+
+    // Funcion que se ejecuta al enviar el formulario
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        console.log(formulario)
+        setFormulario(forumarioDefecto)
+        Swal.fire({
+            title: 'Mensaje Enviado',
+            text: 'Tu mensaje ha sido enviado correctamente',
+            icon: 'success',
+            confirmButtonText: 'Aceptar'
+        })
+    }
+
     return (
         <>
             <div id='area1'>
@@ -10,61 +113,68 @@ export default function Contacto() {
                 <div className="contFormContacto">
                     <h2>Formulario de Contacto</h2>
                     <p>¿Tienes alguna duda o comentario sobre razas de perros? ¡Nos encantaría ayudarte!</p>
-                    <form action="/enviar-mensaje" method="POST">
+                    <form onSubmit={handleSubmit}>
 
                         <div className="opciones">
                             <label htmlFor="nombre"><span className='requiere'>*</span> Nombre:</label>
-                            <input type="text" id="nombre" name="nombre" placeholder="Tu nombre completo"/>
+                            <input type="text" id="nombre" name="nombre" placeholder="Tu nombre completo" value={nombre} onBlur={handleBlur} onChange={hadnleChange}/>
                         </div>
 
                         <div className="opciones">
                             <label htmlFor="email"><span className='requiere'>*</span> Correo Electrónico:</label>
-                            <input type="email" id="email" name="email" placeholder="Tu correo electrónico"/>
+                            <input type="email" id="email" name="email" placeholder="Tu correo electrónico" value={email} onBlur={handleBlur} onChange={hadnleChange}/>
                         </div>
 
                         <div className="opciones">
                             <label htmlFor="telefono"><span className='requiere'>*</span> Número de Teléfono:</label>
-                            <input type="number" id="telefono" name="telefono" placeholder="Tu número de teléfono"/>
+                            <input type="number" id="telefono" name="telefono" placeholder="Tu número de teléfono" value={telefono} onBlur={handleBlur} onChange={hadnleChange}/>
                         </div>
 
                         <div className="opciones">
                             <label htmlFor="fecha"><span className='requiere'>*</span> Fecha de Consulta:</label>
-                            <input type="date" id="fecha" name="fecha"/>
+                            <input type="date" id="fecha" name="fecha" value={fecha} onBlur={handleBlur} onChange={hadnleChange}/>
                         </div>
 
                         <div className="opciones centrarcuadros">
-                            <div className="grupocheck">
-                                <h3>Selecciona tus intereses:</h3>
-                                <label className="contenedorCheck">
-                                    <input type="checkbox" name="intereses" value="informacion"/>
-                                    <span>Información sobre razas</span>
-                                </label>
-                                <label className="contenedorCheck">
-                                    <input type="checkbox" name="intereses" value="adopcion"/>
-                                    <span>Consejos de adopción</span>
-                                </label>
-                                <label className="contenedorCheck">
-                                    <input type="checkbox" name="intereses" value="salud"/>
-                                    <span>Salud y cuidados</span>
-                                </label>
-                            </div>
+
                             <div className="gruporadio">
-                                <h3>¿Tienes perros actualmente?</h3>
-                                <label className="contenedorRadio">
-                                    <input type="radio" name="tienePerros" value="si" required/>
-                                    <span>Sí</span>
+                                <label>
+                                    <p><span className='requiere'>*</span> ¿Tienes perros en casa?</p>
                                 </label>
-                                <label className="contenedorRadio">
-                                    <input type="radio" name="tienePerros" value="no"/>
+                                <label>
+                                    <input type="radio" name="tienePerros" value="si" onChange={hadnleChange} checked={tienePerros === 'si'}/>
+                                    <span>Si</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="tienePerros" value="no" onChange={hadnleChange} checked={tienePerros === 'no'}/>
                                     <span>No</span>
                                 </label>
                             </div>
+
+                            <div className="grupocheck">
+                                <label className="contenedorCheck">
+                                    <input type="checkbox" name="intereses" value="razas" onChange={hadnleChange}/>
+                                    <span>Razas de Perros </span>
+                                </label>
+                                <label className="contenedorCheck">
+                                    <input type="checkbox" name="intereses" value="cuidados" onChange={hadnleChange}/>
+                                    <span>Cuidados de Perros </span>
+                                </label>
+                                <label className="contenedorCheck">
+                                    <input type="checkbox" name="intereses" value="alimentacion" onChange={hadnleChange}/>
+                                    <span>Alimentación de Perros </span>
+                                </label>
+                                <label className="contenedorCheck">
+                                    <input type="checkbox" name="intereses" value="salud" onChange={hadnleChange}/>
+                                    <span>Salud de Perros </span>
+                                </label>
+                            </div>
+
                         </div>
 
                         <div className="opciones">
-                            <label htmlFor="razaFavorita"><span className='requiere'>*</span> Raza de Perro
-                                Favorita:</label>
-                            <select id="razaFavorita" name="razaFavorita" required>
+                            <label htmlFor="razaFavorita"><span className='requiere'>*</span> Raza de Perro Favorita:</label>
+                            <select id="razaFavorita" name="razaFavorita" onChange={hadnleChange}>
                                 <option value="" disabled selected>Selecciona una raza</option>
                                 <option value="labrador">Labrador Retriever</option>
                                 <option value="pastorAleman">Pastor Alemán</option>
@@ -76,7 +186,7 @@ export default function Contacto() {
 
                         <div className="opciones">
                             <label htmlFor="mensaje">Mensaje:</label>
-                            <textarea id="mensaje" name="mensaje" placeholder="Escribe tu mensaje aquí" required></textarea>
+                            <textarea id="mensaje" name="mensaje" placeholder="Escribe tu mensaje aquí" value={mensaje} onChange={hadnleChange}/>
                         </div>
 
                         <button type="submit">Enviar Mensaje</button>

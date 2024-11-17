@@ -1,5 +1,5 @@
-import { createBrowserRouter } from "react-router-dom";
-import { Suspense, lazy } from "react";
+import {createBrowserRouter} from "react-router-dom";
+import {Suspense, lazy} from "react";
 import Error from "../pages/Error.jsx";
 
 // Carga del componente Principal
@@ -23,49 +23,49 @@ export const router = createBrowserRouter([
     {
         path: '/',
         element: (
-            <Suspense fallback={<Loading />}>
-                <Principal />
+            <Suspense fallback={<Loading/>}>
+                <Principal/>
             </Suspense>
         ),
-        errorElement: <Error />,
+        errorElement: <Error/>,
         children: [
             {
                 index: true,
                 element: (
-                    <Suspense fallback={<Loading />}>
-                        <Inicio />
+                    <Suspense fallback={<Loading/>}>
+                        <Inicio/>
                     </Suspense>
                 ),
             },
             {
                 path: '/razas',
                 element: (
-                    <Suspense fallback={<Loading />}>
-                        <ListaRazas />
+                    <Suspense fallback={<Loading/>}>
+                        <ListaRazas/>
                     </Suspense>
                 ),
             },
             {
                 path: '/razas/:id',
                 element: (
-                    <Suspense fallback={<Loading />}>
-                        <Raza />
+                    <Suspense fallback={<Loading/>}>
+                        <Raza/>
                     </Suspense>
                 ),
             },
             {
                 path: '/nosotros',
                 element: (
-                    <Suspense fallback={<Loading />}>
-                        <Nosotros />
+                    <Suspense fallback={<Loading/>}>
+                        <Nosotros/>
                     </Suspense>
                 ),
             },
             {
                 path: '/contacto',
                 element: (
-                    <Suspense fallback={<Loading />}>
-                        <Contacto />
+                    <Suspense fallback={<Loading/>}>
+                        <Contacto/>
                     </Suspense>
                 ),
             },
