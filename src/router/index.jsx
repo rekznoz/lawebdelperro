@@ -1,11 +1,14 @@
-import {createBrowserRouter} from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
+import React, { Suspense } from "react";
 import Error from "../pages/Error.jsx";
 import Principal from "../layouts/Principal.jsx";
-import Inicio from "../pages/Inicio.jsx";
-import Nosotros from "../pages/Nosotros.jsx";
-import ListaRazas from "../pages/ListaRazas.jsx";
-import Raza from "../pages/Raza.jsx";
-import Contacto from "../pages/Contacto.jsx";
+
+// Lazy loading de componentes
+const Inicio = React.lazy(() => import("../pages/Inicio.jsx"));
+const Nosotros = React.lazy(() => import("../pages/Nosotros.jsx"));
+const ListaRazas = React.lazy(() => import("../pages/ListaRazas.jsx"));
+const Raza = React.lazy(() => import("../pages/Raza.jsx"));
+const Contacto = React.lazy(() => import("../pages/Contacto.jsx"));
 
 export const router = createBrowserRouter([
     {
@@ -15,28 +18,44 @@ export const router = createBrowserRouter([
         children: [
             {
                 index: true,
-                element: <Inicio />,
+                element: (
+                    <Suspense fallback={<div>Cargando Inicio...</div>}>
+                        <Inicio />
+                    </Suspense>
+                ),
             },
             {
                 path: '/razas',
-                element: <ListaRazas />,
-                //loader: cargarBlog,
+                element: (
+                    <Suspense fallback={<div>Cargando Lista de Razas...</div>}>
+                        <ListaRazas />
+                    </Suspense>
+                ),
             },
             {
                 path: '/razas/:id',
-                element: <Raza />,
-                //loader: cargarPost,
+                element: (
+                    <Suspense fallback={<div>Cargando Detalle de Raza...</div>}>
+                        <Raza />
+                    </Suspense>
+                ),
             },
             {
                 path: '/nosotros',
-                element: <Nosotros />,
+                element: (
+                    <Suspense fallback={<div>Cargando Nosotros...</div>}>
+                        <Nosotros />
+                    </Suspense>
+                ),
             },
             {
                 path: '/contacto',
-                element: <Contacto />,
-            }
-
+                element: (
+                    <Suspense fallback={<div>Cargando Contacto...</div>}>
+                        <Contacto />
+                    </Suspense>
+                ),
+            },
         ],
     },
-    ]
-)
+]);
