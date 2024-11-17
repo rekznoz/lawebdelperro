@@ -1,7 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
 import React, { Suspense } from "react";
 import Error from "../pages/Error.jsx";
-import Principal from "../layouts/Principal.jsx";
+
+// Carga perezosa del componente Principal
+const Principal = React.lazy(() => import("../layouts/Principal.jsx"));
 
 // Carga perezosa de los componentes
 const Inicio = React.lazy(() => import("../pages/Inicio.jsx"));
@@ -21,7 +23,11 @@ const Loading = () => (
 export const router = createBrowserRouter([
     {
         path: '/',
-        element: <Principal />,
+        element: (
+            <Suspense fallback={<Loading />}>
+                <Principal />
+            </Suspense>
+        ),
         errorElement: <Error />,
         children: [
             {
