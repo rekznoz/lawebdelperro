@@ -199,8 +199,8 @@ export default function Contacto() {
             <div id='area2'>
                 <div className="contFormContacto">
                     <h2>Formulario de Contacto</h2>
-                    <p>¿Tienes alguna duda o comentario sobre razas de perros?</p>
-                    <p>¡Nos encantaría ayudarte!</p>
+                    <h3>¿Tienes alguna duda o comentario sobre razas de perros?</h3>
+                    <h3>¡Nos encantaría ayudarte!</h3>
                     <form onSubmit={handleSubmit}>
 
                         <div className="opciones">
@@ -227,7 +227,7 @@ export default function Contacto() {
 
                             <div className="gruporadio">
                                 <label>
-                                    <p><span className='requiere'>*</span> ¿Tienes perros en casa?</p>
+                                    <p><span className='requiere'>*</span> ¿Tienes perros?</p>
                                 </label>
                                 <label>
                                     <input type="radio" name="tienePerros" value="si" onChange={hadnleChange} checked={tienePerros === 'si'}/>
