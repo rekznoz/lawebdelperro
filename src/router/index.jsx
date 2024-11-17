@@ -1,22 +1,21 @@
 import { createBrowserRouter } from "react-router-dom";
-import React, { Suspense } from "react";
+import { Suspense, lazy } from "react";
 import Error from "../pages/Error.jsx";
 
 // Carga perezosa del componente Principal
-const Principal = React.lazy(() => import("../layouts/Principal.jsx"));
+const Principal = lazy(() => import("../layouts/Principal.jsx"));
 
 // Carga perezosa de los componentes
-const Inicio = React.lazy(() => import("../pages/Inicio.jsx"));
-const Nosotros = React.lazy(() => import("../pages/Nosotros.jsx"));
-const ListaRazas = React.lazy(() => import("../pages/ListaRazas.jsx"));
-const Raza = React.lazy(() => import("../pages/Raza.jsx"));
-const Contacto = React.lazy(() => import("../pages/Contacto.jsx"));
+const Inicio = lazy(() => import("../pages/Inicio.jsx"));
+const Nosotros = lazy(() => import("../pages/Nosotros.jsx"));
+const ListaRazas = lazy(() => import("../pages/ListaRazas.jsx"));
+const Raza = lazy(() => import("../pages/Raza.jsx"));
+const Contacto = lazy(() => import("../pages/Contacto.jsx"));
 
 // Componente de carga mientras se cargan los demás componentes
 const Loading = () => (
-    <div className="loading">
-        <p>Cargando...</p>
-        <div className="spinner"></div>
+    <div id="cargador">
+        <div id="spinner"></div>
     </div>
 );
 
