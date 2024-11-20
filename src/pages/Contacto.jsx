@@ -14,101 +14,53 @@ const forumarioDefecto = {
 }
 
 function validarNombre(nombre) {
-    if (nombre !== '') {
-        let verificacion = true
-        let error = ''
-        if (nombre.length < 3) {
-            verificacion = false
-            error = 'El nombre debe tener al menos 3 caracteres'
-        }
-        if (nombre.length > 50) {
-            verificacion = false
-            error = 'El nombre debe tener como máximo 50 caracteres'
-        }
-        if (!/^[a-zA-Z ]+$/.test(nombre)) {
-            verificacion = false
-            error = 'El nombre solo puede contener letras y espacios'
-        }
-        if (!verificacion) {
-            Swal.fire({
-                title: 'Error',
-                text: error,
-                icon: 'error',
-                confirmButtonText: 'Aceptar'
-            })
-        }
-        return verificacion
+    let verificacion = true
+    let error = ''
+    if (nombre.length < 3) {
+        verificacion = false
     }
+    if (nombre.length > 50) {
+        verificacion = false
+    }
+    if (!/^[a-zA-Z ]+$/.test(nombre)) {
+        verificacion = false
+    }
+    return verificacion
 }
 
 function validarEmail(email) {
-    if (email !== '') {
-        let verificacion = true
-        let error = ''
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-            verificacion = false
-            error = 'El correo electrónico no es válido'
-        }
-        if (!verificacion) {
-            Swal.fire({
-                title: 'Error',
-                text: error,
-                icon: 'error',
-                confirmButtonText: 'Aceptar'
-            })
-        }
-        return verificacion
+    let verificacion = true
+    let error = ''
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        verificacion = false
     }
+    return verificacion
 }
 
 function validarTelefono(telefono) {
-    if (telefono !== '') {
-        let verificacion = true
-        let error = ''
-        if (telefono.length < 8) {
-            verificacion = false
-            error = 'El teléfono debe tener al menos 8 caracteres'
-        }
-        if (telefono.length > 15) {
-            verificacion = false
-            error = 'El teléfono debe tener como máximo 15 caracteres'
-        }
-        if (!/^[0-9]+$/.test(telefono)) {
-            verificacion = false
-            error = 'El teléfono solo puede contener números'
-        }
-        if (!verificacion) {
-            Swal.fire({
-                title: 'Error',
-                text: error,
-                icon: 'error',
-                confirmButtonText: 'Aceptar'
-            })
-        }
-        return verificacion
+    let verificacion = true
+    let error = ''
+    if (telefono.length < 8) {
+        verificacion = false
     }
+    if (telefono.length > 15) {
+        verificacion = false
+    }
+    if (!/^[0-9]+$/.test(telefono)) {
+        verificacion = false
+    }
+    return verificacion
 }
 
 function validarFecha(fecha) {
-    if (fecha !== '') {
-        let verificacion = true
-        let error = ''
-        let fechaActual = new Date()
-        let fechaIngresada = new Date(fecha)
-        if (fechaIngresada < fechaActual) {
-            verificacion = false
-            error = 'La fecha debe ser mayor a la fecha actual'
-        }
-        if (!verificacion) {
-            Swal.fire({
-                title: 'Error',
-                text: error,
-                icon: 'error',
-                confirmButtonText: 'Aceptar'
-            })
-        }
-        return verificacion
+    let verificacion = true
+    let error = ''
+    let fechaActual = new Date()
+    let fechaIngresada = new Date(fecha)
+    if (fechaIngresada < fechaActual) {
+        verificacion = false
     }
+    return verificacion
 }
 
 export default function Contacto() {
@@ -118,30 +70,32 @@ export default function Contacto() {
     const {nombre, email, telefono, fecha, intereses, tienePerros, razaFavorita, mensaje} = formulario
 
     const handleBlur = (e) => {
-        if (e.target.name === 'nombre') {
-            if (!validarNombre(e.target.value)) {
-                return
-            }
+        if (
+            (e.target.name === 'nombre' && !validarNombre(e.target.value)) ||
+            (e.target.name === 'email' && !validarEmail(e.target.value)) ||
+            (e.target.name === 'telefono' && !validarTelefono(e.target.value)) ||
+            (e.target.name === 'fecha' && !validarFecha(e.target.value))
+        ) {
+
+            const error = document.querySelector(`#${e.target.name}`).nextElementSibling
+            error.textContent = `El campo ${e.target.name} es inválido`
+            error.classList.add('ShowError')
+
+            setFormulario({
+                ...formulario,
+                [e.target.name]: ''
+            })
+            return
+        } else {
+            const error = document.querySelector(`#${e.target.name}`).nextElementSibling
+            error.textContent = ''
+            error.classList.remove('ShowError')
+
+            setFormulario({
+                ...formulario,
+                [e.target.name]: e.target.value
+            })
         }
-        if (e.target.name === 'email') {
-            if (!validarEmail(e.target.value)) {
-                return
-            }
-        }
-        if (e.target.name === 'telefono') {
-            if (!validarTelefono(e.target.value)) {
-                return
-            }
-        }
-        if (e.target.name === 'fecha') {
-            if (!validarFecha(e.target.value)) {
-                return
-            }
-        }
-        setFormulario({
-            ...formulario,
-            [e.target.name]: e.target.value
-        })
     }
 
     const hadnleChange = (e) => {
@@ -153,7 +107,7 @@ export default function Contacto() {
 
     // Funcion que se ejecuta cada vez que se cambia un checkbox
     const handleCheck = (e) => {
-        const { value, checked } = e.target
+        const {value, checked} = e.target
 
         setFormulario((prevState) => {
             const interesesActualizados = checked
@@ -182,17 +136,18 @@ export default function Contacto() {
     // Funcion que se ejecuta al enviar el formulario
     const handleSubmit = (e) => {
         e.preventDefault()
-        if (!validarNombre(nombre) || !validarEmail(email) || !validarTelefono(telefono) || !validarFecha(fecha)) {
+        if (nombre.trim() === '' || email.trim() === '' || telefono.trim() === '' || fecha.trim() === '' || razaFavorita.trim() === '') {
             Swal.fire({
                 title: 'Error',
-                text: 'Por favor, completa correctamente los campos requeridos',
+                text: 'Todos los campos marcados con * son obligatorios',
                 icon: 'error',
                 confirmButtonText: 'Aceptar'
             })
+            return
         } else {
             Swal.fire({
                 title: 'Mensaje Enviado',
-                text: '¡Gracias por contactarnos! Nos pondremos en contacto contigo en la fecha indicada',
+                text: '¡Gracias por contactarnos!',
                 icon: 'success',
                 confirmButtonText: 'Aceptar'
             })
@@ -215,22 +170,30 @@ export default function Contacto() {
 
                         <div className="opciones">
                             <label htmlFor="nombre"><span className='requiere'>*</span> Nombre:</label>
-                            <input type="text" id="nombre" name="nombre" placeholder="Tu nombre completo" value={nombre} onBlur={handleBlur} onChange={hadnleChange}/>
+                            <input type="text" id="nombre" name="nombre" placeholder="Tu nombre completo" value={nombre}
+                                   onBlur={handleBlur} onChange={hadnleChange}/>
+                            <p className="FormError"></p>
                         </div>
 
                         <div className="opciones">
                             <label htmlFor="email"><span className='requiere'>*</span> Correo Electrónico:</label>
-                            <input type="email" id="email" name="email" placeholder="Tu correo electrónico" value={email} onBlur={handleBlur} onChange={hadnleChange}/>
+                            <input type="email" id="email" name="email" placeholder="Tu correo electrónico"
+                                   value={email} onBlur={handleBlur} onChange={hadnleChange}/>
+                            <p className="FormError"></p>
                         </div>
 
                         <div className="opciones">
                             <label htmlFor="telefono"><span className='requiere'>*</span> Número de Teléfono:</label>
-                            <input type="number" id="telefono" name="telefono" placeholder="Tu número de teléfono" value={telefono} onBlur={handleBlur} onChange={hadnleChange}/>
+                            <input type="number" id="telefono" name="telefono" placeholder="Tu número de teléfono"
+                                   value={telefono} onBlur={handleBlur} onChange={hadnleChange}/>
+                            <p className="FormError"></p>
                         </div>
 
                         <div className="opciones">
                             <label htmlFor="fecha"><span className='requiere'>*</span> Fecha de Consulta:</label>
-                            <input type="date" id="fecha" name="fecha" value={fecha} onBlur={handleBlur} onChange={hadnleChange}/>
+                            <input type="date" id="fecha" name="fecha" value={fecha} onBlur={handleBlur}
+                                   onChange={hadnleChange}/>
+                            <p className="FormError"></p>
                         </div>
 
                         <div className="opciones centrarcuadros">
@@ -240,11 +203,13 @@ export default function Contacto() {
                                     <p><span className='requiere'>*</span> ¿Tienes perros?</p>
                                 </label>
                                 <label>
-                                    <input type="radio" name="tienePerros" value="si" onChange={handleRadio} checked={tienePerros === 'si'}/>
+                                    <input type="radio" name="tienePerros" value="si" onChange={handleRadio}
+                                           checked={tienePerros === 'si'}/>
                                     <span>Si</span>
                                 </label>
                                 <label>
-                                    <input type="radio" name="tienePerros" value="no" onChange={handleRadio} checked={tienePerros === 'no'}/>
+                                    <input type="radio" name="tienePerros" value="no" onChange={handleRadio}
+                                           checked={tienePerros === 'no'}/>
                                     <span>No</span>
                                 </label>
                             </div>
@@ -259,7 +224,8 @@ export default function Contacto() {
                                     <span>Cuidados de Perros </span>
                                 </label>
                                 <label className="contenedorCheck">
-                                    <input type="checkbox" name="intereses" value="alimentacion" onChange={handleCheck}/>
+                                    <input type="checkbox" name="intereses" value="alimentacion"
+                                           onChange={handleCheck}/>
                                     <span>Alimentación de Perros </span>
                                 </label>
                                 <label className="contenedorCheck">
@@ -271,7 +237,8 @@ export default function Contacto() {
                         </div>
 
                         <div className="opciones">
-                            <label htmlFor="razaFavorita"><span className='requiere'>*</span> Raza de Perro Favorita:</label>
+                            <label htmlFor="razaFavorita"><span className='requiere'>*</span> Raza de Perro
+                                Favorita:</label>
                             <select id="razaFavorita" name="razaFavorita" onChange={hadnleChange}>
                                 <option value="" disabled>Selecciona una raza</option>
                                 <option value="labrador">Labrador Retriever</option>
@@ -284,7 +251,8 @@ export default function Contacto() {
 
                         <div className="opciones">
                             <label htmlFor="mensaje">Mensaje:</label>
-                            <textarea id="mensaje" name="mensaje" placeholder="Escribe tu mensaje aquí" value={mensaje} onChange={hadnleChange}/>
+                            <textarea id="mensaje" name="mensaje" placeholder="Escribe tu mensaje aquí" value={mensaje}
+                                      onChange={hadnleChange}/>
                         </div>
 
                         <button type="submit">Enviar Mensaje</button>
