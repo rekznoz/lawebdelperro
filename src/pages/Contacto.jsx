@@ -15,7 +15,6 @@ const forumarioDefecto = {
 
 function validarNombre(nombre) {
     let verificacion = true
-    let error = ''
     if (nombre.length < 3) {
         verificacion = false
     }
@@ -30,7 +29,6 @@ function validarNombre(nombre) {
 
 function validarEmail(email) {
     let verificacion = true
-    let error = ''
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
         verificacion = false
     }
@@ -39,7 +37,6 @@ function validarEmail(email) {
 
 function validarTelefono(telefono) {
     let verificacion = true
-    let error = ''
     if (telefono.length < 8) {
         verificacion = false
     }
@@ -54,7 +51,6 @@ function validarTelefono(telefono) {
 
 function validarFecha(fecha) {
     let verificacion = true
-    let error = ''
     let fechaActual = new Date()
     let fechaIngresada = new Date(fecha)
     if (fechaIngresada < fechaActual) {
