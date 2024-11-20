@@ -153,22 +153,22 @@ export default function Contacto() {
 
     // Funcion que se ejecuta cada vez que se cambia un checkbox
     const handleCheck = (e) => {
-        if (e.target.checked) {
-            setFormulario({
-                ...formulario,
-                intereses: [...intereses, e.target.value]
-            })
-            console.log('PONER')
-            console.log(formulario.intereses)
-        } else {
-            setFormulario({
-                ...formulario,
-                intereses: intereses.filter(interes => interes !== e.target.value),
-            })
-            console.log('QUITAR')
-            console.log(formulario.intereses)
-        }
-    }
+        const { value, checked } = e.target;
+
+        setFormulario((prevState) => {
+            const interesesActualizados = checked
+                ? [...prevState.intereses, value]
+                : prevState.intereses.filter(interes => interes !== value);
+
+            console.log(checked ? 'AGREGAR' : 'QUITAR', value);
+            console.log('Intereses actualizados:', interesesActualizados);
+
+            return {
+                ...prevState,
+                intereses: interesesActualizados
+            };
+        });
+    };
 
     // Funcion que se ejecuta cada vez que se cambia un radio
     const handleRadio = (e) => {
@@ -181,14 +181,23 @@ export default function Contacto() {
     // Funcion que se ejecuta al enviar el formulario
     const handleSubmit = (e) => {
         e.preventDefault()
+        if (!validarNombre(nombre) || !validarEmail(email) || !validarTelefono(telefono) || !validarFecha(fecha)) {
+            Swal.fire({
+                title: 'Error',
+                text: 'Por favor, completa correctamente los campos requeridos',
+                icon: 'error',
+                confirmButtonText: 'Aceptar'
+            })
+        } else {
+            Swal.fire({
+                title: 'Mensaje Enviado',
+                text: '¡Gracias por contactarnos! Nos pondremos en contacto contigo en la fecha indicada',
+                icon: 'success',
+                confirmButtonText: 'Aceptar'
+            })
+            setFormulario(forumarioDefecto)
+        }
         console.log(formulario)
-        setFormulario(forumarioDefecto)
-        Swal.fire({
-            title: 'Mensaje Enviado',
-            text: 'Tu mensaje ha sido enviado correctamente',
-            icon: 'success',
-            confirmButtonText: 'Aceptar'
-        })
     }
 
     return (

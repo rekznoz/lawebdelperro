@@ -3,7 +3,8 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: var(--fondo-navbar);
+    background: rgb(47,140,186);
+    background: linear-gradient(180deg, rgba(47,140,186,1) 46%, rgba(255,255,255,1) 100%);
 }
 
 .header .contenedorHeader .navbar {
