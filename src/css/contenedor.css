@@ -25,8 +25,8 @@
 
 .footer {
     grid-area: 9 / 1 / 10 / 10;
-    background: rgb(47,140,186);
-    background: linear-gradient(0deg, rgba(47,140,186,1) 46%, var(--fondo-principal) 100%);
+    background: rgb(255,255,255);
+    background: linear-gradient(180deg, var(--fondo-principal) 10%, rgba(47,140,186,1) 100%);
     padding: 20px;
     text-align: center;
 }

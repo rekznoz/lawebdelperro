@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom"
+import {Link, NavLink, useLocation} from "react-router-dom"
 // Importar imágenes
 import inicio from '../assets/navbar/inicio.png'
 import razas from '../assets/navbar/razas.png'
@@ -21,17 +21,26 @@ export default function Navbar() {
     // Obtener la ruta actual para condicionarla despues
     const paginaActual = useLocation()
     const [modo, setModo] = useState('claro')
+    const [fade, setFade] = useState(false);  // Estado para controlar la animación fade
 
     const cambiarModo = () => {
-        const nuevoModo = modo === 'claro' ? 'oscuro' : 'claro'
-        setModo(nuevoModo)
-        document.body.classList.toggle('dark-mode')
-    }
-
+        // Iniciar la animación fade
+        setFade(true);
+        setTimeout(() => {
+            // Cambiar el modo después de la animación
+            const nuevoModo = modo === 'claro' ? 'oscuro' : 'claro';
+            setModo(nuevoModo);
+            document.body.classList.toggle('dark-mode');
+            // Finalizar la animación fade
+            setFade(false);
+        }, 300); // Tiempo que coincide con la duración del fade en CSS
+    };
 
     return (
         <header className='contenedorHeader'>
-            <h1 className='titulo'>La Web del Perro!</h1>
+            <NavLink to={'/'} aria-label='Ir a la página de inicio'>
+                <h1 className='titulo'>La Web del Perro!</h1>
+            </NavLink>
             <nav className='navbar'>
                 <ul>
                     {navItems
@@ -39,13 +48,17 @@ export default function Navbar() {
                         .filter(pagina => pagina.to !== paginaActual.pathname)
                         .map((pagina, index) => (
                             <li className='enlacesnav' key={index}>
-                                <Link to={pagina.to} aria-label={pagina.label}>
+                                <NavLink to={pagina.to} aria-label={pagina.label}>
                                     <img src={pagina.img} alt={pagina.alt} />
-                                </Link>
+                                </NavLink>
                             </li>
                         ))}
-                    <li className='enlacenav'>
-                        <img src={modo === 'claro' ? claro : oscuro} alt='Icono para cambiar modo' onClick={cambiarModo} />
+                    <li className={`enlacenav ${fade ? 'fade' : ''}`}>
+                        <img
+                            src={modo === 'claro' ? oscuro : claro}
+                            alt='Icono para cambiar modo'
+                            onClick={cambiarModo}
+                        />
                     </li>
                 </ul>
             </nav>

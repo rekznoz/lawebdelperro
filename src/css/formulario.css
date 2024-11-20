@@ -153,6 +153,12 @@ h1 {
     color: #555;
 }
 
+@media (max-width: 1500px) {
+    .contFormContacto {
+        width: 60%;
+    }
+}
+
 /* Si la anchura de la pantalla es menor a 1200px */
 @media (max-width: 1200px) {
     .contFormContacto .centrarcuadros {
