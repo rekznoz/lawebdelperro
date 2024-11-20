@@ -1,10 +1,13 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom"
 // Importar imágenes
-import inicio from '../assets/navbar/inicio.png';
-import razas from '../assets/navbar/razas.png';
-import nosotros from '../assets/navbar/nosotros.png';
-import contacto from '../assets/navbar/contacto.png';
-import login from '../assets/navbar/login.png';
+import inicio from '../assets/navbar/inicio.png'
+import razas from '../assets/navbar/razas.png'
+import nosotros from '../assets/navbar/nosotros.png'
+import contacto from '../assets/navbar/contacto.png'
+import login from '../assets/navbar/login.png'
+import claro from '../assets/navbar/claro.png'
+import oscuro from '../assets/navbar/oscuro.png'
+import {useState} from "react"
 
 const navItems = [
     { to: "/", img: inicio, alt: "Icono para inicio", label: "Ir a la página de inicio" },
@@ -12,11 +15,19 @@ const navItems = [
     { to: "/nosotros", img: nosotros, alt: "Icono para nosotros", label: "Conocer más sobre nosotros" },
     { to: "/contacto", img: contacto, alt: "Icono para contacto", label: "Ir a la página de contacto" },
     { to: "/login", img: login, alt: "Icono para login", label: "Iniciar sesión o registrarse" },
-];
+]
 
 export default function Navbar() {
     // Obtener la ruta actual para condicionarla despues
-    const paginaActual = useLocation();
+    const paginaActual = useLocation()
+    const [modo, setModo] = useState('claro')
+
+    const cambiarModo = () => {
+        const nuevoModo = modo === 'claro' ? 'oscuro' : 'claro'
+        setModo(nuevoModo)
+        document.body.classList.toggle('dark-mode')
+    }
+
 
     return (
         <header className='contenedorHeader'>
@@ -33,8 +44,11 @@ export default function Navbar() {
                                 </Link>
                             </li>
                         ))}
+                    <li className='enlacenav'>
+                        <img src={modo === 'claro' ? claro : oscuro} alt='Icono para cambiar modo' onClick={cambiarModo} />
+                    </li>
                 </ul>
             </nav>
         </header>
-    );
+    )
 }

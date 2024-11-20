@@ -153,22 +153,22 @@ export default function Contacto() {
 
     // Funcion que se ejecuta cada vez que se cambia un checkbox
     const handleCheck = (e) => {
-        const { value, checked } = e.target;
+        const { value, checked } = e.target
 
         setFormulario((prevState) => {
             const interesesActualizados = checked
                 ? [...prevState.intereses, value]
-                : prevState.intereses.filter(interes => interes !== value);
+                : prevState.intereses.filter(interes => interes !== value)
 
-            console.log(checked ? 'AGREGAR' : 'QUITAR', value);
-            console.log('Intereses actualizados:', interesesActualizados);
+            console.log(checked ? 'AGREGAR' : 'QUITAR', value)
+            console.log(interesesActualizados)
 
             return {
                 ...prevState,
                 intereses: interesesActualizados
-            };
-        });
-    };
+            }
+        })
+    }
 
     // Funcion que se ejecuta cada vez que se cambia un radio
     const handleRadio = (e) => {
@@ -176,6 +176,7 @@ export default function Contacto() {
             ...formulario,
             tienePerros: e.target.value
         })
+        console.log(e.target.value)
     }
 
     // Funcion que se ejecuta al enviar el formulario
@@ -239,11 +240,11 @@ export default function Contacto() {
                                     <p><span className='requiere'>*</span> ¿Tienes perros?</p>
                                 </label>
                                 <label>
-                                    <input type="radio" name="tienePerros" value="si" onChange={hadnleChange} checked={tienePerros === 'si'}/>
+                                    <input type="radio" name="tienePerros" value="si" onChange={handleRadio} checked={tienePerros === 'si'}/>
                                     <span>Si</span>
                                 </label>
                                 <label>
-                                    <input type="radio" name="tienePerros" value="no" onChange={hadnleChange} checked={tienePerros === 'no'}/>
+                                    <input type="radio" name="tienePerros" value="no" onChange={handleRadio} checked={tienePerros === 'no'}/>
                                     <span>No</span>
                                 </label>
                             </div>

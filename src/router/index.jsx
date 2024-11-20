@@ -3,21 +3,21 @@ import {Suspense, lazy} from "react";
 import Error from "../pages/Error.jsx";
 
 // Carga del componente Principal
-const Principal = lazy(() => import("../layouts/Principal.jsx"));
+const Principal = lazy(() => import("../layouts/Principal.jsx"))
 
 // Carga de los componentes
-const Inicio = lazy(() => import("../pages/Inicio.jsx"));
-const Nosotros = lazy(() => import("../pages/Nosotros.jsx"));
-const ListaRazas = lazy(() => import("../pages/ListaRazas.jsx"));
-const Raza = lazy(() => import("../pages/Raza.jsx"));
-const Contacto = lazy(() => import("../pages/Contacto.jsx"));
+const Inicio = lazy(() => import("../pages/Inicio.jsx"))
+const Nosotros = lazy(() => import("../pages/Nosotros.jsx"))
+const ListaRazas = lazy(() => import("../pages/ListaRazas.jsx"))
+const Raza = lazy(() => import("../pages/Raza.jsx"))
+const Contacto = lazy(() => import("../pages/Contacto.jsx"))
 
 // Componente de carga mientras se cargan los demás componentes
 const Loading = () => (
     <div id="cargador">
         <div id="spinner"></div>
     </div>
-);
+)
 
 export const router = createBrowserRouter([
     {
@@ -71,4 +71,4 @@ export const router = createBrowserRouter([
             },
         ],
     },
-]);
+])

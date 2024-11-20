@@ -1,10 +1,10 @@
 
 .header .contenedorHeader {
     display: flex;
-    justify-content: space-around;
+    justify-content: normal;
     align-items: center;
     background: rgb(47,140,186);
-    background: linear-gradient(180deg, rgba(47,140,186,1) 46%, rgba(255,255,255,1) 100%);
+    background: linear-gradient(180deg, rgba(47,140,186,1) 46%, var(--fondo-principal) 100%);
 }
 
 .header .contenedorHeader .navbar {
