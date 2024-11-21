@@ -2,55 +2,78 @@
 
 ---
 
-## Estructura de carpetas
+## 📁 Estructura de Carpetas
 
-- ``public/``: Carpeta donde se encuentran los archivos estáticos del proyecto.
-- ``src/``: Carpeta donde se encuentra el código fuente del proyecto.
-    - `assets/`: Carpeta donde se encuentran los archivos estáticos del proyecto.
-    - `components/`: Carpeta donde se encuentran los componentes de la aplicación.
-    - `css/`: Carpeta donde se encuentran los estilos de la aplicación.
-    - `layouts/`: Carpeta donde se encuentran los layouts de la aplicación.
-    - `pages/`: Carpeta donde se encuentran las páginas de la aplicación.
-    - `router/`: Carpeta donde se encuentran las rutas de la aplicación.
+```
+public/          // Archivos estáticos del proyecto
+src/             // Código fuente del proyecto
+├── assets/      // Archivos estáticos personalizados (imágenes, fuentes, etc.)
+├── components/  // Componentes reutilizables de la aplicación
+├── css/         // Estilos de la aplicación
+├── layouts/     // Diseños principales para la estructura de la aplicación
+├── pages/       // Páginas principales de la aplicación
+└── router/      // Configuración y manejo de rutas
+```
 
 ---
 
-## Configuración de Rutas en React
+## 🚀 Configuración de Rutas en React
 
-La configuración de rutas utiliza `createBrowserRouter` para definir la estructura de la aplicación a la hora de la redirecicon de los enlaces de la misma pagina.
+Se utiliza **`createBrowserRouter`** para gestionar las rutas y definir la estructura de navegación de la aplicación.
 
-### Rutas Principales
+### 🌐 Rutas Principales
 
 #### `/` (Raíz)
-- **Pagina Principal**: `Principal`
+
+- **Página Principal**: `Principal`
 - **Fallback de Suspense**: `Loading`
-- **Pagina para Errores**: `Error`
-- **Subrutas**:
-    - **`index` (Inicio)**:
-        - Pagina: `Inicio`
-        - Descripción: Página principal.
-    - **`/razas`**:
-        - Pagina: `ListaRazas`
-        - Descripción: Página que muestra una lista de razas disponibles.
-    - **`/razas/:id`**:
-        - Pagina: `Raza`
-        - Descripción: Página que muestra los detalles de una raza específica. El parámetro `:id` es el identificador de raza.
-    - **`/nosotros`**:
-        - Pagina: `Nosotros`
-        - Descripción: Página de información sobre el equipo del proyecto.
-    - **`/contacto`**:
-        - Pagina: `Contacto`
-        - Descripción: Página para que los usuarios puedan contactar con el equipo.
+- **Página para Errores**: `Error`
 
 ---
 
-## Desarrollo hasta este punto
+### 🔗 Subrutas
 
-- Se ha creado la estructura de carpetas del proyecto.
-- Se ha configurado las rutas principales de la aplicación.
-- Se ha representado las estructuras y contenedores de las páginas principales.
-- Se ha creado el Componente `Navbar` para la navegación de la aplicación.
-- Se ha creado el Componente `Footer` para el pie de página de la aplicación.
-- Se ha creado el Componente `Loading` para mostrar un icono de carga.
-- Se ha creado la pagina `Contacto` para que los usuarios puedan contactar con el equipo.
-- El formulario de `Contacto` se valida correctamente refeljando los errores en los campos.
+1. **`index` (Inicio)**
+    - **Página**: `Inicio`
+    - **Descripción**: Página principal.
+
+2. **`/razas`**
+    - **Página**: `ListaRazas`
+    - **Descripción**: Lista de razas disponibles.
+
+3. **`/razas/:id`**
+    - **Página**: `Raza`
+    - **Descripción**: Detalles de una raza específica.  
+      **Nota**: `:id` representa el identificador único de la raza.
+
+4. **`/nosotros`**
+    - **Página**: `Nosotros`
+    - **Descripción**: Información sobre el equipo detrás del proyecto.
+
+5. **`/contacto`**
+    - **Página**: `Contacto`
+    - **Descripción**: Formulario para que los usuarios puedan contactar al equipo.
+
+---
+
+## ✨ Desarrollo hasta este Punto
+
+1. **Estructura del Proyecto**:
+
+2. **Rutas Principales**:
+    - Configuración inicial de navegación usando `createBrowserRouter`.
+
+3. **Páginas Base**:
+    - Estructuras y contenedores para las páginas principales.
+
+4. **Componentes Clave**:
+    - **`Navbar`**: Navegación superior.
+    - **`Footer`**: Pie de página.
+    - **`Loading`**: Indicador visual para la carga de contenido.
+
+5. **Página de Contacto**:
+    - Diseño y funcionalidad para que los usuarios contacten al equipo.
+    - **Validación**: Implementación de validación en los campos del formulario.
+        - Muestra errores visuales en caso de datos incorrectos.
+
+---
