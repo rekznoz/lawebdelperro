@@ -5,6 +5,12 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/3d452d7e-d770-495b-9964-3d564cdd20b5/deploy-status)](https://webdelperro.netlify.app/)
 
+## Enlaces internos
+
+### [🔗 Documento de Desarrollo](./DESARROLLO.md)
+
+---
+
 ### 📑 **Índice**
 
 1. [💡 Idea de la Aplicación](#-idea-de-la-aplicación)
