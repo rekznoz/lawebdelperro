@@ -19,6 +19,13 @@ const Loading = () => (
     </div>
 )
 
+/*
+    Configuración de las rutas de la aplicación
+    - Se carga el componente Principal
+    - Se definen las rutas de la aplicación
+    - Se cargan los componentes de las rutas
+    - Se define un componente de carga mientras se cargan los demás componentes
+ */
 export const router = createBrowserRouter([
     {
         path: '/',
