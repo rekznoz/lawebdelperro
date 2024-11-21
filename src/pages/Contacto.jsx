@@ -13,6 +13,13 @@ const forumarioDefecto = {
     mensaje: ''
 }
 
+/*
+ * Funciones de validación
+ * validarNombre: Valida que el nombre tenga entre 3 y 50 caracteres y que solo contenga letras y espacios
+ * validarEmail: Valida que el email tenga el formato correcto
+ * validarTelefono: Valida que el teléfono tenga entre 8 y 15 caracteres y que solo contenga números
+ * validarFecha: Valida que la fecha ingresada sea mayor a la fecha actual
+ */
 function validarNombre(nombre) {
     let verificacion = true
     if (nombre.length < 3) {
@@ -65,6 +72,18 @@ export default function Contacto() {
 
     const {nombre, email, telefono, fecha, intereses, tienePerros, razaFavorita, mensaje} = formulario
 
+    /*
+        * Funciones que se ejecutan al salir de un campo
+        * handleBlur: Valida que el campo nombre, email, telefono y fecha sean válidos
+        * Si no son válidos, muestra un mensaje de error y limpia el campo
+        * Si son válidos, guarda el valor en el estado formulario
+        * hadnleChange: Guarda el valor de los campos en el estado formulario
+        * handleCheck: Guarda los valores de los checkbox en el estado formulario
+        * handleRadio: Guarda el valor del radio en el estado formulario
+        * handleSubmit: Valida que los campos obligatorios no estén vacíos
+        * Si están vacíos, muestra un mensaje de error
+        * Si no están vacíos, muestra un mensaje de éxito y limpia el formulario
+     */
     const handleBlur = (e) => {
         if (
             (e.target.name === 'nombre' && !validarNombre(e.target.value)) ||
