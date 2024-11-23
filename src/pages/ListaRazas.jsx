@@ -1,7 +1,8 @@
 import '../css/ListaRazas.css'
 import {Link, useLoaderData} from "react-router-dom"
 import {useEffect, useState} from "react"
-import Filtro from "../components/Filtro.jsx";
+import Filtro from "../components/Filtro.jsx"
+import Paginacion from "../components/Paginacion.jsx"
 
 const filtroDefault = {
     nombre: '',
@@ -73,7 +74,7 @@ export default function ListaRazas() {
 
     useEffect(() => {
         setPagina(1)
-    }, [filtro]);
+    }, [filtro])
 
     if (!razasFiltradas) {
         return (
@@ -112,43 +113,7 @@ export default function ListaRazas() {
                 </ul>
             </div>
             <div id='area3'>
-                <nav className="paginacion">
-                    <button
-                        disabled={pagina === 1}
-                        onClick={() => paginacion(pagina - 1)}
-                    >
-                        Previous
-                    </button>
-                    {pageNumbers.map(pageNumber => (
-                        <button
-                            key={pageNumber}
-                            className={pagina === pageNumber ? "active" : ""}
-                            onClick={() => paginacion(pageNumber)}
-                        >
-                            {pageNumber}
-                        </button>
-                    ))}
-                    <button
-                        disabled={pagina === totalPaginas}
-                        onClick={() => paginacion(pagina + 1)}
-                    >
-                        Next
-                    </button>
-
-                    {/* Input para ir a una página directamente */}
-                    <div className="page-input">
-                        <input
-                            type="number"
-                            value={pagina}
-                            min="1"
-                            max={totalPaginas}
-                            onChange={handlePageInput}
-                            aria-label="Go to page"
-                        />
-                        <span> / {totalPaginas}</span>
-                    </div>
-
-                </nav>
+                <Paginacion pagina={pagina} totalPaginas={totalPaginas} paginacion={paginacion} pageNumbers={pageNumbers} handlePageInput={handlePageInput} />
             </div>
         </>
     )

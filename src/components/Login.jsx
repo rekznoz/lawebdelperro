@@ -1,40 +1,40 @@
-import {useState} from "react";
+import {useState} from "react"
 
 export default function Login() {
 
-    const [registro, setRegistro] = useState(false);
+    const [registro, setRegistro] = useState(false)
 
     const ocultarLogin = () => {
         // Ocultar el modal de Login
-        const modal = document.getElementById('loginForm');
-        modal.style.display = 'none';
+        const modal = document.getElementById('loginForm')
+        modal.style.display = 'none'
     }
 
     const mostrarRegistro = () => {
         if (registro) {
             // Ocultar el modal de Registro
-            const modal = document.getElementById('registroForm');
-            modal.style.display = 'none';
+            const modal = document.getElementById('registroForm')
+            modal.style.display = 'none'
             // Mostrar el modal de Login
-            const modalLogin = document.getElementById('loginForm');
-            modalLogin.style.display = 'block';
-            setRegistro(false);
+            const modalLogin = document.getElementById('loginForm')
+            modalLogin.style.display = 'block'
+            setRegistro(false)
         } else {
             // Mostrar el modal de Registro
-            const modal = document.getElementById('registroForm');
-            modal.style.display = 'block';
+            const modal = document.getElementById('registroForm')
+            modal.style.display = 'block'
             // Ocultar el modal de Login
-            const modalLogin = document.getElementById('loginForm');
-            modalLogin.style.display = 'none';
-            setRegistro(true);
+            const modalLogin = document.getElementById('loginForm')
+            modalLogin.style.display = 'none'
+            setRegistro(true)
         }
     }
 
     const loginUser = (e) => {
-        e.preventDefault();
-        const email = e.target.email.value;
-        const password = e.target.passw.value;
-        console.log(email, password);
+        e.preventDefault()
+        const email = e.target.email.value
+        const password = e.target.passw.value
+        console.log(email, password)
     }
 
     return (
