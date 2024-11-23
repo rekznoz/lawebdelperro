@@ -1,6 +1,7 @@
 import '../css/ListaRazas.css'
 import {Link, useLoaderData} from "react-router-dom"
-import {useState} from "react"
+import {useEffect, useState} from "react"
+import Filtro from "../components/Filtro.jsx";
 
 const filtroDefault = {
     nombre: '',
@@ -70,6 +71,10 @@ export default function ListaRazas() {
         pageNumbers.push(i)
     }
 
+    useEffect(() => {
+        setPagina(1)
+    }, [filtro]);
+
     if (!razasFiltradas) {
         return (
             <div>
@@ -86,106 +91,9 @@ export default function ListaRazas() {
         }
     }
 
-    const mostrarFiltro = () => {
-        const filtro = document.getElementById('contenedorOcultoFiltro')
-        filtro.classList.add('open')
-    }
-
-    const cerrarFiltro = () => {
-        const filtro = document.getElementById('contenedorOcultoFiltro')
-        filtro.classList.remove('open')
-    }
-
-    const handleFiltro = (event) => {
-        if (event.target.id === 'filtroNombre') {
-            setFiltro({
-                ...filtro,
-                nombre: event.target.value
-            })
-        }
-        if (event.target.id === 'filtroGrupo') {
-            setFiltro({
-                ...filtro,
-                grupo: event.target.value
-            })
-        }
-        if (event.target.id === 'filtroPopularidad') {
-            setFiltro({
-                ...filtro,
-                popularidad: parseInt(event.target.value)
-            })
-        }
-        if (event.target.id === 'filtroAltura') {
-            setFiltro({
-                ...filtro,
-                altura: parseInt(event.target.value)
-            })
-        }
-        if (event.target.id === 'filtroPeso') {
-            setFiltro({
-                ...filtro,
-                peso: parseInt(event.target.value)
-            })
-        }
-        if (event.target.id === 'filtroVida') {
-            setFiltro({
-                ...filtro,
-                vida: parseInt(event.target.value)
-            })
-        }
-        setPagina(1)
-    }
-
-    const limpiarFiltro = () => {
-        setFiltro(filtroDefault)
-        setPagina(1)
-    }
-
     return (
         <>
-            <button className="botonesFiltros botonAbrirFiltro" onClick={mostrarFiltro}>Abrir Filtros</button>
-            <button className="botonesFiltros limpiarFiltro" onClick={limpiarFiltro}>Limpiar Filtros</button>
-
-            <div id="contenedorOcultoFiltro" className="contenedorFiltro">
-                <div className="cuadroFiltro">
-                    <span className="botonCerrarFiltro" onClick={cerrarFiltro}>&times;</span>
-                    <h2>Filtros de Búsqueda</h2>
-                    <div className="filtros">
-                        <p>nombre:</p>
-                        <input
-                            id="filtroNombre"
-                            className='entradaFiltro'
-                            type="text"
-                            value={filtro.nombre}
-                            onChange={handleFiltro}
-                            placeholder="Buscar..."
-                        />
-                        <p>grupo:</p>
-                        <select
-                            id="filtroGrupo"
-                            className='entradaFiltro'
-                            value={filtro.grupo}
-                            onChange={handleFiltro}>
-                            <option value="">Todos</option>
-                            {grupos.map((grupo, index) => (
-                                <option key={index} value={grupo}>{grupo}</option>
-                            ))}
-                        </select>
-                        <p>Rango de Popularidad = {filtro.popularidad}</p>
-                        <input type="range" id='filtroPopularidad' className='entradaFiltro' min="0" max="5"
-                               value={filtro.popularidad} onChange={handleFiltro}/>
-                        <p>Rango de Altura = {filtro.altura}</p>
-                        <input type="range" id='filtroAltura' className='entradaFiltro' min="0" max="15"
-                               value={filtro.altura} onChange={handleFiltro}/>
-                        <p>Rango de Peso = {filtro.peso}</p>
-                        <input type="range" id='filtroPeso' className='entradaFiltro' min="0" max="15"
-                               value={filtro.peso} onChange={handleFiltro}/>
-                        <p>Años de Vida = {filtro.vida}</p>
-                        <input type="range" id='filtroVida' className='entradaFiltro' min="0" max="15"
-                               value={filtro.vida} onChange={handleFiltro}/>
-                    </div>
-                </div>
-            </div>
+            <Filtro grupos={grupos} filtro={filtro} setFiltro={setFiltro} filtroDefault={filtroDefault} />
 
             <div id='area1'>
                 <h1>Lista de Razas</h1>
@@ -197,14 +105,14 @@ export default function ListaRazas() {
                             <h3>{raza.general.name}</h3>
                             <div className="image-container">
                                 <img src={raza.images.small.indoors} alt={raza.general.name}/>
-                                <div className="description">{raza.general.shortDescription}</div>
+                                <div className="descripcion">{raza.general.shortDescription}</div>
                             </div>
                         </li>
                     ))}
                 </ul>
             </div>
             <div id='area3'>
-                <nav className="pagination">
+                <nav className="paginacion">
                     <button
                         disabled={pagina === 1}
                         onClick={() => paginacion(pagina - 1)}
