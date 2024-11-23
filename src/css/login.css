@@ -16,7 +16,7 @@
     width: 50%;
 }
 
-.login-form .botonCerrarFiltro {
+.login-form .botonCerrarLogin {
     background-color: #AA0000;
     color: white;
     padding: 14px 20px;
@@ -29,8 +29,27 @@
     text-shadow: 2px 1px 1px #000;
 }
 
-.login-form .botonCerrarFiltro:hover, .botonCerrarFiltro:focus {
+.login-form .botonCerrarLogin:hover, .botonCerrarLogin:focus {
     background-color: #FF0000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.login-form .botonRegistro {
+    background-color: #00AA00;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+    box-shadow: 2px 1px 5px 0 #000000;
+    text-shadow: 2px 1px 1px #000;
+}
+
+.login-form .botonRegistro:hover, .botonRegistro:focus {
+    background-color: #00FF00;
     text-decoration: none;
     cursor: pointer;
 }
