@@ -1,5 +1,5 @@
 
-import '../css/Filtro.css'
+import '../css/filtro.css'
 
 export default function Filtro( atributos ) {
 
