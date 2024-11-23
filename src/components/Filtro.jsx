@@ -3,7 +3,7 @@ import '../css/Filtro.css'
 
 export default function Filtro( atributos ) {
 
-    const { grupos, filtro, setFiltro, filtroDefault } = atributos;
+    const { grupos, filtro, setFiltro, filtroDefault } = atributos
 
 
     const mostrarFiltro = () => {
