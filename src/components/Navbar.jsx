@@ -16,7 +16,7 @@ const navItems = [
     { to: "/razas", img: razas, alt: "Icono para razas", label: "Explorar razas de perros" },
     { to: "/nosotros", img: nosotros, alt: "Icono para nosotros", label: "Conocer más sobre nosotros" },
     { to: "/contacto", img: contacto, alt: "Icono para contacto", label: "Ir a la página de contacto" },
-    { to: "/login", img: login, alt: "Icono para login", label: "Iniciar sesión o registrarse" },
+    //{ to: "/login", img: login, alt: "Icono para login", label: "Iniciar sesión o registrarse" },
 ]
 
 /*
@@ -45,6 +45,12 @@ export default function Navbar() {
         }, 300); // Tiempo que coincide con la duración del fade en CSS
     };
 
+    const mostarLogin = () => {
+        // Mostrar el modal de Login
+        const modal = document.getElementById('loginForm');
+        modal.style.display = 'block';
+    }
+
     return (
         <header className='contenedorHeader'>
             <NavLink to={'/'} aria-label='Ir a la página de inicio'>
@@ -69,6 +75,10 @@ export default function Navbar() {
                             </li>
                         ))
                     }
+                    {/* Botón para el modal del Login */}
+                    <li className='enlacesnav'>
+                        <img src={login} alt='Icono para login' id='login' onClick={mostarLogin} />
+                    </li>
                     <li className={`enlacenav ${fade ? 'fade' : ''}`}>
                         <img
                             src={modo === 'claro' ? oscuro : claro}

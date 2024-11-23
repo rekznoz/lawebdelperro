@@ -1,23 +1,25 @@
 import {createBrowserRouter} from "react-router-dom";
-import {Suspense, lazy} from "react";
+import {Component, Suspense} from "react";
 import Error from "../pages/Error.jsx";
+import {getRazas} from "../pages/ListaRazas.jsx";
 
-// Carga del componente Principal
-const Principal = lazy(() => import("../layouts/Principal.jsx"))
-
-// Carga de los componentes
-const Inicio = lazy(() => import("../pages/Inicio.jsx"))
-const Nosotros = lazy(() => import("../pages/Nosotros.jsx"))
-const ListaRazas = lazy(() => import("../pages/ListaRazas.jsx"))
-const Raza = lazy(() => import("../pages/Raza.jsx"))
-const Contacto = lazy(() => import("../pages/Contacto.jsx"))
+import {Principal} from "./principal.jsx";
+import {Inicio} from "./inicio.jsx";
+import {Nosotros} from "./nosotros.jsx";
+import {ListaRazas} from "./listaRazas.jsx";
+import {Raza} from "./raza.jsx";
+import {Contacto} from "./contacto.jsx";
 
 // Componente de carga mientras se cargan los demás componentes
-const Loading = () => (
-    <div id="cargador">
-        <div id="spinner"></div>
-    </div>
-)
+class Loading extends Component {
+    render() {
+        return (
+            <div id="cargador">
+                <div id="spinner"></div>
+            </div>
+        );
+    }
+}
 
 /*
     Configuración de las rutas de la aplicación
@@ -51,6 +53,7 @@ export const router = createBrowserRouter([
                         <ListaRazas/>
                     </Suspense>
                 ),
+                loader: getRazas,
             },
             {
                 path: '/razas/:id',
