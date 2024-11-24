@@ -8,7 +8,7 @@ import login from '../assets/navbar/login.png'
 import logout from '../assets/navbar/logout.png'
 import claro from '../assets/navbar/claro.png'
 import oscuro from '../assets/navbar/oscuro.png'
-import fav from '../assets/navbar/fav.png'
+import fav from '../assets/fav.png'
 
 import {useContext, useState} from "react"
 import {UsuarioC} from "../context/UsuarioC.jsx"

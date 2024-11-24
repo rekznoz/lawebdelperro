@@ -12,14 +12,18 @@
     background: var(--fondo-formulario);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
-.cartaRazas img {
+.cartaRazas .imagenPerroRazas {
     width: 100%;
     transition: transform 0.3s, filter 0.3s;
 }
 
-.cartaRazas:hover img {
+.cartaRazas:hover .imagenPerroRazas {
     transform: scale(1.1);
     filter: brightness(0.8);
 }
@@ -27,12 +31,6 @@
 .cartaRazas:hover .descripcion {
     opacity: 1;
     visibility: visible;
-}
-
-.cartaRazas h3 {
-    margin: 15px 0;
-    font-size: 18px;
-    color: var(--color-texto);
 }
 
 .descripcion {
@@ -51,7 +49,11 @@
 }
 
 .image-container {
+    display: flex;
+    justify-content: end;
     position: relative;
+    overflow: hidden;
+    border-radius: 8px 8px 0 0;
 }
 
 @media screen and (max-width: 1200px) {
@@ -72,4 +74,34 @@
         grid-template-columns: 1fr;
         width: 100%;
     }
+}
+
+/*
+ Icono de favoritos
+ */
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+}
+
+.contenedorRazas .favorite-icon {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.contenedorRazas .favorite-icon:hover {
+    transform: scale(1.2);
+}
+
+.cartaRazas h3 {
+    margin: 15px 0;
+    font-size: 18px;
+    color: var(--color-texto);
 }

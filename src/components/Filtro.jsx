@@ -62,7 +62,11 @@ export default function Filtro( atributos ) {
     return (
         <>
             <button className="botonesFiltros botonAbrirFiltro" onClick={mostrarFiltro}>Abrir Filtros</button>
-            <button className="botonesFiltros limpiarFiltro" onClick={limpiarFiltro}>Limpiar Filtros</button>
+            {
+                filtro.nombre !== '' || filtro.grupo !== '' || filtro.popularidad !== 0 || filtro.altura !== 0 || filtro.peso !== 0 || filtro.vida !== 0
+                    ? <button className="botonesFiltros limpiarFiltro" onClick={limpiarFiltro}>Limpiar Filtros</button>
+                    : null
+            }
 
             <div id="contenedorOcultoFiltro" className="contenedorFiltro">
                 <div className="cuadroFiltro">
