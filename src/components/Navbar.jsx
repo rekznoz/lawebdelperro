@@ -5,9 +5,14 @@ import razas from '../assets/navbar/razas.png'
 import nosotros from '../assets/navbar/nosotros.png'
 import contacto from '../assets/navbar/contacto.png'
 import login from '../assets/navbar/login.png'
+import logout from '../assets/navbar/logout.png'
 import claro from '../assets/navbar/claro.png'
 import oscuro from '../assets/navbar/oscuro.png'
-import {useState} from "react"
+import fav from '../assets/navbar/fav.png'
+
+import {useContext, useState} from "react"
+import {UsuarioC} from "../context/UsuarioC.jsx"
+import {firebaseLogout} from "../config/FirebaseAuth.jsx";
 
 // Array de objetos con las rutas y sus respectivas imágenes
 // Se selecciona un Array porque permite una mejor ampliacion de rutas y manejo de las mismas
@@ -27,28 +32,40 @@ const navItems = [
  */
 
 export default function Navbar() {
+
     // Obtener la ruta actual para condicionarla despues
     const paginaActual = useLocation()
     const [modo, setModo] = useState('claro')
-    const [fade, setFade] = useState(false);  // Estado para controlar la animación fade
+    const [fade, setFade] = useState(false)  // Estado para controlar la animación fade
+    const {usuario, setUsuario} = useContext(UsuarioC)
 
     const cambiarModo = () => {
         // Iniciar la animación fade
-        setFade(true);
+        setFade(true)
         setTimeout(() => {
             // Cambiar el modo después de la animación
-            const nuevoModo = modo === 'claro' ? 'oscuro' : 'claro';
-            setModo(nuevoModo);
-            document.body.classList.toggle('dark-mode');
+            const nuevoModo = modo === 'claro' ? 'oscuro' : 'claro'
+            setModo(nuevoModo)
+            document.body.classList.toggle('dark-mode')
             // Finalizar la animación fade
-            setFade(false);
-        }, 300); // Tiempo que coincide con la duración del fade en CSS
-    };
+            setFade(false)
+        }, 300) // Tiempo que coincide con la duración del fade en CSS
+    }
 
     const mostarLogin = () => {
         // Mostrar el modal de Login
-        const modal = document.getElementById('loginForm');
-        modal.style.display = 'block';
+        const modal = document.getElementById('loginForm')
+        modal.style.display = 'block'
+    }
+
+    const desloguearUsuario = async () => {
+        await firebaseLogout()
+            .then(() => {
+                setUsuario(null)
+            })
+            .catch(error => {
+                console.error(error)
+            })
     }
 
     return (
@@ -75,10 +92,27 @@ export default function Navbar() {
                             </li>
                         ))
                     }
+                    {/* Botón para ir a favoritos */}
+                    {
+                        usuario && (
+                            <li className='enlacesnav'>
+                                <NavLink to='/favoritos' aria-label='Ir a favoritos'>
+                                    <img src={fav} alt='Icono para favoritos' />
+                                </NavLink>
+                            </li>
+                        )
+                    }
                     {/* Botón para el modal del Login */}
                     <li className='enlacesnav'>
-                        <img src={login} alt='Icono para login' id='login' onClick={mostarLogin} />
+                        {
+                            usuario ? (
+                                <img src={logout} alt='Icono para logout' onClick={desloguearUsuario} />
+                            ) : (
+                                <img src={login} alt='Icono para login' onClick={mostarLogin} />
+                            )
+                        }
                     </li>
+                    {/* Botón para cambiar el modo */}
                     <li className={`enlacenav ${fade ? 'fade' : ''}`}>
                         <img
                             src={modo === 'claro' ? oscuro : claro}
