@@ -9,6 +9,8 @@ import {Nosotros} from "./nosotros.jsx"
 import {ListaRazas} from "./listaRazas.jsx"
 import {Raza} from "./raza.jsx"
 import {Contacto} from "./contacto.jsx"
+import {Favoritos} from "./favoritos.jsx";
+import PrivadoFavoritos from "../layouts/PrivadoFavoritos.jsx";
 
 // Componente de carga mientras se cargan los demás componentes
 class Loading extends Component {
@@ -78,6 +80,24 @@ export const router = createBrowserRouter([
                         <Contacto/>
                     </Suspense>
                 ),
+            },
+            {
+                path: '/favoritos',
+                element: (
+                    <Suspense fallback={<Loading/>}>
+                        <PrivadoFavoritos/>
+                    </Suspense>
+                ),
+                children: [
+                    {
+                        index: true,
+                        element: (
+                            <Suspense fallback={<Loading/>}>
+                                <Favoritos/>
+                            </Suspense>
+                        ),
+                    }
+                ]
             },
         ],
     },

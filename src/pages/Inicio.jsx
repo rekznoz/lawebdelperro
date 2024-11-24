@@ -1,5 +1,7 @@
 import '../css/inicio.css'
 
+// import {} from '../config/FirebaseDB.jsx'
+
 export default function Inicio() {
     return (
         <>
