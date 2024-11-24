@@ -8,10 +8,10 @@ export default function Bloque(atributos) {
         <>
             <ul className="contenedorRazas">
                 {mapaElementos.map(elemento => (
-                    <li className="cartaRazas" key={elemento["general"].name}>
-                        <h3>{elemento["general"].name}</h3>
+                    <li className="cartaRazas" key={elemento["general"]["name"]}>
+                        <h3>{elemento["general"]["name"]}</h3>
                         <div className="image-container">
-                            <img src={elemento.images.small.indoors} alt={elemento["general"].name}/>
+                            <img src={elemento.images.small.indoors} alt={elemento["general"]["name"]}/>
                             <div className="descripcion">{elemento["general"].shortDescription}</div>
                         </div>
                     </li>

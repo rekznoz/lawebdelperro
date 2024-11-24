@@ -1,5 +1,5 @@
 
-import {Link, useLoaderData} from "react-router-dom"
+import {useLoaderData} from "react-router-dom"
 import {useEffect, useState} from "react"
 import Filtro from "../components/Filtro.jsx"
 import Paginacion from "../components/Paginacion.jsx"
@@ -16,35 +16,35 @@ const filtroDefault = {
 
 function filtroRazas(razas, filtro) {
     return razas.filter(raza => {
-        if (filtro.nombre === '') {
+        if (filtro["nombre"] === '') {
             return true
         }
-        return raza["general"].name.toLowerCase().includes(filtro.nombre.toLowerCase())
+        return raza["general"]["name"].toLowerCase().includes(filtro["nombre"].toLowerCase())
     }).filter(raza => {
-        if (filtro.grupo === '') {
+        if (filtro["grupo"] === '') {
             return true
         }
-        return raza["general"].group === filtro.grupo
+        return raza["general"]["group"] === filtro["grupo"]
     }).filter(raza => {
-        if (filtro.popularidad === 0) {
+        if (filtro["popularidad"] === 0) {
             return true
         }
-        return raza["general"].popularity === filtro.popularidad
+        return raza["general"]["popularity"] === filtro["popularidad"]
     }).filter(raza => {
-        if (filtro.altura === 0) {
+        if (filtro["altura"] === 0) {
             return true
         }
-        return raza["general"].height === filtro.altura
+        return raza["general"]["height"] === filtro["altura"]
     }).filter(raza => {
-        if (filtro.peso === 0) {
+        if (filtro["peso"] === 0) {
             return true
         }
-        return raza["general"].weight === filtro.peso
+        return raza["general"]["weight"] === filtro["peso"]
     }).filter(raza => {
-        if (filtro.vida === 0) {
+        if (filtro["vida"] === 0) {
             return true
         }
-        return raza["general"].lifespan === filtro.vida
+        return raza["general"]["lifespan"] === filtro["vida"]
     })
 }
 
@@ -70,7 +70,7 @@ export default function ListaRazas() {
     const totalPaginas = Math.ceil(razasFiltradas.length / objetosPorPagina)
 
     // Crear grupos de perros
-    let grupos = razas.map(raza => raza["general"].group)
+    let grupos = razas.map(raza => raza["general"]["group"])
     grupos = [...new Set(grupos)]
 
     for (let i = Math.max(1, pagina - 2); i <= Math.min(totalPaginas, pagina + 2); i++) {
@@ -129,7 +129,7 @@ export async function getRazas() {
         }
 
         // Ordenar alfabeticamente
-        data.data.sort((a, b) => a["general"].name.localeCompare(b["general"].name))
+        data.data.sort((a, b) => a["general"]["name"].localeCompare(b["general"]["name"]))
 
         return {razas: data.data}
     } catch (error) {
