@@ -1,8 +1,9 @@
-import '../css/ListaRazas.css'
+
 import {Link, useLoaderData} from "react-router-dom"
 import {useEffect, useState} from "react"
 import Filtro from "../components/Filtro.jsx"
 import Paginacion from "../components/Paginacion.jsx"
+import Bloque from "../components/Bloque.jsx";
 
 const filtroDefault = {
     nombre: '',
@@ -11,6 +12,40 @@ const filtroDefault = {
     altura: 0,
     peso: 0,
     vida: 0
+}
+
+function filtroRazas(razas, filtro) {
+    return razas.filter(raza => {
+        if (filtro.nombre === '') {
+            return true
+        }
+        return raza["general"].name.toLowerCase().includes(filtro.nombre.toLowerCase())
+    }).filter(raza => {
+        if (filtro.grupo === '') {
+            return true
+        }
+        return raza["general"].group === filtro.grupo
+    }).filter(raza => {
+        if (filtro.popularidad === 0) {
+            return true
+        }
+        return raza["general"].popularity === filtro.popularidad
+    }).filter(raza => {
+        if (filtro.altura === 0) {
+            return true
+        }
+        return raza["general"].height === filtro.altura
+    }).filter(raza => {
+        if (filtro.peso === 0) {
+            return true
+        }
+        return raza["general"].weight === filtro.peso
+    }).filter(raza => {
+        if (filtro.vida === 0) {
+            return true
+        }
+        return raza["general"].lifespan === filtro.vida
+    })
 }
 
 export default function ListaRazas() {
@@ -22,37 +57,7 @@ export default function ListaRazas() {
     const pageNumbers = []
 
     // Filtro de Nombre
-    const razasFiltradas = razas.filter(raza => {
-        if (filtro.nombre === '') {
-            return true
-        }
-        return raza.general.name.toLowerCase().includes(filtro.nombre.toLowerCase())
-    }).filter(raza => {
-        if (filtro.grupo === '') {
-            return true
-        }
-        return raza.general.group === filtro.grupo
-    }).filter(raza => {
-        if (filtro.popularidad === 0) {
-            return true
-        }
-        return raza.general.popularity === filtro.popularidad
-    }).filter(raza => {
-        if (filtro.altura === 0) {
-            return true
-        }
-        return raza.general.height === filtro.altura
-    }).filter(raza => {
-        if (filtro.peso === 0) {
-            return true
-        }
-        return raza.general.weight === filtro.peso
-    }).filter(raza => {
-        if (filtro.vida === 0) {
-            return true
-        }
-        return raza.general.lifespan === filtro.vida
-    })
+    const razasFiltradas = filtroRazas(razas, filtro)
 
     const indiceUltimoObjeto = pagina * objetosPorPagina
     const indicePrimerObjeto = indiceUltimoObjeto - objetosPorPagina
@@ -65,7 +70,7 @@ export default function ListaRazas() {
     const totalPaginas = Math.ceil(razasFiltradas.length / objetosPorPagina)
 
     // Crear grupos de perros
-    let grupos = razas.map(raza => raza.general.group)
+    let grupos = razas.map(raza => raza["general"].group)
     grupos = [...new Set(grupos)]
 
     for (let i = Math.max(1, pagina - 2); i <= Math.min(totalPaginas, pagina + 2); i++) {
@@ -100,17 +105,7 @@ export default function ListaRazas() {
                 <h1>Lista de Razas</h1>
             </div>
             <div id='area2'>
-                <ul className="contenedorRazas">
-                    {razasActuales.map(raza => (
-                        <li className="cartaRazas" key={raza.general.name}>
-                            <h3>{raza.general.name}</h3>
-                            <div className="image-container">
-                                <img src={raza.images.small.indoors} alt={raza.general.name}/>
-                                <div className="descripcion">{raza.general.shortDescription}</div>
-                            </div>
-                        </li>
-                    ))}
-                </ul>
+                <Bloque mapaElementos={razasActuales} />
             </div>
             <div id='area3'>
                 <Paginacion pagina={pagina} totalPaginas={totalPaginas} paginacion={paginacion} pageNumbers={pageNumbers} handlePageInput={handlePageInput} />
@@ -134,7 +129,7 @@ export async function getRazas() {
         }
 
         // Ordenar alfabeticamente
-        data.data.sort((a, b) => a.general.name.localeCompare(b.general.name))
+        data.data.sort((a, b) => a["general"].name.localeCompare(b["general"].name))
 
         return {razas: data.data}
     } catch (error) {
