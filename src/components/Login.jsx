@@ -2,6 +2,25 @@ import {useContext, useState} from "react"
 import {firebaseLogin, firebaseRegistro} from "../config/FirebaseAuth.jsx";
 import {UsuarioC} from "../context/UsuarioC.jsx";
 
+// Recoge los datos del formulario
+import {Formik} from 'formik';
+// https://formik.org/docs/overview
+
+// Validar los datos del formulario con Yup
+import {object, string, array} from 'yup';
+import Swal from "sweetalert2";
+// https://www.npmjs.com/package/yup
+
+const validationSchema = object({
+    email: string()
+        .required('El campo email es obligatorio')
+        .email('El email no es válido'),
+    password: string()
+        .required('El campo contraseña es obligatorio')
+        .min(6, 'La contraseña debe tener al menos 6 caracteres')
+        .max(20, 'La contraseña debe tener como máximo 20 caracteres')
+})
+
 const usuarioVacio = {
     email: '',
     password: ''
@@ -10,7 +29,6 @@ const usuarioVacio = {
 export default function Login() {
 
     const [registro, setRegistro] = useState(false)
-    const [formUsuario, setFormUsuario] = useState(usuarioVacio)
     const {usuario} = useContext(UsuarioC)
 
     const ocultarLogin = () => {
@@ -39,37 +57,35 @@ export default function Login() {
         }
     }
 
-    const handleChange = (e) => {
-        setFormUsuario({
-            ...formUsuario,
-            [e.target.name]: e.target.value
-        })
-    }
-
-    const loginUser = async (e) => {
-        e.preventDefault()
-        await firebaseLogin(formUsuario.email, formUsuario.password)
-            .then(() => {
-                ocultarLogin()
-            })
-            .catch(error => {
-                alert(error.message)
-            })
-        console.log('login')
-        setFormUsuario(usuarioVacio)
-    }
-
-    const registerUser = async (e) => {
-        e.preventDefault()
-        await firebaseRegistro(formUsuario.email, formUsuario.password)
-            .then(() => {
-                mostrarRegistro()
-            })
-            .catch(error => {
-                alert(error.message)
-            })
-        console.log('registro')
-        setFormUsuario(usuarioVacio)
+    const onSubmit = async (values, {resetForm}) => {
+        if (registro) {
+            await firebaseRegistro(values.email, values.password)
+                .then(() => {
+                    mostrarRegistro()
+                })
+                .catch(error => {
+                    Swal.fire({
+                        title: 'Error',
+                        text: error.message,
+                        icon: 'error',
+                        confirmButtonText: 'Aceptar'
+                    })
+                })
+        } else {
+            await firebaseLogin(values.email, values.password)
+                .then(() => {
+                    ocultarLogin()
+                })
+                .catch(error => {
+                    Swal.fire({
+                        title: 'Error',
+                        text: error.message,
+                        icon: 'error',
+                        confirmButtonText: 'Aceptar'
+                    })
+                })
+        }
+        resetForm()
     }
 
     if (usuario) {
@@ -77,49 +93,63 @@ export default function Login() {
     }
 
     return (
-        <>
-            <div id="loginForm" className="login-form">
-                <div className="login-content">
-                    <form onSubmit={loginUser}>
-                        <h2 className="titulo-login">Iniciar Sesión</h2>
+        <Formik initialValues={usuarioVacio} validationSchema={validationSchema} onSubmit={onSubmit}>
+            {({values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting}) => (
+                <>
+                    <div id="loginForm" className="login-form">
+                        <div className="login-content">
+                            <form onSubmit={handleSubmit}>
+                                <h2 className="titulo-login">Iniciar Sesión</h2>
 
-                        <label className="label-login" htmlFor="email">
-                            <b>Email</b>
-                        </label>
-                        <input className="input-login" type="email" placeholder="Ingrese su Email" name="email" value={formUsuario.email} onChange={handleChange}/>
+                                <label className="label-login" htmlFor="email">
+                                    <b>Email</b>
+                                </label>
+                                <input className="input-login" type="email" placeholder="Ingrese su Email" name="email"
+                                       value={values.email} onBlur={handleBlur} onChange={handleChange}/>
 
-                        <label className="label-login" htmlFor="psw">
-                            <b>Contraseña</b>
-                        </label>
-                        <input className="input-login" type="password" placeholder="Ingrese su contraseña" name="password" value={formUsuario.password} onChange={handleChange}/>
+                                {touched.email && errors.email ? <p className="FormError">{errors.email}</p> : null}
 
-                        <button id="login-boton" type="submit">Login</button>
-                    </form>
-                    <button className="botonRegistro" onClick={mostrarRegistro}>Registrarse</button>
-                    <button className="botonCerrarLogin" onClick={ocultarLogin}>Cerrar</button>
-                </div>
-            </div>
+                                <label className="label-login" htmlFor="psw">
+                                    <b>Contraseña</b>
+                                </label>
+                                <input className="input-login" type="password" placeholder="Ingrese su contraseña"
+                                       name="password" value={values.password} onBlur={handleBlur} onChange={handleChange}/>
 
-            <div id="registroForm" className="login-form">
-                <div className="login-content">
-                    <form onSubmit={registerUser}>
-                        <h2 className="titulo-login">Registar Usuario</h2>
+                                {touched.password && errors.password ? <p className="FormError">{errors.password}</p> : null}
 
-                        <label className="label-login" htmlFor="email">
-                            <b>Email</b>
-                        </label>
-                        <input className="input-login" type="email" placeholder="Ingrese su Email" name="email" value={formUsuario.email} onChange={handleChange}/>
+                                <button id="login-boton" type="submit">Login</button>
+                            </form>
+                            <button className="botonRegistro" onClick={mostrarRegistro}>Registrarse</button>
+                            <button className="botonCerrarLogin" onClick={ocultarLogin}>Cerrar</button>
+                        </div>
+                    </div>
 
-                        <label className="label-login" htmlFor="psw">
-                            <b>Contraseña</b>
-                        </label>
-                        <input className="input-login" type="password" placeholder="Ingrese su contraseña" name="password" value={formUsuario.password} onChange={handleChange}/>
+                    <div id="registroForm" className="login-form">
+                        <div className="login-content">
+                            <form onSubmit={handleSubmit}>
+                                <h2 className="titulo-login">Registar Usuario</h2>
 
-                        <button className="botonRegistro" type="submit">Registrarse</button>
-                    </form>
-                    <button className="botonCerrarLogin" onClick={mostrarRegistro}>Cerrar</button>
-                </div>
-            </div>
-        </>
+                                <label className="label-login" htmlFor="email">
+                                    <b>Email</b>
+                                </label>
+                                <input className="input-login" type="email" placeholder="Ingrese su Email" name="email"
+                                       value={values.email} onBlur={handleBlur} onChange={handleChange}/>
+                                {touched.email && errors.email ? <p className="FormError">{errors.email}</p> : null}
+
+                                <label className="label-login" htmlFor="psw">
+                                    <b>Contraseña</b>
+                                </label>
+                                <input className="input-login" type="password" placeholder="Ingrese su contraseña"
+                                       name="password" value={values.password} onBlur={handleBlur} onChange={handleChange}/>
+                                {touched.password && errors.password ? <p className="FormError">{errors.password}</p> : null}
+
+                                <button className="botonRegistro" type="submit">Registrarse</button>
+                            </form>
+                            <button className="botonCerrarLogin" onClick={mostrarRegistro}>Cerrar</button>
+                        </div>
+                    </div>
+                </>
+            )}
+        </Formik>
     )
 }

@@ -97,6 +97,17 @@
     opacity: 0.8;
 }
 
+.login-form .FormError {
+    color: #ff0018;
+    font-size: 0.8em;
+    font-weight: bold;
+    text-shadow: 0 1px 0 #000000;
+    padding-top: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
 @media screen and (max-width: 1000px) {
     .login-form .titulo-login {
         font-size: 20px;
