@@ -29,17 +29,14 @@
 }
 
 .contFormContacto .FormError {
-    display: none;
-    background-color: #f8d7da;
-    color: #721c24;
+    color: #ff0018;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-shadow: 0 1px 0 #000000;
     padding: 10px;
     border-radius: 5px;
     margin-bottom: 10px;
     text-align: center;
-}
-
-.contFormContacto .ShowError {
-    display: block;
 }
 
 .contFormContacto label {
@@ -194,5 +191,8 @@
     }
     .contFormContacto .contenedorCheck span, .contFormContacto .contenedorRadio span {
         font-size: 1.2em;
+    }
+    .contFormContacto .FormError {
+        font-size: 1em;
     }
 }
