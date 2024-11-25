@@ -7,7 +7,7 @@ import {Formik} from 'formik';
 // https://formik.org/docs/overview
 
 // Validar los datos del formulario con Yup
-import {object, string, array} from 'yup';
+import {object, string} from 'yup';
 import Swal from "sweetalert2";
 // https://www.npmjs.com/package/yup
 
@@ -145,7 +145,7 @@ export default function Login() {
 
                                 <button className="botonRegistro" type="submit">Registrarse</button>
                             </form>
-                            <button className="botonCerrarLogin" onClick={mostrarRegistro}>Cerrar</button>
+                            <button className="botonCerrarLogin" onClick={mostrarRegistro} disabled={isSubmitting}>Cerrar</button>
                         </div>
                     </div>
                 </>
