@@ -7,14 +7,13 @@ import {Formik} from 'formik';
 // https://formik.org/docs/overview
 
 // Validar los datos del formulario con Yup
-import {object, string, number, array} from 'yup';
+import {object, string, array} from 'yup';
 // https://www.npmjs.com/package/yup
 
 const forumarioDefecto = {
     nombre: '',
     email: '',
     telefono: '',
-    fecha: '',
     intereses: [],
     tienePerros: 'no',
     razaFavorita: '',
@@ -29,35 +28,43 @@ const validationSchema = object({
     email: string()
         .required('El campo email es obligatorio')
         .email('El email no es válido'),
-    telefono: number()
+    telefono: string()
         .required('El campo teléfono es obligatorio')
         .min(8, 'El teléfono debe tener al menos 8 caracteres')
         .max(15, 'El teléfono debe tener como máximo 15 caracteres'),
     intereses: array()
         .required('El campo intereses es obligatorio'),
-    fecha: string()
-        .required('El campo fecha es obligatorio')
-        .test('fecha', 'La fecha debe ser mayor a la actual', (fecha) => {
-            let fechaActual = new Date()
-            let fechaIngresada = new Date(fecha)
-            return fechaIngresada > fechaActual
-        }),
     razaFavorita: string()
         .required('El campo raza favorita es obligatorio'),
     mensaje: string()
         .max(100, 'El mensaje debe tener como máximo 100 caracteres')
 })
 
+const contieneInteres = (intereses, interes) => {
+    return intereses.includes(interes)
+}
+
 export default function Contacto() {
 
-    const onSubmit = (values) => {
-        const {nombre, email, telefono, fecha, intereses, tienePerros, razaFavorita, mensaje} = values
+    const onSubmit = (values, funciones) => {
+        const {nombre, email, telefono, intereses, tienePerros, razaFavorita, mensaje} = values
+        const {resetForm} = funciones
         Swal.fire({
             title: 'Mensaje Enviado',
             text: `Gracias por contactarnos ${nombre}.`,
             icon: 'success',
             confirmButtonText: 'Aceptar'
         })
+
+        console.log('Nombre:', nombre)
+        console.log('Email:', email)
+        console.log('Teléfono:', telefono)
+        console.log('Intereses:', intereses)
+        console.log('Tiene perros:', tienePerros)
+        console.log('Raza favorita:', razaFavorita)
+        console.log('Mensaje:', mensaje)
+
+        resetForm()
     }
 
     return (
@@ -86,7 +93,7 @@ export default function Contacto() {
                                     <label htmlFor="email"><span className='requiere'>*</span> Correo
                                         Electrónico:</label>
                                     <input type="email" id="email" name="email" placeholder="Tu correo electrónico"
-                                           value={values.email} onBlur={handleBlur} onChange={handleChange}/>
+                                           value={values.email} onChange={handleChange}/>
                                     {touched.email && errors.email ? <p className="FormError">{errors.email}</p> : null}
                                 </div>
 
@@ -97,14 +104,6 @@ export default function Contacto() {
                                            placeholder="Tu número de teléfono"
                                            value={values.telefono} onBlur={handleBlur} onChange={handleChange}/>
                                     {touched.telefono && errors.telefono ? <p className="FormError">{errors.telefono}</p> : null}
-                                </div>
-
-                                <div className="opciones">
-                                    <label htmlFor="fecha"><span className='requiere'>*</span> Fecha de
-                                        Consulta:</label>
-                                    <input type="date" id="fecha" name="fecha" value={values.fecha} onBlur={handleBlur}
-                                           onChange={handleChange}/>
-                                    {touched.fecha && errors.fecha ? <p className="FormError">{errors.fecha}</p> : null}
                                 </div>
 
                                 <div className="opciones centrarcuadros">
@@ -128,22 +127,22 @@ export default function Contacto() {
                                     <div className="grupocheck">
                                         <label className="contenedorCheck">
                                             <input type="checkbox" name="intereses" value="razas"
-                                                   onChange={handleChange}/>
+                                                   onChange={handleChange} checked={contieneInteres(values.intereses, 'razas')}/>
                                             <span>Razas de Perros </span>
                                         </label>
                                         <label className="contenedorCheck">
                                             <input type="checkbox" name="intereses" value="cuidados"
-                                                   onChange={handleChange}/>
+                                                   onChange={handleChange} checked={contieneInteres(values.intereses, 'cuidados')}/>
                                             <span>Cuidados de Perros </span>
                                         </label>
                                         <label className="contenedorCheck">
                                             <input type="checkbox" name="intereses" value="alimentacion"
-                                                   onChange={handleChange}/>
+                                                   onChange={handleChange} checked={contieneInteres(values.intereses, 'alimentacion')}/>
                                             <span>Alimentación de Perros </span>
                                         </label>
                                         <label className="contenedorCheck">
                                             <input type="checkbox" name="intereses" value="salud"
-                                                   onChange={handleChange}/>
+                                                   onChange={handleChange} checked={contieneInteres(values.intereses, 'salud')}/>
                                             <span>Salud de Perros </span>
                                         </label>
                                     </div>
@@ -154,13 +153,15 @@ export default function Contacto() {
                                     <label htmlFor="razaFavorita"><span className='requiere'>*</span> Raza de Perro
                                         Favorita:</label>
                                     <select id="razaFavorita" name="razaFavorita" onChange={handleChange}>
-                                        <option value="" disabled>Selecciona una raza</option>
+                                        <option value="">Selecciona una raza</option>
                                         <option value="labrador">Labrador Retriever</option>
                                         <option value="pastorAleman">Pastor Alemán</option>
                                         <option value="bulldog">Bulldog</option>
                                         <option value="poodle">Poodle</option>
                                         <option value="golden">Golden Retriever</option>
                                     </select>
+                                    {touched.razaFavorita && errors.razaFavorita ?
+                                        <p className="FormError">{errors.razaFavorita}</p> : null}
                                 </div>
 
                                 <div className="opciones">
