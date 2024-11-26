@@ -5,7 +5,6 @@ export default function Filtro( atributos ) {
 
     const { grupos, filtro, setFiltro, filtroDefault } = atributos
 
-
     const mostrarFiltro = () => {
         const filtro = document.getElementById('contenedorOcultoFiltro')
         filtro.classList.add('open')
