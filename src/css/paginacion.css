@@ -54,3 +54,18 @@
 .page-input span {
     font-weight: bold;
 }
+
+@media screen and (max-width: 768px) {
+
+    .paginacion {
+        flex-direction: column;
+        gap: 10px;
+        
+    }
+
+    .page-input {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+}
