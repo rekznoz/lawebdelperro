@@ -1,7 +1,8 @@
 import {createBrowserRouter} from "react-router-dom"
 import {Component, Suspense} from "react"
 import Error from "../pages/Error.jsx"
-import {getRazas} from "../pages/ListaRazas.jsx"
+
+import PrivadoFavoritos from "../layouts/PrivadoFavoritos.jsx"
 
 import {Principal} from "./principal.jsx"
 import {Inicio} from "./inicio.jsx"
@@ -9,8 +10,9 @@ import {Nosotros} from "./nosotros.jsx"
 import {ListaRazas} from "./listaRazas.jsx"
 import {Raza} from "./raza.jsx"
 import {Contacto} from "./contacto.jsx"
-import {Favoritos} from "./favoritos.jsx";
-import PrivadoFavoritos from "../layouts/PrivadoFavoritos.jsx";
+import {Favoritos} from "./favoritos.jsx"
+import {getRazas} from "../config/GetRazas.jsx";
+import {getDataRaza} from "../config/GetDataRaza.jsx";
 
 // Componente de carga mientras se cargan los demás componentes
 class Loading extends Component {
@@ -49,6 +51,22 @@ export const router = createBrowserRouter([
                 ),
             },
             {
+                path: '/nosotros',
+                element: (
+                    <Suspense fallback={<Loading/>}>
+                        <Nosotros/>
+                    </Suspense>
+                ),
+            },
+            {
+                path: '/contacto',
+                element: (
+                    <Suspense fallback={<Loading/>}>
+                        <Contacto/>
+                    </Suspense>
+                ),
+            },
+            {
                 path: '/razas',
                 element: (
                     <Suspense fallback={<Loading/>}>
@@ -64,22 +82,7 @@ export const router = createBrowserRouter([
                         <Raza/>
                     </Suspense>
                 ),
-            },
-            {
-                path: '/nosotros',
-                element: (
-                    <Suspense fallback={<Loading/>}>
-                        <Nosotros/>
-                    </Suspense>
-                ),
-            },
-            {
-                path: '/contacto',
-                element: (
-                    <Suspense fallback={<Loading/>}>
-                        <Contacto/>
-                    </Suspense>
-                ),
+                loader: getDataRaza,
             },
             {
                 path: '/favoritos',
