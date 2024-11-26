@@ -60,12 +60,32 @@
     .paginacion {
         flex-direction: column;
         gap: 10px;
-        
+    }
+
+    .paginacion button {
+        margin: 0 7px 0 0;
+        padding: 5px 7px;
     }
 
     .page-input {
         margin-left: 0;
         margin-top: 10px;
+    }
+
+}
+
+@media screen and (max-width: 340px) {
+
+    .paginacion button {
+        margin: 0 1px 0 0;
+        padding: 3px 4px;
+    }
+
+    .page-input input {
+        width: 40px;
+        padding: 5px;
+        text-align: center;
+        margin-right: 5px;
     }
 
 }
