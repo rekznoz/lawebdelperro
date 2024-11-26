@@ -17,9 +17,9 @@
 }
 
 .login-form .botonCerrarLogin {
-    background-color: #AA0000;
+    background-color: #780505;
     color: white;
-    padding: 14px 20px;
+    padding: 10px;
     margin: 8px 0;
     border: none;
     cursor: pointer;
@@ -30,15 +30,15 @@
 }
 
 .login-form .botonCerrarLogin:hover, .botonCerrarLogin:focus {
-    background-color: #FF0000;
+    background-color: #ae0909;
     text-decoration: none;
     cursor: pointer;
 }
 
 .login-form .botonRegistro {
-    background-color: #00AA00;
+    background-color: #055705;
     color: white;
-    padding: 14px 20px;
+    padding: 10px 20px;
     margin: 8px 0;
     border: none;
     cursor: pointer;
@@ -49,13 +49,13 @@
 }
 
 .login-form .botonRegistro:hover, .botonRegistro:focus {
-    background-color: #00FF00;
+    background-color: #078e07;
     text-decoration: none;
     cursor: pointer;
 }
 
 .login-form .titulo-login {
-    color: rgba(47,140,186,1);
+    color: rgb(255, 255, 255);
     text-align: center;
     font-size: 30px;
     text-shadow: 1px 1px 1px #000;
@@ -81,9 +81,9 @@
 }
 
 .login-form #login-boton {
-    background-color: rgba(47,140,186,1);
+    background-color: rgb(2, 86, 135);
     color: white;
-    padding: 14px 20px;
+    padding: 10px 20px;
     margin: 8px 0;
     border: none;
     cursor: pointer;
@@ -94,7 +94,9 @@
 }
 
 .login-form #login-boton:hover {
-    opacity: 0.8;
+    text-decoration: none;
+    cursor: pointer;
+    background-color: rgba(4, 157, 228, 0.8);
 }
 
 .login-form .FormError {
