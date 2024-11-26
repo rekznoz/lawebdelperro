@@ -1,32 +1,35 @@
 import "../css/paginacion.css"
 
-export default function Paginacion( atributos ) {
+export default function Paginacion(atributos) {
 
-    const { pagina, totalPaginas, paginacion, pageNumbers, handlePageInput } = atributos
+    const {pagina, totalPaginas, paginacion, pageNumbers, handlePageInput} = atributos
 
     return (
         <nav className="paginacion">
-            <button
-                disabled={pagina === 1}
-                onClick={() => paginacion(pagina - 1)}
-            >
-                Previous
-            </button>
-            {pageNumbers.map(pageNumber => (
+
+            <div>
                 <button
-                    key={pageNumber}
-                    className={pagina === pageNumber ? "active" : ""}
-                    onClick={() => paginacion(pageNumber)}
+                    disabled={pagina === 1}
+                    onClick={() => paginacion(pagina - 1)}
                 >
-                    {pageNumber}
+                    Previous
                 </button>
-            ))}
-            <button
-                disabled={pagina === totalPaginas}
-                onClick={() => paginacion(pagina + 1)}
-            >
-                Next
-            </button>
+                {pageNumbers.map(pageNumber => (
+                    <button
+                        key={pageNumber}
+                        className={pagina === pageNumber ? "active" : ""}
+                        onClick={() => paginacion(pageNumber)}
+                    >
+                        {pageNumber}
+                    </button>
+                ))}
+                <button
+                    disabled={pagina === totalPaginas}
+                    onClick={() => paginacion(pagina + 1)}
+                >
+                    Next
+                </button>
+            </div>
 
             {/* Input para ir a una página directamente */}
             <div className="page-input">
