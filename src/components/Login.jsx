@@ -113,11 +113,15 @@ export default function Login() {
                                     <b>Contraseña</b>
                                 </label>
                                 <input className="input-login" type="password" placeholder="Ingrese su contraseña"
-                                       name="password" value={values.password} onBlur={handleBlur} onChange={handleChange}/>
+                                       name="password" value={values.password} onBlur={handleBlur}
+                                       onChange={handleChange}/>
 
-                                {touched.password && errors.password ? <p className="FormError">{errors.password}</p> : null}
+                                {touched.password && errors.password ?
+                                    <p className="FormError">{errors.password}</p> : null}
 
                                 <button id="login-boton" type="submit">Login</button>
+
+
                             </form>
                             <button className="botonRegistro" onClick={mostrarRegistro}>Registrarse</button>
                             <button className="botonCerrarLogin" onClick={ocultarLogin}>Cerrar</button>
@@ -140,12 +144,16 @@ export default function Login() {
                                     <b>Contraseña</b>
                                 </label>
                                 <input className="input-login" type="password" placeholder="Ingrese su contraseña"
-                                       name="password" value={values.password} onBlur={handleBlur} onChange={handleChange}/>
-                                {touched.password && errors.password ? <p className="FormError">{errors.password}</p> : null}
+                                       name="password" value={values.password} onBlur={handleBlur}
+                                       onChange={handleChange}/>
+                                {touched.password && errors.password ?
+                                    <p className="FormError">{errors.password}</p> : null}
 
                                 <button className="botonRegistro" type="submit">Registrarse</button>
                             </form>
-                            <button className="botonCerrarLogin" onClick={mostrarRegistro} disabled={isSubmitting}>Cerrar</button>
+                            <button className="botonCerrarLogin" onClick={mostrarRegistro}
+                                    disabled={isSubmitting}>Regresar
+                            </button>
                         </div>
                     </div>
                 </>
