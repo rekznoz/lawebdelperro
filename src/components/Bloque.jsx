@@ -1,11 +1,13 @@
 import '../css/bloque.css'
-import {useState} from "react";
+import {useContext, useState} from "react";
 import {Link} from "react-router-dom";
 import fav from '../assets/fav.png'
 import rfav from '../assets/rfav.png'
+import {UsuarioC} from "../context/UsuarioC.jsx";
 
 export default function Bloque(atributos) {
 
+    const {usuario} = useContext(UsuarioC)
     const [favoritos, setFavoritos] = useState([])
     const {mapaElementos} = atributos
 
@@ -26,19 +28,23 @@ export default function Bloque(atributos) {
                 {mapaElementos.map(elemento => (
                     <li className="cartaRazas" key={elemento["general"]["name"]}>
                         <div className="header-container">
-                            <img
-                                src={favoritos.includes(elemento["general"]["name"])
-                                    ? fav // Icono de favorito activo
-                                    : rfav // Icono de favorito inactivo
-                                }
-                                alt="Favorito"
-                                className="favorite-icon"
-                                onClick={() => agregarRemoverFavoritos(elemento)}
-                            />
+                            {
+                                usuario
+                                    ? <img
+                                        src={favoritos.includes(elemento["general"]["name"])
+                                            ? fav // Icono de favorito activo
+                                            : rfav // Icono de favorito inactivo
+                                        }
+                                        alt="Favorito"
+                                        className="favorite-icon"
+                                        onClick={() => agregarRemoverFavoritos(elemento)}
+                                    />
+                                    : null
+                            }
                             <h3>{elemento["general"]["name"]}</h3>
                         </div>
                         <div className="image-container">
-                            <Link to={`/raza/${elemento["general"]["name"]}`}>
+                            <Link to={`/razas/${elemento["id"]}`}>
                                 <img className="imagenPerroRazas" src={elemento["images"]["small"]["outdoors"]}
                                      alt={elemento["general"]["name"]}/>
                                 <div className="descripcion">{elemento["general"]["shortDescription"]}</div>
