@@ -1,0 +1,14 @@
+/* ANIMACION */
+
+.animacion-hover:hover {
+    animation: rekz 1s infinite;
+}
+
+@keyframes rekz {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
