@@ -93,7 +93,7 @@ export default function Contacto() {
                                     <label htmlFor="email"><span className='requiere'>*</span> Correo
                                         Electrónico:</label>
                                     <input type="email" id="email" name="email" placeholder="Tu correo electrónico"
-                                           value={values.email} onChange={handleChange}/>
+                                           value={values.email} onBlur={handleBlur} onChange={handleChange}/>
                                     {touched.email && errors.email ? <p className="FormError">{errors.email}</p> : null}
                                 </div>
 
@@ -152,7 +152,7 @@ export default function Contacto() {
                                 <div className="opciones">
                                     <label htmlFor="razaFavorita"><span className='requiere'>*</span> Raza de Perro
                                         Favorita:</label>
-                                    <select id="razaFavorita" name="razaFavorita" onChange={handleChange}>
+                                    <select id="razaFavorita" name="razaFavorita" onBlur={handleBlur} onChange={handleChange}>
                                         <option value="">Selecciona una raza</option>
                                         <option value="labrador">Labrador Retriever</option>
                                         <option value="pastorAleman">Pastor Alemán</option>
@@ -168,6 +168,7 @@ export default function Contacto() {
                                     <label htmlFor="mensaje">Mensaje:</label>
                                     <textarea id="mensaje" name="mensaje" placeholder="Escribe tu mensaje aquí"
                                               value={values.mensaje}
+                                              onBlur={handleBlur}
                                               onChange={handleChange}/>
                                 </div>
 

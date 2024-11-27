@@ -13,7 +13,7 @@
     margin: 5% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 50%;
+    width: 60%;
 }
 
 .login-form .botonCerrarLogin {
@@ -64,7 +64,6 @@
 .login-form .label-login {
     color: #ffffff;
     font-size: 18px;
-    margin-bottom: 1px;
     text-shadow: 1px 1px 1px #000;
 }
 
@@ -99,6 +98,28 @@
     background-color: rgba(4, 157, 228, 0.8);
 }
 
+.login-form .label-login .politicas {
+    color: #DDDDDD;
+    text-decoration: none;
+    font-size: 18px;
+    text-shadow: 1px 1px 1px #000;
+}
+
+.login-form .label-login .politicas:hover {
+    color: #AADDFF;
+    text-decoration: underline;
+}
+
+.login-form .label-login .politicas:active {
+    color: #AADDFF;
+    text-decoration: underline;
+}
+
+.login-form .label-login .politicas:focus {
+    color: #AADDFF;
+    text-decoration: underline;
+}
+
 .login-form .FormError {
     color: #ff0018;
     font-size: 0.8em;
@@ -109,6 +130,7 @@
     margin-bottom: 10px;
     text-align: center;
 }
+
 
 @media screen and (max-width: 1000px) {
     .login-form .titulo-login {

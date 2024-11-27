@@ -1,8 +1,5 @@
-import {createBrowserRouter} from "react-router-dom"
-import {Component, Suspense} from "react"
-import Error from "../pages/Error.jsx"
-
-import PrivadoFavoritos from "../layouts/PrivadoFavoritos.jsx"
+import {createBrowserRouter, defer} from "react-router-dom"
+import {Suspense} from "react"
 
 import {Principal} from "./principal.jsx"
 import {Inicio} from "./inicio.jsx"
@@ -11,19 +8,14 @@ import {ListaRazas} from "./listaRazas.jsx"
 import {Raza} from "./raza.jsx"
 import {Contacto} from "./contacto.jsx"
 import {Favoritos} from "./favoritos.jsx"
+import {Error} from "./error.jsx";
+
+import PrivadoFavoritos from "../layouts/PrivadoFavoritos.jsx"
+
 import {getRazas} from "../config/GetRazas.jsx";
 import {getDataRaza} from "../config/GetDataRaza.jsx";
 
-// Componente de carga mientras se cargan los demás componentes
-class Loading extends Component {
-    render() {
-        return (
-            <div id="cargador">
-                <div id="spinner"></div>
-            </div>
-        )
-    }
-}
+import {Loading} from "../components/Loading.jsx";
 
 /*
     Configuración de las rutas de la aplicación
@@ -40,7 +32,13 @@ export const router = createBrowserRouter([
                 <Principal/>
             </Suspense>
         ),
-        errorElement: <Error/>,
+        errorElement: (
+            <Suspense fallback={<Loading/>}>
+                <Principal>
+                    <Error/>
+                </Principal>
+            </Suspense>
+        ),
         children: [
             {
                 index: true,

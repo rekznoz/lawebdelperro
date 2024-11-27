@@ -17,10 +17,10 @@ import {firebaseLogout} from "../config/FirebaseAuth.jsx";
 // Array de objetos con las rutas y sus respectivas imágenes
 // Se selecciona un Array porque permite una mejor ampliacion de rutas y manejo de las mismas
 const navItems = [
-    { to: "/", img: inicio, alt: "Icono para inicio", label: "Ir a la página de inicio" },
-    { to: "/razas", img: razas, alt: "Icono para razas", label: "Explorar razas de perros" },
-    { to: "/nosotros", img: nosotros, alt: "Icono para nosotros", label: "Conocer más sobre nosotros" },
-    { to: "/contacto", img: contacto, alt: "Icono para contacto", label: "Ir a la página de contacto" },
+    { to: "/", img: inicio, alt: "Inicio", label: "Ir a la página de inicio" },
+    { to: "/razas", img: razas, alt: "Razas", label: "Explorar razas de perros" },
+    { to: "/nosotros", img: nosotros, alt: "Nosotros", label: "Conocer más sobre nosotros" },
+    { to: "/contacto", img: contacto, alt: "Contacto", label: "Ir a la página de contacto" },
     //{ to: "/login", img: login, alt: "Icono para login", label: "Iniciar sesión o registrarse" },
 ]
 
@@ -87,8 +87,9 @@ export default function Navbar() {
                         .map((pagina, index) => (
                             <li className='enlacesnav' key={index}>
                                 <NavLink to={pagina.to} aria-label={pagina.label}>
-                                    <img src={pagina.img} alt={pagina.alt} />
+                                    <img src={pagina.img} alt={pagina.alt}/>
                                 </NavLink>
+                                <span className="tooltip-text">{pagina.alt}</span>
                             </li>
                         ))
                     }
@@ -97,8 +98,9 @@ export default function Navbar() {
                         usuario && (
                             <li className='enlacesnav'>
                                 <NavLink to='/favoritos' aria-label='Ir a favoritos'>
-                                    <img src={fav} alt='Icono para favoritos' />
+                                    <img src={fav} alt='Favoritos'/>
                                 </NavLink>
+                                <span className="tooltip-text">Favoritos</span>
                             </li>
                         )
                     }
@@ -106,19 +108,23 @@ export default function Navbar() {
                     <li className='enlacesnav'>
                         {
                             usuario ? (
-                                <img src={logout} alt='Icono para logout' onClick={desloguearUsuario} />
+                                <img src={logout} alt='Logout' onClick={desloguearUsuario}/>
                             ) : (
-                                <img src={login} alt='Icono para login' onClick={mostarLogin} />
+                                <img src={login} alt='Login' onClick={mostarLogin}/>
                             )
                         }
+                        <span className="tooltip-text">
+                            {usuario ? 'Logout' : 'Login'}
+                        </span>
                     </li>
                     {/* Botón para cambiar el modo */}
-                    <li className={`enlacenav ${fade ? 'fade' : ''}`}>
+                    <li className={`enlacesnav ${fade ? 'fade' : ''}`} >
                         <img
                             src={modo === 'claro' ? oscuro : claro}
-                            alt='Icono para cambiar modo'
+                            alt={`Cambiar a modo ${modo === 'claro' ? 'claro' : 'oscuro'}`}
                             onClick={cambiarModo}
                         />
+                        <span className="tooltip-text">{modo === 'claro' ? 'Oscuro' : 'Claro'}</span>
                     </li>
                 </ul>
             </nav>

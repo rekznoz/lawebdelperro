@@ -4,6 +4,12 @@
     --fondo-principal: #ffffff;
     --fondo-formulario: #f0f0f0;
     --color-texto: #000000;
+
+    --color-fondo-error1: #f0f4f8;
+    --color-fondo-error2: #d9e2ec;
+    --color-letras-error1: #4b5d6c;
+    --color-letras-error2: #102a43;
+    --color-letras-error3: #627d98;
 }
 
 .dark-mode {
@@ -11,4 +17,10 @@
     --fondo-principal: #888888;
     --fondo-formulario: #666666;
     --color-texto: #ffffff;
+
+    --color-fondo-error1: #888888;
+    --color-fondo-error2: #123456;
+    --color-letras-error1: #ffffff;
+    --color-letras-error2: #ffffff;
+    --color-letras-error3: #ffffff;
 }
