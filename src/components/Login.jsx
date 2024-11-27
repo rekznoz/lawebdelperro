@@ -7,8 +7,9 @@ import {Formik} from 'formik';
 // https://formik.org/docs/overview
 
 // Validar los datos del formulario con Yup
-import {object, string} from 'yup';
+import {bool, object, string} from 'yup';
 import Swal from "sweetalert2";
+import {Link} from "react-router-dom";
 // https://www.npmjs.com/package/yup
 
 const validationSchema = object({
@@ -18,12 +19,15 @@ const validationSchema = object({
     password: string()
         .required('El campo contraseña es obligatorio')
         .min(6, 'La contraseña debe tener al menos 6 caracteres')
-        .max(20, 'La contraseña debe tener como máximo 20 caracteres')
+        .max(20, 'La contraseña debe tener como máximo 20 caracteres'),
+    terminos: bool()
+        .oneOf([true], 'Debes aceptar los términos y condiciones')
 })
 
 const usuarioVacio = {
     email: '',
-    password: ''
+    password: '',
+    terminos: false
 }
 
 export default function Login() {
@@ -104,24 +108,22 @@ export default function Login() {
                                 <label className="label-login" htmlFor="email">
                                     <b>Email</b>
                                 </label>
-                                <input className="input-login" type="email" placeholder="Ingrese su Email" name="email"
-                                       value={values.email} onBlur={handleBlur} onChange={handleChange}/>
-
+                                <input className="input-login" type="email" placeholder="Ingrese su Email" name="email" value={values.email} onBlur={handleBlur} onChange={handleChange}/>
                                 {touched.email && errors.email ? <p className="FormError">{errors.email}</p> : null}
 
                                 <label className="label-login" htmlFor="psw">
                                     <b>Contraseña</b>
                                 </label>
-                                <input className="input-login" type="password" placeholder="Ingrese su contraseña"
-                                       name="password" value={values.password} onBlur={handleBlur}
-                                       onChange={handleChange}/>
+                                <input className="input-login" type="password" placeholder="Ingrese su contraseña" name="password" value={values.password} onBlur={handleBlur} onChange={handleChange}/>
+                                {touched.password && errors.password ? <p className="FormError">{errors.password}</p> : null}
 
-                                {touched.password && errors.password ?
-                                    <p className="FormError">{errors.password}</p> : null}
+                                <label className="label-login" htmlFor="terminos">
+                                    <input className="input-login" type="checkbox" name="terminos" checked={values.terminos} value={values.terminos} onBlur={handleBlur} onChange={handleChange}/>
+                                    <span>Aceptar las politicas de <Link to="privacy" className="politicas">Privacidad</Link> y el <Link to="terms" className="politicas">Acuerdo de usuario</Link></span>
+                                </label>
+                                {touched.terminos && errors.terminos ? <p className="FormError">{errors.terminos}</p> : null}
 
                                 <button id="login-boton" type="submit">Login</button>
-
-
                             </form>
                             <button className="botonRegistro" onClick={mostrarRegistro}>Registrarse</button>
                             <button className="botonCerrarLogin" onClick={ocultarLogin}>Cerrar</button>
@@ -136,18 +138,20 @@ export default function Login() {
                                 <label className="label-login" htmlFor="email">
                                     <b>Email</b>
                                 </label>
-                                <input className="input-login" type="email" placeholder="Ingrese su Email" name="email"
-                                       value={values.email} onBlur={handleBlur} onChange={handleChange}/>
+                                <input className="input-login" type="email" placeholder="Ingrese su Email" name="email" value={values.email} onBlur={handleBlur} onChange={handleChange}/>
                                 {touched.email && errors.email ? <p className="FormError">{errors.email}</p> : null}
 
                                 <label className="label-login" htmlFor="psw">
                                     <b>Contraseña</b>
                                 </label>
-                                <input className="input-login" type="password" placeholder="Ingrese su contraseña"
-                                       name="password" value={values.password} onBlur={handleBlur}
-                                       onChange={handleChange}/>
-                                {touched.password && errors.password ?
-                                    <p className="FormError">{errors.password}</p> : null}
+                                <input className="input-login" type="password" placeholder="Ingrese su contraseña" name="password" value={values.password} onBlur={handleBlur} onChange={handleChange}/>
+                                {touched.password && errors.password ? <p className="FormError">{errors.password}</p> : null}
+
+                                <label className="label-login" htmlFor="terminos">
+                                    <input className="input-login" type="checkbox" name="terminos" checked={values.terminos} value={values.terminos} onBlur={handleBlur} onChange={handleChange}/>
+                                    <span>Aceptar las politicas de <Link to="privacy" className="politicas">Privacidad</Link> y el <Link to="terms" className="politicas">Acuerdo de usuario</Link></span>
+                                </label>
+                                {touched.terminos && errors.terminos ? <p className="FormError">{errors.terminos}</p> : null}
 
                                 <button className="botonRegistro" type="submit">Registrarse</button>
                             </form>

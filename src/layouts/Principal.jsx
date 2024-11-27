@@ -3,12 +3,12 @@ import Footer from "../components/Footer.jsx";
 import {Outlet} from "react-router-dom";
 import Login from "../components/Login.jsx";
 
-export default function Principal() {
+export default function Principal({ children }) {
     return (
         <>
             <Header />
             <main className='main'>
-                <Outlet />
+                {children || <Outlet />}
             </main>
             <Footer />
             <Login />

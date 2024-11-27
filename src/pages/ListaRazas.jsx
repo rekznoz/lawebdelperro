@@ -1,8 +1,9 @@
-import {useLoaderData} from "react-router-dom"
+import {Link, useLoaderData} from "react-router-dom"
 import {useEffect, useState} from "react"
 import Filtro from "../components/Filtro.jsx"
 import Paginacion from "../components/Paginacion.jsx"
 import Bloque from "../components/Bloque.jsx";
+import {Loading} from "../components/Loading.jsx";
 
 const filtroDefault = {
     nombre: '',
@@ -82,9 +83,21 @@ export default function ListaRazas() {
 
     if (!razasFiltradas) {
         return (
-            <div>
-                <h1>Cargando...</h1>
-            </div>
+            <>
+                <div id='area1'>
+                    <h1>ERROR 404</h1>
+                </div>
+                <div id='area2'>
+                    <div className="pagina-error">
+                        <p className="mensaje-error">
+                            No se ha encontrado la raza solicitada.
+                        </p>
+                    </div>
+                </div>
+                <div id='area3'>
+                    <Link to="/" className="enlace-error">Volver al inicio</Link>
+                </div>
+            </>
         )
     }
 
@@ -98,16 +111,17 @@ export default function ListaRazas() {
 
     return (
         <>
-            <Filtro grupos={grupos} filtro={filtro} setFiltro={setFiltro} filtroDefault={filtroDefault} />
+            <Filtro grupos={grupos} filtro={filtro} setFiltro={setFiltro} filtroDefault={filtroDefault}/>
 
             <div id='area1'>
                 <h1>Lista de Razas</h1>
             </div>
             <div id='area2'>
-                <Bloque mapaElementos={razasActuales} />
+                <Bloque mapaElementos={razasActuales}/>
             </div>
             <div id='area3'>
-                <Paginacion pagina={pagina} totalPaginas={totalPaginas} paginacion={paginacion} pageNumbers={pageNumbers} handlePageInput={handlePageInput} />
+                <Paginacion pagina={pagina} totalPaginas={totalPaginas} paginacion={paginacion}
+                            pageNumbers={pageNumbers} handlePageInput={handlePageInput}/>
             </div>
         </>
     )
