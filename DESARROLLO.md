@@ -84,27 +84,31 @@ Se utiliza **`createBrowserRouter`** para gestionar las rutas y definir la estru
     - **`Firebase`**: Configuración y manejo de autenticación.
     - **`Contexto de Usuario`**: Almacenamiento de datos de usuario autenticado.
 
-8. **Integracion de Lista de Razas**:
+8. **Integracion de la API**:
+    - **`API`**: Conexión y obtención de datos de la API.
+    - **`Suspense y Lazy`**: Uso de React Suspense y Lazy para la carga de datos.
+
+9. **Integracion de Lista de Razas**:
     - **`ListaRazas`**: Componente para mostrar la lista de razas disponibles.
     - **`Paginacion`**: Implementación de paginación para la lista de razas.
     - **`Filtro de Razas`**: Barra de búsqueda y filtros varios para las razas.
 
-9. **Visualizacion de Detalles de Raza**:
+10. **Visualizacion de Detalles de Raza**:
     - **`Raza`**: Página para mostrar los detalles de una raza específica.
     - **`Galeria`**: Componente para mostrar imágenes de la raza.
 
-10. **Manejo de Errores**: 
+11. **Manejo de Errores**: 
     - **`Error`**: Página para mostrar errores en la aplicación.
     - **`Error de busqueda`**: Página para mostrar errores en la búsqueda de razas.
 
-11. **Protección de Rutas**: 
+12. **Protección de Rutas**: 
     - **`Proteccion de Rutas`**: Implementación de protección de rutas privadas.
 
-12. **Validacion de Formularios**:
+13. **Validacion de Formularios**:
     - **`Validacion de Formularios`**: Validación de formularios en la página de contacto.
     - **`Formik y Yup`**: Uso de librerías para simplificar la validación.
 
-13. **Mejoras de Estilo**:
+14. **Mejoras de Estilo**:
     - **`Estilos`**: Mejoras en la apariencia y diseño de la aplicación.
     - **`Animaciones`**: Agregado de animaciones y transiciones.
     - **`Responsive`**: Ajustes para una mejor visualización en dispositivos móviles.
