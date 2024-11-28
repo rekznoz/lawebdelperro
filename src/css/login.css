@@ -14,6 +14,7 @@
     padding: 20px;
     border: 1px solid #888;
     width: 60%;
+    border-radius: 20px;
 }
 
 .login-form .botonCerrarLogin {
@@ -27,6 +28,7 @@
     font-size: 18px;
     box-shadow: 2px 1px 5px 0 #000000;
     text-shadow: 2px 1px 1px #000;
+    border-radius: 20px;
 }
 
 .login-form .botonCerrarLogin:hover, .botonCerrarLogin:focus {
@@ -46,6 +48,7 @@
     font-size: 18px;
     box-shadow: 2px 1px 5px 0 #000000;
     text-shadow: 2px 1px 1px #000;
+    border-radius: 5px;
 }
 
 .login-form .botonRegistro:hover, .botonRegistro:focus {
@@ -90,6 +93,7 @@
     font-size: 18px;
     box-shadow: 1px 1px 5px 0 #000000;
     text-shadow: 2px 1px 1px #000;
+    border-radius: 5px;
 }
 
 .login-form #login-boton:hover {

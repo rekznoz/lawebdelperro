@@ -9,6 +9,8 @@
 
 ### [🔗 Documento de Desarrollo](./DESARROLLO.md)
 
+### [🔗 Documento de Integración](./INTEGRACION.md)
+
 ---
 
 ### 📑 **Índice**
