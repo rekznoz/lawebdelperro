@@ -76,4 +76,38 @@ Se utiliza **`createBrowserRouter`** para gestionar las rutas y definir la estru
     - **Validación**: Implementación de validación en los campos del formulario.
         - Muestra errores visuales en caso de datos incorrectos.
 
+6. **Login y Registro**:
+    - **`Login`**: Modal de inicio de sesión.
+    - **`Registro`**: Modal de creación de cuenta.
+
+7. **Autenticacion con Firebase**:
+    - **`Firebase`**: Configuración y manejo de autenticación.
+    - **`Contexto de Usuario`**: Almacenamiento de datos de usuario autenticado.
+
+8. **Integracion de Lista de Razas**:
+    - **`ListaRazas`**: Componente para mostrar la lista de razas disponibles.
+    - **`Paginacion`**: Implementación de paginación para la lista de razas.
+    - **`Filtro de Razas`**: Barra de búsqueda y filtros varios para las razas.
+
+9. **Visualizacion de Detalles de Raza**:
+    - **`Raza`**: Página para mostrar los detalles de una raza específica.
+    - **`Galeria`**: Componente para mostrar imágenes de la raza.
+
+10. **Manejo de Errores**: 
+    - **`Error`**: Página para mostrar errores en la aplicación.
+    - **`Error de busqueda`**: Página para mostrar errores en la búsqueda de razas.
+
+11. **Protección de Rutas**: 
+    - **`Proteccion de Rutas`**: Implementación de protección de rutas privadas.
+
+12. **Validacion de Formularios**:
+    - **`Validacion de Formularios`**: Validación de formularios en la página de contacto.
+    - **`Formik y Yup`**: Uso de librerías para simplificar la validación.
+
+13. **Mejoras de Estilo**:
+    - **`Estilos`**: Mejoras en la apariencia y diseño de la aplicación.
+    - **`Animaciones`**: Agregado de animaciones y transiciones.
+    - **`Responsive`**: Ajustes para una mejor visualización en dispositivos móviles.
+    - **`Tema Oscuro`**: Implementación de un tema oscuro para la aplicación.
+
 ---
