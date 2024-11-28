@@ -34,8 +34,7 @@ navegar por razas específicas.
 
 ![Lista de Razas](./fotos_intg/lista_razas_1.png)
 
-https://github.com/rekznoz/lawebdelperro/blob/main/src/components/Bloque.jsx
-
+https://github.com/rekznoz/lawebdelperro/blob/39c308b7c7e70e28241fffd284351a908fbc9083/src/components/Bloque.jsx#L8-L58
 ---
 
 ### **📚 Paginaciones**
@@ -45,7 +44,7 @@ manera ordenada y visualmente atractiva.
 
 ![Paginaciones](./fotos_intg/lista_razas_2.png)
 
-https://github.com/rekznoz/lawebdelperro/blob/main/src/components/Galeria.jsx
+https://github.com/rekznoz/lawebdelperro/blob/39c308b7c7e70e28241fffd284351a908fbc9083/src/components/Galeria.jsx#L4-L58
 
 ---
 
