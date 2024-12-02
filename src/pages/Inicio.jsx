@@ -10,10 +10,21 @@ import login from '../assets/inicio/login.png'
 import favoritos from '../assets/inicio/favorito.png'
 import Caracteristicas from "../components/Caracteristicas.jsx";
 import {useLoaderData} from "react-router-dom";
+import {useRazaContext} from "../context/RazasC.jsx";
+import {Loading} from "../components/Loading.jsx";
 
 export default function Inicio() {
 
-    const {razas} = useLoaderData()
+    //const {razas} = useLoaderData()
+    const {razas, loading, error} = useRazaContext();
+
+    if (loading) {
+        return <Loading/>
+    }
+
+    if (error) {
+        throw new Response('Error al obtener las razas', {status: 404})
+    }
 
     const listaCaracteristicas = [
         {
@@ -43,12 +54,8 @@ export default function Inicio() {
     ];
 
     // array de imagenes de las razas
-    const imagenes = razas.map(raza => raza["images"]["small"]["indoors"])
+    const imagenes = razas.map(raza => raza["images"]["small"]["outdoors"])
         .sort(() => Math.random() - 0.5)
-
-    if (!razas) {
-        throw new Response('Error al obtener las razas', {status: 404})
-    }
 
     return (
         <>

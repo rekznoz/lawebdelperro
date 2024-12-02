@@ -1,4 +1,4 @@
-import {createBrowserRouter, defer} from "react-router-dom"
+import {createBrowserRouter} from "react-router-dom"
 import {Suspense} from "react"
 
 import {Principal} from "./principal.jsx"
@@ -13,7 +13,7 @@ import {Error} from "./error.jsx";
 import PrivadoFavoritos from "../layouts/PrivadoFavoritos.jsx"
 
 import {getRazas} from "../hooks/GetRazas.jsx";
-import {getDataRaza} from "../hooks/GetDataRaza.jsx";
+import {GetDataRaza} from "../hooks/GetDataRaza.jsx";
 
 import {Loading} from "../components/Loading.jsx";
 
@@ -47,7 +47,7 @@ export const router = createBrowserRouter([
                         <Inicio/>
                     </Suspense>
                 ),
-                loader: getRazas,
+                //loader: getRazas,
             },
             {
                 path: '/nosotros',
@@ -72,7 +72,7 @@ export const router = createBrowserRouter([
                         <ListaRazas/>
                     </Suspense>
                 ),
-                loader: getRazas,
+                //loader: getRazas,
             },
             {
                 path: '/razas/:id',
@@ -81,7 +81,7 @@ export const router = createBrowserRouter([
                         <Raza/>
                     </Suspense>
                 ),
-                loader: getDataRaza,
+                loader: GetDataRaza,
             },
             {
                 path: '/favoritos',

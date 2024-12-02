@@ -1,6 +1,7 @@
 import {getRazas} from "./GetRazas.jsx";
 
-export async function getDataRaza({params}) {
+
+export async function GetDataRaza({params}) {
     try {
 
         const response = await getRazas()

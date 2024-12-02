@@ -1,4 +1,4 @@
-import {Link, useLoaderData, useNavigate} from "react-router-dom";
+import {useLoaderData} from "react-router-dom";
 import '../css/raza.css'
 import Galeria from "../components/Galeria.jsx";
 
@@ -117,70 +117,3 @@ export default function Raza() {
         </>
     )
 }
-
-// registry.dog/api/v1
-
-/*
-
-{
-    "status": "success",
-    "data": [
-{
-    "general": {
-    "name": "Chihuahua",
-    "group": "Companion",
-    "personalityTraits": [
-    "Companionable",
-    "Dignified",
-    "Lively"
-    ],
-    "shortDescription": "The Chihuahua is a tiny, vivacious companion with a huge personality and captivating charm.",
-    "longDescription": "The Chihuahua is a tiny dog with a huge personality, making it an ideal companion for those who appreciate a vivacious and captivating pet. Weighing around 5 pounds and standing at 7 inches tall, this elegant breed is renowned for its expressive, luminous eyes and characteristic 'apple' head. Chihuahuas are highly loyal and exude a big-dog attitude despite their small size, often displaying a protective instinct that belies their stature.\n They are adaptable and thrive in city environments, enjoying quality time on their owner's lap. Known for their smooth, straight coats in various colors and patterns, Chihuahuas require minimal grooming but do need training to prevent them from becoming overly dominant. While they are playful and affectionate with their families, their small size makes them unsuitable for rough play with children.\n Highly vocal and alert, Chihuahuas make excellent watchdogs, bringing both joy and companionship to any home. With a lifespan of up to 15 years, these dogs are a long-term commitment, offering endless love and amusement to those who embrace their spirited nature.",
-    "popularity": 5,
-    "height": 7,
-    "weight": 5,
-    "lifespan": 15
-},
-    "physical": {
-    "size": 1,
-    "lifespan": 4,
-    "droolingFrequency": 1,
-    "coatStyle": "Straight",
-    "coatTexture": "Smooth",
-    "coatLength": 2,
-    "doubleCoat": false
-},
-    "behavior": {
-    "familyAffection": 4,
-    "childFriendly": 1,
-    "dogSociability": 3,
-    "friendlinessToStrangers": 2,
-    "playfulness": 4,
-    "protectiveInstincts": 4,
-    "adaptability": 4,
-    "barkingFrequency": 5
-},
-    "care": {
-    "sheddingAmount": 2,
-    "groomingFrequency": 1,
-    "exerciseNeeds": 4,
-    "mentalStimulationNeeds": 3,
-    "trainingDifficulty": 3
-},
-    "images": {
-    "small": {
-    "indoors": "https://raw.githubusercontent.com/chase-manning/open-dog-registry/main/images/chihuahua/small/indoors.jpg",
-    "outdoors": "https://raw.githubusercontent.com/chase-manning/open-dog-registry/main/images/chihuahua/small/outdoors.jpg",
-    "studio": "https://raw.githubusercontent.com/chase-manning/open-dog-registry/main/images/chihuahua/small/studio.jpg"
-},
-    "large": {
-    "indoors": "https://raw.githubusercontent.com/chase-manning/open-dog-registry/main/images/chihuahua/large/indoors.png",
-    "outdoors": "https://raw.githubusercontent.com/chase-manning/open-dog-registry/main/images/chihuahua/large/outdoors.png",
-    "studio": "https://raw.githubusercontent.com/chase-manning/open-dog-registry/main/images/chihuahua/large/studio.png"
-}
-},
-    "id": "chihuahua"
-},
-}
-
-*/

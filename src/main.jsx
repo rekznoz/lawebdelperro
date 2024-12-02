@@ -5,11 +5,14 @@ import './css/import.css'
 import {RouterProvider} from "react-router-dom";
 import {router} from "./router/index.jsx";
 import UsuarioProvider from "./context/UsuarioC.jsx";
+import {RazasProvider} from "./context/RazasC.jsx";
 
 createRoot(document.getElementById('root')).render(
     <StrictMode>
         <UsuarioProvider>
-            <RouterProvider router={router}/>
+            <RazasProvider>
+                <RouterProvider router={router}/>
+            </RazasProvider>
         </UsuarioProvider>
     </StrictMode>,
 )

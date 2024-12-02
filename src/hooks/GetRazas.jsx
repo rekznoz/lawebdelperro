@@ -1,4 +1,7 @@
-export async function getRazas() {
+export async function getRazas(razasContext = null) {
+    if (razasContext) {
+        return razasContext;
+    }
     try {
         const response = await fetch('https://registry.dog/api/v1');
 

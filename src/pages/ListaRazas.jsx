@@ -1,8 +1,8 @@
-import {Link, useLoaderData} from "react-router-dom"
 import {useEffect, useState} from "react"
 import Filtro from "../components/Filtro.jsx"
 import Paginacion from "../components/Paginacion.jsx"
 import Bloque from "../components/Bloque.jsx";
+import {useRazaContext} from "../context/RazasC.jsx";
 import {Loading} from "../components/Loading.jsx";
 
 const filtroDefault = {
@@ -15,6 +15,9 @@ const filtroDefault = {
 }
 
 function filtroRazas(razas, filtro) {
+    if (!razas) {
+        return []
+    }
     return razas.filter(raza => {
         if (filtro["nombre"] === '') {
             return true
@@ -50,9 +53,11 @@ function filtroRazas(razas, filtro) {
 
 export default function ListaRazas() {
 
-    const {razas} = useLoaderData()
+    //const {razas} = useLoaderData()
+    const {razas, loading, error} = useRazaContext();
     const [pagina, setPagina] = useState(1)
     const [filtro, setFiltro] = useState(filtroDefault)
+
     const objetosPorPagina = 6
     const pageNumbers = []
 
@@ -70,8 +75,11 @@ export default function ListaRazas() {
     const totalPaginas = Math.ceil(razasFiltradas.length / objetosPorPagina)
 
     // Crear grupos de perros
-    let grupos = razas.map(raza => raza["general"]["group"])
-    grupos = [...new Set(grupos)]
+    let grupos = []
+    if (razas) {
+        grupos = razas.map(raza => raza["general"]["group"])
+        grupos = [...new Set(grupos)]
+    }
 
     for (let i = Math.max(1, pagina - 2); i <= Math.min(totalPaginas, pagina + 2); i++) {
         pageNumbers.push(i)
@@ -80,6 +88,14 @@ export default function ListaRazas() {
     useEffect(() => {
         setPagina(1)
     }, [filtro])
+
+    if (loading) {
+        return <Loading/>
+    }
+
+    if (error) {
+        throw new Response('Error al obtener las razas', {status: 404})
+    }
 
     if (!razasFiltradas) {
         throw new Response('Error al obtener la lista de Razas', {status: 404})
