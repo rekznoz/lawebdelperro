@@ -5,6 +5,7 @@ import '../css/carrusel.css'
 export default function Carrusel({imagenes}) {
 
     let totalImagenes = 3
+    let intervalo
 
     const size = useWindowSize();
     const [indiceActual, setIndiceActual] = useState(0)
@@ -25,14 +26,26 @@ export default function Carrusel({imagenes}) {
         setIndiceActual((indicePrevio) =>
             indicePrevio === 0 ? imagenes.length - totalImagenes : indicePrevio - 1
         )
+        clearInterval(intervalo)
     }
 
     const siguienteImagen = () => {
         setIndiceActual((indicePrevio) =>
             indicePrevio >= imagenes.length - totalImagenes ? 0 : indicePrevio + 1
         )
+        clearInterval(intervalo)
     }
 
+    // Cambia de imagen cada 5 segundos
+    useEffect(() => {
+        intervalo = setInterval(() => {
+            setIndiceActual((indicePrevio) =>
+                indicePrevio >= imagenes.length - totalImagenes ? 0 : indicePrevio + 1
+            )
+        }, 5000)
+        return () => clearInterval(intervalo)
+    }, [indiceActual])
+    
     return (
         <div className="carrusel">
             <button className="boton_carrusel anterior" onClick={anteriorImagen}>
