@@ -12,12 +12,12 @@ export default function Paginacion(atributos) {
                     disabled={pagina === 1}
                     onClick={() => paginacion(pagina - 1)}
                 >
-                    Previous
+                    &lt;-
                 </button>
                 {pageNumbers.map(pageNumber => (
                     <button
                         key={pageNumber}
-                        className={pagina === pageNumber ? "active" : ""}
+                        className={pagina === pageNumber ? "activo" : ""}
                         onClick={() => paginacion(pageNumber)}
                     >
                         {pageNumber}
@@ -27,7 +27,7 @@ export default function Paginacion(atributos) {
                     disabled={pagina === totalPaginas}
                     onClick={() => paginacion(pagina + 1)}
                 >
-                    Next
+                    -&gt;
                 </button>
             </div>
 
