@@ -14,6 +14,30 @@
     border-radius: 5px;
 }
 
+.carta-texto-raza {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 20px;
+    max-width: 600px;
+    color: var(--color-letras-error1);
+    background-color: var(--color-fondo-error2);
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.carta-texto-raza .imagen_error_perro {
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 20px;
+    justify-content: space-around;
+    border-radius: 20px;
+}
+
 .pagina-error h1 {
     font-size: 2.5rem;
     margin-bottom: 10px;
