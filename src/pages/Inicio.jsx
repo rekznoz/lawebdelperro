@@ -1,17 +1,15 @@
 import '../css/inicio.css'
 
-// import {} from '../config/FirebaseDB.jsx'
 import Carrusel from "../components/Carrusel.jsx";
-import '../css/caracteristicas.css'
+
+import BloqueCaracteristicas from "../components/BloqueCaracteristicas.jsx";
+import {useRazaContext} from "../context/RazasC.jsx";
+import {Loading} from "../components/Loading.jsx";
 
 import filtro from '../assets/inicio/filtro.png'
 import responsivo from '../assets/inicio/responsivo.png'
 import login from '../assets/inicio/login.png'
 import favoritos from '../assets/inicio/favorito.png'
-
-import BloqueCaracteristicas from "../components/BloqueCaracteristicas.jsx";
-import {useRazaContext} from "../context/RazasC.jsx";
-import {Loading} from "../components/Loading.jsx";
 
 import cristian from '../assets/desarrolladores/cristian.png'
 import gustavo from '../assets/desarrolladores/gustavo.png'

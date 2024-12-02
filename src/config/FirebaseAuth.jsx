@@ -1,5 +1,5 @@
 // Import the functions you need from the SDKs you need
-import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged} from "firebase/auth";
+import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword} from "firebase/auth";
 import app from "./FirebaseConfig.jsx";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries

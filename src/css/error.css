@@ -30,6 +30,15 @@
     margin-bottom: 20px;
 }
 
+.carta-texto-raza h1 {
+    text-transform: uppercase;
+    font-size: 30px;
+    color: var(--color-texto);
+    margin-bottom: 10px;
+    padding-top: 20px;
+    font-weight: bold;
+}
+
 .carta-texto-raza .imagen_error_perro {
     width: 100%;
     max-width: 400px;

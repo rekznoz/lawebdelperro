@@ -12,7 +12,7 @@ import {Error} from "./error.jsx";
 
 import PrivadoFavoritos from "../layouts/PrivadoFavoritos.jsx"
 
-import {getRazas} from "../hooks/GetRazas.jsx";
+// import {getRazas} from "../hooks/GetRazas.jsx";
 import {GetDataRaza} from "../hooks/GetDataRaza.jsx";
 
 import {Loading} from "../components/Loading.jsx";

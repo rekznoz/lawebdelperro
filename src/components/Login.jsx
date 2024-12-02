@@ -1,5 +1,5 @@
-import {useContext, useState} from "react"
-import {firebaseLogin, firebaseRegistro} from "../config/FirebaseAuth.jsx";
+import {useContext, useEffect, useState} from "react"
+import {firebaseLogin, firebaseRegistro, auth} from "../config/FirebaseAuth.jsx";
 import {UsuarioC} from "../context/UsuarioC.jsx";
 
 // Recoge los datos del formulario
@@ -10,6 +10,7 @@ import {Formik} from 'formik';
 import {bool, object, string} from 'yup';
 import Swal from "sweetalert2";
 import {Link} from "react-router-dom";
+import {AgregarUsuario, GetUserData} from "../config/FirebaseDB.jsx";
 // https://www.npmjs.com/package/yup
 
 const validationSchema = object({
@@ -28,6 +29,13 @@ const usuarioVacio = {
     email: '',
     password: '',
     terminos: false
+}
+
+const fireBaseDataBase = {
+    nombre: '',
+    apellidos: '',
+    nacimiento: '',
+    favoritos: []
 }
 
 export default function Login() {
@@ -66,6 +74,7 @@ export default function Login() {
             await firebaseRegistro(values.email, values.password)
                 .then(() => {
                     mostrarRegistro()
+                    AgregarUsuario('usuarios', fireBaseDataBase, auth.currentUser.uid)
                 })
                 .catch(error => {
                     Swal.fire({
