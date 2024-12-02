@@ -8,10 +8,12 @@ import filtro from '../assets/inicio/filtro.png'
 import responsivo from '../assets/inicio/responsivo.png'
 import login from '../assets/inicio/login.png'
 import favoritos from '../assets/inicio/favorito.png'
-import Caracteristica from "../components/BloqueCaracteristica.jsx";
 import Caracteristicas from "../components/Caracteristicas.jsx";
+import {useLoaderData} from "react-router-dom";
 
 export default function Inicio() {
+
+    const {razas} = useLoaderData()
 
     const listaCaracteristicas = [
         {
@@ -40,11 +42,23 @@ export default function Inicio() {
         }
     ];
 
+    // array de imagenes de las razas
+    const imagenes = razas.map(raza => raza["images"]["small"]["indoors"])
+        .sort(() => Math.random() - 0.5)
+
+    if (!razas) {
+        throw new Response('Error al obtener las razas', {status: 404})
+    }
+
     return (
         <>
-            <div id='area1'>
-                <Carrusel/>
-            </div>
+            {
+                razas && razas.length > 0 &&
+                <div id='area1'>
+                    {/* Seccion de carrusel */}
+                    <Carrusel imagenes={imagenes}/>
+                </div>
+            }
             <div id='area2'>
                 {/* Seccion de herramientas */}
                 <Caracteristicas listaCaracteristicas={listaCaracteristicas}/>
