@@ -1,9 +1,8 @@
-import {imagenes_carrusel_perros} from "../config/Imagenes_carrusel.jsx";
 import {useWindowSize} from "../hooks/UseWindowSize.jsx";
 import {useEffect, useState} from "react";
 import '../css/carrusel.css'
 
-export default function Carrusel() {
+export default function Carrusel({imagenes}) {
 
     let totalImagenes = 3
 
@@ -24,13 +23,13 @@ export default function Carrusel() {
 
     const anteriorImagen = () => {
         setIndiceActual((indicePrevio) =>
-            indicePrevio === 0 ? imagenes_carrusel_perros.length - totalImagenes : indicePrevio - 1
+            indicePrevio === 0 ? imagenes.length - totalImagenes : indicePrevio - 1
         )
     }
 
     const siguienteImagen = () => {
         setIndiceActual((indicePrevio) =>
-            indicePrevio >= imagenes_carrusel_perros.length - totalImagenes ? 0 : indicePrevio + 1
+            indicePrevio >= imagenes.length - totalImagenes ? 0 : indicePrevio + 1
         )
     }
 
@@ -44,7 +43,7 @@ export default function Carrusel() {
                      transform: `translateX(-${indiceActual * (100 / totalImagenes)}%)`,
                  }}
             >
-                {imagenes_carrusel_perros.map((imagen, index) => (
+                {imagenes.map((imagen, index) => (
                     <div className="imagen_carrusel" key={index}>
                         <img className="animacion-brillo" src={imagen} alt={`Slide ${index + 1}`}/>
                     </div>
