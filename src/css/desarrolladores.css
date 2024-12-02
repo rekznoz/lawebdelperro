@@ -1,0 +1,130 @@
+.desarrolladores {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.desarrolladores h1 {
+    text-transform: uppercase;
+    font-size: 50px;
+    color: var(--color-texto);
+    margin-bottom: 10px;
+    padding-top: 20px;
+}
+
+.contenedor-desarolladores {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 90%;
+    height: 90%;
+    gap: 5px;
+}
+
+.contenedor-desarolladores .rojo {
+    background-color: #f43f5e;
+}
+
+.contenedor-desarolladores .azul {
+    background-color: #3b82f6;
+}
+
+.contenedor-desarolladores .verde {
+    background-color: #22c55e;
+}
+
+.contenedor-desarolladores .amarillo {
+    background-color: #f59e0b;
+}
+
+.contenedor-desarolladores .morado {
+    background-color: #8b5cf6;
+}
+
+.contenedor-desarolladores .naranja {
+    background-color: #f97316;
+}
+
+.contenedor-desarolladores .carta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    color: white;
+    transition: 400ms;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transform: translateY(50px);
+}
+
+.carta.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.carta img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    padding: 25px;
+}
+
+.carta h1 {
+    font-size: 1.5rem;
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.carta p {
+    font-size: 1rem;
+    margin: 0;
+    padding: 5%;
+    text-align: center;
+}
+
+.contenedor-desarolladores .carta:hover {
+    transform: scale(1.1, 1.1);
+}
+
+.contenedor-desarolladores:hover > .carta:not(:hover) {
+    filter: blur(10px);
+    transform: scale(0.9, 0.9);
+}
+
+@media (max-width: 1024px) {
+    .contenedor-desarolladores {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .contenedor-desarolladores {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 500px) {
+    .desarrolladores h1 {
+        font-size: 30px;
+    }
+
+    .carta img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .carta h1 {
+        font-size: 1rem;
+    }
+
+    .carta p {
+        font-size: 0.8rem;
+    }
+}

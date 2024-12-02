@@ -1,7 +1,7 @@
-import Caracteristica from "./BloqueCaracteristica.jsx";
+import Caracteristica from "./Caracteristica.jsx";
 import '../css/caracteristicas.css'
 
-export default function Caracteristicas({ listaCaracteristicas }) {
+export default function BloqueCaracteristicas({ listaCaracteristicas }) {
     return (
         <section className="seccion-caracteristicas">
             <h1>CARACTERISTICAS</h1>
