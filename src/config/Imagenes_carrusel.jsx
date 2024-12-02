@@ -6,4 +6,10 @@ export const imagenes_carrusel = [
     perro_1,
     perro_2,
     perro_3,
+    perro_3,
+    perro_2,
+    perro_1,
+    perro_2,
+    perro_3,
+    perro_1
 ]

@@ -13,24 +13,34 @@ export default function Inicio() {
     const [currentIndex, setCurrentIndex] = useState(0);
 
     const goToPrevious = () => {
-        setCurrentIndex((prevIndex) => (prevIndex === 0 ? images.length - 1 : prevIndex - 1));
+        setCurrentIndex((prevIndex) =>
+            prevIndex === 0 ? images.length - 3 : prevIndex - 1
+        );
     };
 
     const goToNext = () => {
-        setCurrentIndex((prevIndex) => (prevIndex === images.length - 1 ? 0 : prevIndex + 1));
+        setCurrentIndex((prevIndex) =>
+            prevIndex >= images.length - 3 ? 0 : prevIndex + 1
+        );
     };
+
+    const visibleImages = images.slice(currentIndex, currentIndex + 3);
 
     return (
         <>
             <div id='area1'>
-                <div className="carousel">
-                    <button className="carousel-button prev" onClick={goToPrevious}>
+                <div className="carrusel">
+                    <button className="boton_carrusel prev" onClick={goToPrevious}>
                         &#10094;
                     </button>
-                    <div className="carousel-image">
-                        <img src={images[currentIndex]} alt={`Slide ${currentIndex + 1}`}/>
+                    <div className="contenedor_imagenes_carrusel">
+                        {visibleImages.map((image, index) => (
+                            <div className="imagen_carrusel" key={index}>
+                                <img src={image} alt={`Slide ${currentIndex + index + 1}`}/>
+                            </div>
+                        ))}
                     </div>
-                    <button className="carousel-button next" onClick={goToNext}>
+                    <button className="boton_carrusel next" onClick={goToNext}>
                         &#10095;
                     </button>
                 </div>

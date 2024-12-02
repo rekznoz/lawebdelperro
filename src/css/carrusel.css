@@ -1,25 +1,30 @@
-.carousel {
+.carrusel {
     position: relative;
-    width: 80%;
-    max-width: 1000px;
+    width: 100%;
+    max-width: 80%;
     margin: auto;
     overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-.carousel-image {
+.carrusel .contenedor_imagenes_carrusel {
     display: flex;
-    justify-content: center;
-    align-items: start;
-    height: 300px;
+    transition: transform 0.5s ease-in-out;
+    gap: 1px;
 }
 
-.carousel-image img {
+.carrusel .imagen_carrusel img {
     width: 100%;
     height: auto;
-    border-radius: 10px;
 }
 
-.carousel-button {
+.carrusel .imagen_carrusel {
+    flex: 1;
+    min-width: calc(100% / 3 - 10px); /* Show 3 images at a time with a gap */
+}
+
+.carrusel .boton_carrusel {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -33,14 +38,14 @@
     z-index: 1;
 }
 
-.carousel-button:hover {
+.carrusel .boton_carrusel:hover {
     background-color: rgba(0, 0, 0, 0.8);
 }
 
-.carousel-button.prev {
+.carrusel .boton_carrusel.prev {
     left: 10px;
 }
 
-.carousel-button.next {
+.carrusel .boton_carrusel.next {
     right: 10px;
 }
