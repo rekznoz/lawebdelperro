@@ -47,6 +47,7 @@ export const router = createBrowserRouter([
                         <Inicio/>
                     </Suspense>
                 ),
+                loader: getRazas,
             },
             {
                 path: '/nosotros',
