@@ -82,23 +82,7 @@ export default function ListaRazas() {
     }, [filtro])
 
     if (!razasFiltradas) {
-        return (
-            <>
-                <div id='area1'>
-                    <h1>ERROR 404</h1>
-                </div>
-                <div id='area2'>
-                    <div className="pagina-error">
-                        <p className="mensaje-error">
-                            No se ha encontrado la raza solicitada.
-                        </p>
-                    </div>
-                </div>
-                <div id='area3'>
-                    <Link to="/" className="enlace-error">Volver al inicio</Link>
-                </div>
-            </>
-        )
+        throw new Response('Error al obtener la lista de Razas', {status: 404})
     }
 
     // Función para manejar el input de página
