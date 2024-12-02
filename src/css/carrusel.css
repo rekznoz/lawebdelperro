@@ -1,27 +1,36 @@
 .carrusel {
     position: relative;
     width: 100%;
-    max-width: 80%;
+    max-width: 90%;
     margin: auto;
     overflow: hidden;
     border-radius: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.7);
 }
 
 .carrusel .contenedor_imagenes_carrusel {
     display: flex;
-    transition: transform 0.5s ease-in-out;
-    gap: 1px;
+    justify-content: space-evenly;
+    transition: transform 0.5s;
+    gap: 0;
 }
 
 .carrusel .imagen_carrusel img {
     width: 100%;
     height: auto;
+    object-fit: cover;
+    display: block;
+    border: none;
+}
+
+.carrusel .imagen_carrusel img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .carrusel .imagen_carrusel {
-    flex: 1;
-    min-width: calc(100% / 3 - 10px); /* Show 3 images at a time with a gap */
+    flex: 0 0 calc(100% / 3);
+    box-sizing: border-box;
 }
 
 .carrusel .boton_carrusel {
@@ -42,10 +51,22 @@
     background-color: rgba(0, 0, 0, 0.8);
 }
 
-.carrusel .boton_carrusel.prev {
+.carrusel .boton_carrusel.anterior {
     left: 10px;
 }
 
-.carrusel .boton_carrusel.next {
+.carrusel .boton_carrusel.siguiente {
     right: 10px;
+}
+
+@media (max-width: 900px) {
+    .carrusel .imagen_carrusel {
+        flex: 0 0 calc(100% / 2);
+    }
+}
+
+@media (max-width: 600px) {
+    .carrusel .imagen_carrusel {
+        flex: 0 0 100%;
+    }
 }

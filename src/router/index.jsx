@@ -12,8 +12,8 @@ import {Error} from "./error.jsx";
 
 import PrivadoFavoritos from "../layouts/PrivadoFavoritos.jsx"
 
-import {getRazas} from "../config/GetRazas.jsx";
-import {getDataRaza} from "../config/GetDataRaza.jsx";
+import {getRazas} from "../hooks/GetRazas.jsx";
+import {getDataRaza} from "../hooks/GetDataRaza.jsx";
 
 import {Loading} from "../components/Loading.jsx";
 
