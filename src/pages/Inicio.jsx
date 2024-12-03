@@ -3,6 +3,7 @@ import '../css/inicio.css'
 import Carrusel from "../components/Carrusel.jsx";
 
 import BloqueCaracteristicas from "../components/BloqueCaracteristicas.jsx";
+import BloqueDesarrolladores from "../components/BloqueDesarrolladores.jsx";
 import {useRazaContext} from "../context/RazasC.jsx";
 import {Loading} from "../components/Loading.jsx";
 
@@ -17,7 +18,6 @@ import rafael from '../assets/desarrolladores/rafael.png'
 import serafin from '../assets/desarrolladores/serafin.png'
 import sergio from '../assets/desarrolladores/sergio.png'
 import ana from '../assets/desarrolladores/ana.png'
-import BloqueDesarrolladores from "../components/BloqueDesarrolladores.jsx";
 
 const listaCaracteristicas = [
     {
