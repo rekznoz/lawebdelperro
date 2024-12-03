@@ -92,7 +92,11 @@ export default function Filtro( atributos ) {
                                 <option key={index} value={grupo}>{grupo}</option>
                             ))}
                         </select>
-                        <p>Rango de Popularidad = {filtro.popularidad}</p>
+                        {
+                            filtro.popularidad === 0
+                                ? <p>Rango de Popularidad = Indefinido</p>
+                                : <p>Rango de Popularidad = {filtro.popularidad}</p>
+                        }
                         <input
                             type="range"
                             id='filtroPopularidad'
@@ -102,7 +106,11 @@ export default function Filtro( atributos ) {
                             value={filtro.popularidad}
                             onChange={handleFiltro}
                         />
-                        <p>Rango de Altura = {filtro.altura}</p>
+                        {
+                            filtro.altura === 0
+                                ? <p>Rango de Altura = Indefinido</p>
+                                : <p>Rango de Altura = {filtro.altura}&quot;</p>
+                        }
                         <input
                             type="range"
                             id='filtroAltura'
@@ -112,7 +120,11 @@ export default function Filtro( atributos ) {
                             value={filtro.altura}
                             onChange={handleFiltro}
                         />
-                        <p>Rango de Peso = {filtro.peso}</p>
+                        {
+                            filtro.peso === 0
+                                ? <p>Rango de Peso = Indefinido</p>
+                                : <p>Rango de Peso = {filtro.peso} lbs</p>
+                        }
                         <input
                             type="range"
                             id='filtroPeso'
@@ -122,7 +134,11 @@ export default function Filtro( atributos ) {
                             value={filtro.peso}
                             onChange={handleFiltro}
                         />
-                        <p>Años de Vida = {filtro.vida}</p>
+                        {
+                            filtro.vida === 0
+                                ? <p>Esperanza de vida = Indefinido</p>
+                                : <p>Esperanza de vida = {filtro.vida} años</p>
+                        }
                         <input
                             type="range"
                             id='filtroVida'
