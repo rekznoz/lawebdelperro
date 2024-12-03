@@ -1,6 +1,5 @@
 import {useContext, useEffect, useState} from "react";
-import '../css/bloque.css'
-import {useRazaContext} from "../context/RazasC.jsx";
+ import {useRazaContext} from "../context/RazasC.jsx";
 import Bloque from "../components/Bloque.jsx";
 import {Loading} from "../components/Loading.jsx";
 import Filtro from "../components/Filtro.jsx";
@@ -8,7 +7,7 @@ import Paginacion from "../components/Paginacion.jsx";
 import {filtroRazas} from "./ListaRazas.jsx";
 import {UsuarioC} from "../context/UsuarioC.jsx";
 import {obtenerFavoritos} from "../config/FirebaseDB.jsx";
-
+import '../css/favoritos.css'
 const filtroDefault = {
     nombre: '',
     grupo: '',
@@ -94,7 +93,7 @@ export default function Favoritos() {
             <Filtro grupos={grupos} filtro={filtro} setFiltro={setFiltro} filtroDefault={filtroDefault}/>
 
             <div id='area1'>
-                <h1>Lista de Razas</h1>
+                <h1>Lista de Favoritos</h1>
             </div>
             <div id='area2'>
                 <Bloque mapaElementos={razasActuales}/>
