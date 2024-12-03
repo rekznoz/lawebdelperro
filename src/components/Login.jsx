@@ -1,4 +1,4 @@
-import {useContext, useEffect, useState} from "react"
+import {useContext, useState} from "react"
 import {firebaseLogin, firebaseRegistro, auth} from "../config/FirebaseAuth.jsx";
 import {UsuarioC} from "../context/UsuarioC.jsx";
 
@@ -10,7 +10,7 @@ import {Formik} from 'formik';
 import {bool, object, string} from 'yup';
 import Swal from "sweetalert2";
 import {Link} from "react-router-dom";
-import {AgregarUsuario, GetUserData} from "../config/FirebaseDB.jsx";
+import {AgregarUsuario} from "../config/FirebaseDB.jsx";
 // https://www.npmjs.com/package/yup
 
 const validationSchema = object({
