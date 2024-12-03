@@ -108,7 +108,7 @@ export default function Filtro( atributos ) {
                             id='filtroAltura'
                             className='entradaFiltro'
                             min="0"
-                            max="15"
+                            max="30"
                             value={filtro.altura}
                             onChange={handleFiltro}
                         />
@@ -118,7 +118,7 @@ export default function Filtro( atributos ) {
                             id='filtroPeso'
                             className='entradaFiltro'
                             min="0"
-                            max="15"
+                            max="175"
                             value={filtro.peso}
                             onChange={handleFiltro}
                         />
@@ -128,7 +128,7 @@ export default function Filtro( atributos ) {
                             id='filtroVida'
                             className='entradaFiltro'
                             min="0"
-                            max="15"
+                            max="17"
                             value={filtro.vida}
                             onChange={handleFiltro}
                         />
