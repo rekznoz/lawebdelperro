@@ -1,6 +1,6 @@
 import {createContext, useEffect, useState} from "react"
 import {auth} from "../config/FirebaseAuth.jsx"
-import {ActualizarUsuario, GetUserData} from "../config/FirebaseDB.jsx"
+import {GetUserData} from "../config/FirebaseDB.jsx"
 
 export const UsuarioC = createContext()
 
