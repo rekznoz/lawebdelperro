@@ -35,7 +35,6 @@ const fireBaseDataBase = {
     nombre: '',
     apellidos: '',
     nacimiento: '',
-    favoritos: []
 }
 
 export default function Login() {
