@@ -14,7 +14,7 @@ const filtroDefault = {
     vida: 0
 }
 
-function filtroRazas(razas, filtro) {
+export function filtroRazas(razas, filtro) {
     if (!razas) {
         return []
     }
