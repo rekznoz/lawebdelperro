@@ -47,7 +47,7 @@ Se utiliza **`createBrowserRouter`** para gestionar las rutas y definir la estru
       **Nota**: `:id` representa el identificador único de la raza.
 
 4. **`/nosotros`**
-    - **Página**: `Nosotros`
+    - **Página**: `Personalidad`
     - **Descripción**: Información sobre el equipo detrás del proyecto.
 
 5. **`/contacto`**

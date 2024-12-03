@@ -10,6 +10,10 @@
     --color-letras-error1: #4b5d6c;
     --color-letras-error2: #102a43;
     --color-letras-error3: #627d98;
+
+    --color-letras-test: #4b5d6c;
+    --color-fondo-test: #d9e2ec;
+    --color-bordes-test: #4b5d6c;
 }
 
 .dark-mode {
@@ -23,4 +27,8 @@
     --color-letras-error1: #ffffff;
     --color-letras-error2: #ffffff;
     --color-letras-error3: #ffffff;
+
+    --color-letras-test: #ffffff;
+    --color-fondo-test: #0c4573;
+    --color-bordes-test: #0e7cd3;
 }

@@ -3,7 +3,7 @@ import {Suspense} from "react"
 
 import {Principal} from "./principal.jsx"
 import {Inicio} from "./inicio.jsx"
-import {Nosotros} from "./nosotros.jsx"
+import {Personalidad} from "./personalidad.jsx"
 import {ListaRazas} from "./listaRazas.jsx"
 import {Raza} from "./raza.jsx"
 import {Contacto} from "./contacto.jsx"
@@ -50,10 +50,10 @@ export const router = createBrowserRouter([
                 //loader: getRazas,
             },
             {
-                path: '/nosotros',
+                path: '/test',
                 element: (
                     <Suspense fallback={<Loading/>}>
-                        <Nosotros/>
+                        <Personalidad/>
                     </Suspense>
                 ),
             },

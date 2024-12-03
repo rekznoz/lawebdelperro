@@ -19,7 +19,7 @@ import {firebaseLogout} from "../config/FirebaseAuth.jsx";
 const navItems = [
     { to: "/", img: inicio, alt: "Inicio", label: "Ir a la página de inicio" },
     { to: "/razas", img: razas, alt: "Razas", label: "Explorar razas de perros" },
-    { to: "/nosotros", img: nosotros, alt: "Nosotros", label: "Conocer más sobre nosotros" },
+    { to: "/test", img: nosotros, alt: "Test", label: "Conocer más sobre nosotros" },
     { to: "/contacto", img: contacto, alt: "Contacto", label: "Ir a la página de contacto" },
     //{ to: "/login", img: login, alt: "Icono para login", label: "Iniciar sesión o registrarse" },
 ]
