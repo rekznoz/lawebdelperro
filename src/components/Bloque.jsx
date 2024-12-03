@@ -1,26 +1,35 @@
 import '../css/bloque.css'
-import {useContext, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 import fav from '../assets/fav.png'
 import rfav from '../assets/rfav.png'
 import {UsuarioC} from "../context/UsuarioC.jsx";
+import {obtenerFavoritos, sincronizarFavoritos} from "../config/FirebaseDB.jsx";
 
 export default function Bloque(atributos) {
 
-    const {usuario} = useContext(UsuarioC)
-    const [favoritos, setFavoritos] = useState([])
-    const {mapaElementos} = atributos
+    const {usuario} = useContext(UsuarioC);
+    const [favoritos, setFavoritos] = useState([]);
+    const {mapaElementos} = atributos;
+
+    useEffect(() => {
+        if (usuario) {
+            obtenerFavoritos(usuario).then(favs => setFavoritos(favs));
+        }
+    }, [usuario]);
 
     const agregarRemoverFavoritos = (elemento) => {
-        // Verificar si el elemento ya está en favoritos
-        if (favoritos.includes(elemento["general"]["name"])) {
-            // Remover el elemento de favoritos
-            setFavoritos(favoritos.filter(fav => fav !== elemento["general"]["name"]))
-        } else {
-            // Agregar el elemento a favoritos
-            setFavoritos([...favoritos, elemento["general"]["name"]])
+        const idElemento = elemento["general"]["name"];
+        const nuevosFavoritos = favoritos.includes(idElemento)
+            ? favoritos.filter(fav => fav !== idElemento) // Elimina de favoritos
+            : [...favoritos, idElemento]; // Agrega a favoritos
+
+        setFavoritos(nuevosFavoritos);
+
+        if (usuario) {
+            sincronizarFavoritos(usuario, nuevosFavoritos); // Sincroniza con Firestore
         }
-    }
+    };
 
     return (
         <>

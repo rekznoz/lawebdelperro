@@ -1,6 +1,6 @@
 import {createContext, useEffect, useState} from "react"
 import {auth} from "../config/FirebaseAuth.jsx"
-import {GetUserData} from "../config/FirebaseDB.jsx"
+import {ActualizarUsuario, GetUserData} from "../config/FirebaseDB.jsx"
 
 export const UsuarioC = createContext()
 
@@ -13,9 +13,7 @@ export default function UsuarioProvider({children}) {
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(async (user) => {
             if (user) {
-                // Usuario autenticado
                 setUsuario(user)
-                // Obtén datos desde Firestore
                 const data = await GetUserData("usuarios", user.uid)
                 setDatosUsuario(data)
             } else {
