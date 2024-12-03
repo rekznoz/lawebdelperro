@@ -2,6 +2,7 @@ import {useState} from "react"
 import {useRazaContext} from "../context/RazasC.jsx"
 import {Loading} from "../components/Loading.jsx"
 import "../css/personalidad.css"
+import {Link} from "react-router-dom";
 
 export default function Personalidad() {
 
@@ -617,11 +618,13 @@ export default function Personalidad() {
                     <div className="contenedor-resultado-test">
                         <h2 className="resultado-test-titulo">¡Tu Raza Perfecta es: {result.general.name}!</h2>
                         <p className="resultado-test-descripcion">{result.general.shortDescription}</p>
-                        <img
-                            src={result.images.small.studio}
-                            alt={result.general.name}
-                            className="resultado-test-imagen"
-                        />
+                        <Link to={`/razas/${result.id}`} className="resultado-test-link">
+                            <img
+                                src={result.images.small.studio}
+                                alt={result.general.name}
+                                className="resultado-test-imagen"
+                            />
+                        </Link>
                     </div>
                 )}
             </div>
