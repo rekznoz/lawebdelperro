@@ -16,7 +16,6 @@ export default function UsuarioProvider({children}) {
                 setUsuario(user)
                 obtenerUsuario(user).then(data => {
                     setDatosUsuario(data)
-                    console.log(data)
                 })
             } else {
                 setUsuario(null)

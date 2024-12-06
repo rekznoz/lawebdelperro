@@ -86,7 +86,6 @@ export const sincronizarUsuario = async (usuario, perfil) => {
 export const obtenerUsuario = async (usuario) => {
     if (!usuario) return {}
     const userDocRef = doc(db, "usuarios", usuario.uid)
-
     try {
         const userDoc = await getDoc(userDocRef)
         return userDoc.exists() ? userDoc.data() : {}
