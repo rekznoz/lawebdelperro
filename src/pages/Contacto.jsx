@@ -1,5 +1,4 @@
 import '../css/formulario.css'
-import {useState} from "react"
 import Swal from "sweetalert2"
 
 // Recoge los datos del formulario
@@ -76,7 +75,6 @@ export default function Contacto() {
                 <Formik initialValues={forumarioDefecto} validationSchema={validationSchema} onSubmit={onSubmit}>
                     {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
                         <div className="contFormContacto">
-                            <h2>Formulario de Contacto</h2>
                             <h3>¿Tienes alguna duda o comentario sobre razas de perros?</h3>
                             <h3>¡Nos encantaría ayudarte!</h3>
                             <form onSubmit={handleSubmit}>
