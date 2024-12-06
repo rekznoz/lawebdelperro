@@ -32,9 +32,18 @@ const usuarioVacio = {
 }
 
 const fireBaseDataBase = {
-    nombre: '',
-    apellidos: '',
-    nacimiento: '',
+    avatar: '',
+    name: '',
+    email: '',
+    telefono: '',
+    fechaNacimiento: '',
+    calle: '',
+    ciudad: '',
+    codigoPostal: '',
+    facebook: '',
+    twitter: '',
+    instagram: '',
+    bio: ''
 }
 
 export default function Login() {
@@ -61,7 +70,7 @@ export default function Login() {
             await firebaseRegistro(values.email, values.password)
                 .then(() => {
                     mostrarRegistro()
-                    AgregarUsuario('usuarios', fireBaseDataBase, auth.currentUser.uid)
+                    //AgregarUsuario('usuarios', fireBaseDataBase, auth.currentUser.uid)
                 })
                 .catch(error => {
                     Swal.fire({

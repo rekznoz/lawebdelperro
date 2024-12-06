@@ -9,6 +9,7 @@ import {Raza} from "./raza.jsx"
 import {Contacto} from "./contacto.jsx"
 import {Favoritos} from "./favoritos.jsx"
 import {Error} from "./error.jsx";
+import {Perfil} from "./perfil.jsx";
 
 import PrivadoFavoritos from "../layouts/PrivadoFavoritos.jsx"
 
@@ -96,6 +97,24 @@ export const router = createBrowserRouter([
                         element: (
                             <Suspense fallback={<Loading/>}>
                                 <Favoritos/>
+                            </Suspense>
+                        ),
+                    }
+                ]
+            },
+            {
+                path: '/perfil',
+                element: (
+                    <Suspense fallback={<Loading/>}>
+                        <PrivadoFavoritos/>
+                    </Suspense>
+                ),
+                children: [
+                    {
+                        index: true,
+                        element: (
+                            <Suspense fallback={<Loading/>}>
+                                <Perfil/>
                             </Suspense>
                         ),
                     }

@@ -1,6 +1,6 @@
 import {createContext, useEffect, useState} from "react"
 import {auth} from "../config/FirebaseAuth.jsx"
-import {GetUserData} from "../config/FirebaseDB.jsx"
+import {obtenerFavoritos, obtenerUsuario} from "../config/FirebaseDB.jsx"
 
 export const UsuarioC = createContext()
 
@@ -14,8 +14,10 @@ export default function UsuarioProvider({children}) {
         const unsubscribe = auth.onAuthStateChanged(async (user) => {
             if (user) {
                 setUsuario(user)
-                const data = await GetUserData("usuarios", user.uid)
-                setDatosUsuario(data)
+                obtenerUsuario(user).then(data => {
+                    setDatosUsuario(data)
+                    console.log(data)
+                })
             } else {
                 setUsuario(null)
                 setDatosUsuario(null)
