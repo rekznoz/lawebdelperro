@@ -1,4 +1,4 @@
-.login-form {
+.modal-login-registro {
     display: none;
     position: fixed;
     z-index: 100;
@@ -8,170 +8,121 @@
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-.login-form .login-content {
-    background-color: #777777;
+.modal-login-registro .contenedor-login {
+    background-color: var(--fondo-formulario);
     margin: 5% auto;
-    padding: 20px;
     border: 1px solid #888;
-    width: 60%;
+    width: 30%;
     border-radius: 20px;
 }
 
-.login-form .botonCerrarLogin {
-    background-color: #780505;
-    color: white;
-    padding: 10px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    font-size: 18px;
-    box-shadow: 2px 1px 5px 0 #000000;
-    text-shadow: 2px 1px 1px #000;
-    border-radius: 20px;
-}
-
-.login-form .botonCerrarLogin:hover, .botonCerrarLogin:focus {
-    background-color: #ae0909;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.login-form .botonRegistro {
-    background-color: #055705;
-    color: white;
-    padding: 10px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    font-size: 18px;
-    box-shadow: 2px 1px 5px 0 #000000;
-    text-shadow: 2px 1px 1px #000;
-    border-radius: 5px;
-}
-
-.login-form .botonRegistro:hover, .botonRegistro:focus {
-    background-color: #078e07;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.login-form .titulo-login {
-    color: rgb(255, 255, 255);
-    text-align: center;
-    font-size: 30px;
-    text-shadow: 1px 1px 1px #000;
-}
-
-.login-form .label-login {
-    color: #ffffff;
-    font-size: 18px;
-    text-shadow: 1px 1px 1px #000;
-}
-
-.login-form .input-login[type="email"], .input-login[type="password"] {
-    width: 100%;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    margin: 5px 0;
-    border: none;
-    border-radius: 5px;
-    text-align: center;
-    font-size: 18px;
-    box-shadow: 1px 1px 5px 0 #000000;
-}
-
-.login-form #login-boton {
-    background-color: rgb(2, 86, 135);
-    color: white;
-    padding: 10px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    font-size: 18px;
-    box-shadow: 1px 1px 5px 0 #000000;
-    text-shadow: 2px 1px 1px #000;
-    border-radius: 5px;
-}
-
-.login-form #login-boton:hover {
-    text-decoration: none;
-    cursor: pointer;
-    background-color: rgba(4, 157, 228, 0.8);
-}
-
-.login-form .label-login .politicas {
-    color: #DDDDDD;
-    text-decoration: none;
-    font-size: 18px;
-    text-shadow: 1px 1px 1px #000;
-}
-
-.login-form .label-login .politicas:hover {
-    color: #AADDFF;
-    text-decoration: underline;
-}
-
-.login-form .label-login .politicas:active {
-    color: #AADDFF;
-    text-decoration: underline;
-}
-
-.login-form .label-login .politicas:focus {
-    color: #AADDFF;
-    text-decoration: underline;
-}
-
-.login-form .FormError {
+.modal-login-registro .FormError {
     color: #ff0018;
-    font-size: 0.8em;
+    font-size: 1em;
     font-weight: bold;
     text-shadow: 0 1px 0 #000000;
     padding-top: 10px;
     border-radius: 5px;
-    margin-bottom: 10px;
     text-align: center;
 }
 
+.contenedor-login h2 {
+    text-align: center;
+    color: var(--color-texto);
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.contenedor-login .contenedor-entrada {
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    box-sizing: border-box;
+}
+
+.contenedor-login .contenedor-entrada input {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--color-texto);
+}
+
+.contenedor-login .politicas-login {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.politicas-login .enlace-politicas {
+    color: var(--color-letras-error3);
+    text-decoration: none;
+}
+
+.contenedor-login .contenedor-login-botones {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    box-sizing: border-box;
+}
+
+.contenedor-login-botones .botonLogin {
+    background-color: #0b488c;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.contenedor-login-botones .botonLogin:hover {
+    background-color: #0874ea;
+}
+
+.contenedor-login-botones .botonRegistro {
+    background-color: #0e6321;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.contenedor-login-botones .botonRegistro:hover {
+    background-color: #25813a;
+}
+
+.contenedor-login .contenedor-login-botones .botonCerrarLogin {
+    background-color: #7a0014;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.contenedor-login .contenedor-login-botones .botonCerrarLogin:hover {
+    background-color: #af0012;
+}
 
 @media screen and (max-width: 1000px) {
-    .login-form .titulo-login {
-        font-size: 20px;
-        /* Cambia el tamaño del texto para pantallas más pequeñas */
+    .modal-login-registro .contenedor-login {
+        width: 50%;
     }
-
-    .login-form .label-login {
-        font-size: 12px;
-    }
-
-    .login-form .input-login[type="email"], .input-login[type="password"] {
-        font-size: 12px;
-    }
-
-    .login-form #login-boton {
-        font-size: 18px;
-    }
-
 }
 
-@media screen and (max-width: 630px) {
-    .login-form .titulo-login {
-        font-size: 15px;
-        /* Cambia el tamaño del texto para pantallas más pequeñas */
+@media screen and (max-width: 700px) {
+    .modal-login-registro .contenedor-login {
+        width: 80%;
     }
-
-    .login-form .label-login {
-        font-size: 12px;
-    }
-
-    .login-form .input-login[type="email"], .input-login[type="password"] {
-        font-size: 10px;
-    }
-
-    .login-form #login-boton {
-        font-size: 18px;
-    }
-
 }
+

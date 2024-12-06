@@ -44,26 +44,14 @@ export default function Login() {
 
     const ocultarLogin = () => {
         // Ocultar el modal de Login
-        const modal = document.getElementById('loginForm')
+        const modal = document.getElementById('modal-login-registro')
         modal.style.display = 'none'
     }
 
     const mostrarRegistro = () => {
         if (registro) {
-            // Ocultar el modal de Registro
-            const modal = document.getElementById('registroForm')
-            modal.style.display = 'none'
-            // Mostrar el modal de Login
-            const modalLogin = document.getElementById('loginForm')
-            modalLogin.style.display = 'block'
             setRegistro(false)
         } else {
-            // Mostrar el modal de Registro
-            const modal = document.getElementById('registroForm')
-            modal.style.display = 'block'
-            // Ocultar el modal de Login
-            const modalLogin = document.getElementById('loginForm')
-            modalLogin.style.display = 'none'
             setRegistro(true)
         }
     }
@@ -108,64 +96,65 @@ export default function Login() {
         <Formik initialValues={usuarioVacio} validationSchema={validationSchema} onSubmit={onSubmit}>
             {({values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting}) => (
                 <>
-                    <div id="loginForm" className="login-form">
-                        <div className="login-content">
+                    <div id="modal-login-registro" className="modal-login-registro">
+                        <div className="contenedor-login">
                             <form onSubmit={handleSubmit}>
-                                <h2 className="titulo-login">Iniciar Sesión</h2>
+                                <h2>{
+                                    registro ? 'Registro' : 'Login'
+                                }</h2>
 
-                                <label className="label-login" htmlFor="email">
-                                    <b>Email</b>
-                                </label>
-                                <input className="input-login" type="email" placeholder="Ingrese su Email" name="email" value={values.email} onBlur={handleBlur} onChange={handleChange}/>
-                                {touched.email && errors.email ? <p className="FormError">{errors.email}</p> : null}
+                                <div className="contenedor-entrada">
+                                    <input type="email" placeholder="Ingrese su Email"
+                                           name="email"
+                                           value={values.email} onBlur={handleBlur} onChange={handleChange}/>
+                                    {touched.email && errors.email ? <p className="FormError">{errors.email}</p> : null}
+                                </div>
 
-                                <label className="label-login" htmlFor="psw">
-                                    <b>Contraseña</b>
-                                </label>
-                                <input className="input-login" type="password" placeholder="Ingrese su contraseña" name="password" value={values.password} onBlur={handleBlur} onChange={handleChange}/>
-                                {touched.password && errors.password ? <p className="FormError">{errors.password}</p> : null}
 
-                                <label className="label-login" htmlFor="terminos">
-                                    <input className="input-login" type="checkbox" name="terminos" checked={values.terminos} value={values.terminos} onBlur={handleBlur} onChange={handleChange}/>
-                                    <span>Aceptar las politicas de <Link to="privacy" className="politicas">Privacidad</Link> y el <Link to="terms" className="politicas">Acuerdo de usuario</Link></span>
-                                </label>
-                                {touched.terminos && errors.terminos ? <p className="FormError">{errors.terminos}</p> : null}
+                                <div className="contenedor-entrada">
+                                    <input type="password" placeholder="Ingrese su contraseña"
+                                           name="password" value={values.password} onBlur={handleBlur}
+                                           onChange={handleChange}/>
+                                    {touched.password && errors.password ?
+                                        <p className="FormError">{errors.password}</p> : null}
+                                </div>
 
-                                <button id="login-boton" type="submit">Login</button>
+
+                                <div className="politicas-login">
+                                    <input className="input-login" type="checkbox" name="terminos"
+                                           checked={values.terminos} value={values.terminos} onBlur={handleBlur}
+                                           onChange={handleChange}/>
+                                    <span>Aceptar las politicas de <Link to="privacy"
+                                                                         className="enlace-politicas">Privacidad</Link> y el <Link
+                                        to="terms" className="enlace-politicas">Acuerdo de usuario</Link></span>
+                                    {touched.terminos && errors.terminos ?
+                                        <p className="FormError">{errors.terminos}</p> : null}
+                                </div>
+
+                                <div className="contenedor-login-botones">
+                                    {
+                                        !registro &&
+                                        <>
+                                            <button className="botonLogin" type="submit" disabled={isSubmitting}>Login</button>
+                                            <button className="botonRegistro" onClick={mostrarRegistro}>Registro</button>
+                                            <button className="botonCerrarLogin" onClick={ocultarLogin}>Cerrar</button>
+                                        </>
+                                    }
+                                    {
+                                        registro &&
+                                        <>
+                                            <button className="botonRegistro" type="submit"
+                                                    disabled={isSubmitting}>Registrarse
+                                            </button>
+                                            <button className="botonCerrarLogin" onClick={mostrarRegistro}
+                                                    disabled={isSubmitting}>Regresar
+                                            </button>
+                                        </>
+
+                                    }
+                                </div>
                             </form>
-                            <button className="botonRegistro" onClick={mostrarRegistro}>Registrarse</button>
-                            <button className="botonCerrarLogin" onClick={ocultarLogin}>Cerrar</button>
-                        </div>
-                    </div>
 
-                    <div id="registroForm" className="login-form">
-                        <div className="login-content">
-                            <form onSubmit={handleSubmit}>
-                                <h2 className="titulo-login">Registar Usuario</h2>
-
-                                <label className="label-login" htmlFor="email">
-                                    <b>Email</b>
-                                </label>
-                                <input className="input-login" type="email" placeholder="Ingrese su Email" name="email" value={values.email} onBlur={handleBlur} onChange={handleChange}/>
-                                {touched.email && errors.email ? <p className="FormError">{errors.email}</p> : null}
-
-                                <label className="label-login" htmlFor="psw">
-                                    <b>Contraseña</b>
-                                </label>
-                                <input className="input-login" type="password" placeholder="Ingrese su contraseña" name="password" value={values.password} onBlur={handleBlur} onChange={handleChange}/>
-                                {touched.password && errors.password ? <p className="FormError">{errors.password}</p> : null}
-
-                                <label className="label-login" htmlFor="terminos">
-                                    <input className="input-login" type="checkbox" name="terminos" checked={values.terminos} value={values.terminos} onBlur={handleBlur} onChange={handleChange}/>
-                                    <span>Aceptar las politicas de <Link to="privacy" className="politicas">Privacidad</Link> y el <Link to="terms" className="politicas">Acuerdo de usuario</Link></span>
-                                </label>
-                                {touched.terminos && errors.terminos ? <p className="FormError">{errors.terminos}</p> : null}
-
-                                <button className="botonRegistro" type="submit">Registrarse</button>
-                            </form>
-                            <button className="botonCerrarLogin" onClick={mostrarRegistro}
-                                    disabled={isSubmitting}>Regresar
-                            </button>
                         </div>
                     </div>
                 </>

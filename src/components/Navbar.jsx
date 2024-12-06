@@ -54,7 +54,7 @@ export default function Navbar() {
 
     const mostarLogin = () => {
         // Mostrar el modal de Login
-        const modal = document.getElementById('loginForm')
+        const modal = document.getElementById('modal-login-registro')
         modal.style.display = 'block'
     }
 
