@@ -21,7 +21,7 @@ export default function Raza() {
             <div id='area1'>
                 <div className="carta-texto-raza">
                     <h2>{raza["general"]["name"]}</h2>
-                    <p>{raza["general"]["shortDescription"]}</p>
+                    <h3>{raza["general"]["shortDescription"]}</h3>
                     <p>{raza["general"]["longDescription"]}</p>
                 </div>
             </div>
