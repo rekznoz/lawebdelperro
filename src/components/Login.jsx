@@ -34,7 +34,6 @@ const usuarioVacio = {
 const fireBaseDataBase = {
     avatar: '',
     name: '',
-    email: '',
     telefono: '',
     fechaNacimiento: '',
     calle: '',
