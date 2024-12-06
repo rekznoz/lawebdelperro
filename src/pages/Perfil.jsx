@@ -98,7 +98,7 @@ export default function Perfil() {
                 <div className="cabecera-perfil">
                     {
                         userInfo.avatar ? (
-                            <img src={userInfo.avatar} alt="Avatar"/>
+                            <img src={userInfo.avatar} className="avatar" alt="Avatar"/>
                         ) : null
                     }
                     <h1>{userInfo.name}</h1>
