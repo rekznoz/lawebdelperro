@@ -18,6 +18,8 @@
     color: var(--color-texto);
     cursor: pointer;
     border-radius: 10px;
+    font-size: 20px;
+    transition: background 0.3s, color 0.3s;
 }
 
 .paginacion button.activo {
@@ -42,6 +44,7 @@
 .page-input {
     margin-left: 20px;
     color: var(--color-texto);
+    font-size: 20px;
 }
 
 .page-input input {
@@ -53,6 +56,7 @@
     background-color: var(--fondo-formulario);
     color: var(--color-texto);
     border-radius: 10px;
+    font-size: 20px;
 }
 
 .page-input span {
