@@ -70,7 +70,7 @@ export default function Login() {
             await firebaseRegistro(values.email, values.password)
                 .then(() => {
                     mostrarRegistro()
-                    AgregarUsuario('usuarios', fireBaseDataBase, auth.currentUser.uid)
+                    //AgregarUsuario('usuarios', fireBaseDataBase, auth.currentUser.uid)
                 })
                 .catch(error => {
                     Swal.fire({
