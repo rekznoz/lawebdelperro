@@ -11,7 +11,6 @@ import {Loading} from "../components/Loading.jsx";
 let forumarioDefecto = {
     avatar: '',
     name: '',
-    email: '',
     telefono: '',
     fechaNacimiento: '',
     calle: '',
@@ -29,9 +28,6 @@ const validationSchema = object({
         .required('El campo nombre es obligatorio')
         .min(3, 'El nombre debe tener al menos 3 caracteres')
         .max(50, 'El nombre debe tener como máximo 50 caracteres'),
-    email: string()
-        .required('El campo email es obligatorio')
-        .email('El email no es válido'),
     telefono: string()
         .required('El campo teléfono es obligatorio')
         .min(8, 'El teléfono debe tener al menos 8 caracteres')
@@ -58,7 +54,6 @@ export default function Perfil() {
     if (cargando) {
         return <Loading/>
     }
-
 
     const modoEdicion = () => {
         setIsEditing(!isEditing);
@@ -107,7 +102,7 @@ export default function Perfil() {
                         ) : null
                     }
                     <h1>{userInfo.name}</h1>
-                    <p>{userInfo.email}</p>
+                    <p>{usuario.email}</p>
                     <button onClick={modoEdicion} className="edit-btn">
                         {isEditing ? 'Cancelar' : 'Editar'}
                     </button>
@@ -129,7 +124,8 @@ export default function Perfil() {
                                         onChange={handleChange}
                                         onBlur={handleBlur}
                                     />
-                                    {errors.avatar && touched.avatar && <div className="FormError">{errors.avatar}</div>}
+                                    {errors.avatar && touched.avatar &&
+                                        <div className="FormError">{errors.avatar}</div>}
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="name">Nombre</label>
@@ -149,11 +145,9 @@ export default function Perfil() {
                                         type="email"
                                         id="email"
                                         name="email"
-                                        value={values.email}
-                                        onChange={handleChange}
-                                        onBlur={handleBlur}
+                                        value={usuario.email}
+                                        disabled={true}
                                     />
-                                    {errors.email && touched.email && <div className="FormError">{errors.email}</div>}
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="telefono">Teléfono</label>
@@ -283,31 +277,31 @@ export default function Perfil() {
                         <h2>Información de Perfil</h2>
                         <p>
                             <span>Nombre:</span> {
-                                userInfo.name ? userInfo.name : ''
+                            userInfo.name ? userInfo.name : ''
                         }
                         </p>
                         <p>
                             <span>Email:</span> {
-                                userInfo.email ? userInfo.email : ''
+                            usuario.email ? usuario.email : ''
                         }
                         </p>
                         <p>
                             <span>Teléfono:</span> {
-                                userInfo.telefono ? userInfo.telefono : ''
+                            userInfo.telefono ? userInfo.telefono : ''
                         }
                         </p>
                         <p>
                             <span>Fecha de Nacimiento:</span> {
-                                userInfo.fechaNacimiento ? userInfo.fechaNacimiento : ''
+                            userInfo.fechaNacimiento ? userInfo.fechaNacimiento : ''
                         }
                         </p>
                         <p>
                             <span>Dirección:</span> {
-                                userInfo.calle ? userInfo.calle : ''
+                            userInfo.calle ? userInfo.calle : ''
                         }, {
-                                userInfo.ciudad ? userInfo.ciudad : ''
+                            userInfo.ciudad ? userInfo.ciudad : ''
                         }, {
-                                userInfo.codigoPostal ? userInfo.codigoPostal : ''
+                            userInfo.codigoPostal ? userInfo.codigoPostal : ''
                         }
                         </p>
                         <p>
@@ -315,22 +309,22 @@ export default function Perfil() {
                         </p>
                         <p>
                             <span>Facebook:</span> {
-                                userInfo.facebook ? userInfo.facebook : ''
+                            userInfo.facebook ? userInfo.facebook : ''
                         }
                         </p>
                         <p>
                             <span>Twitter:</span> {
-                                userInfo.twitter ? userInfo.twitter : ''
+                            userInfo.twitter ? userInfo.twitter : ''
                         }
                         </p>
                         <p>
                             <span>Instagram:</span> {
-                                userInfo.instagram ? userInfo.instagram : ''
+                            userInfo.instagram ? userInfo.instagram : ''
                         }
                         </p>
                         <p>
                             <span>Biografía:</span> {
-                                userInfo.bio ? userInfo.bio : ''
+                            userInfo.bio ? userInfo.bio : ''
                         }
                         </p>
                     </div>
