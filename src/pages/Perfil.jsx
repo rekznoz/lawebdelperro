@@ -101,11 +101,11 @@ export default function Perfil() {
         <>
             <div id='area1'>
                 <div className="profile-header">
-                    <img
-                        className="avatar"
-                        src={userInfo.avatar}
-                        alt="User Avatar"
-                    />
+                    {
+                        userInfo.avatar ? (
+                            <img src={userInfo.avatar} alt="Avatar"/>
+                        ) : null
+                    }
                     <h1>{userInfo.name}</h1>
                     <p>{userInfo.email}</p>
                     <button onClick={modoEdicion} className="edit-btn">
