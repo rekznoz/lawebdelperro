@@ -78,40 +78,13 @@ export default function Perfil() {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                const {avatar, name, email, telefono, fechaNacimiento, calle, ciudad, codigoPostal, facebook, twitter, instagram, bio} = values;
                 const {resetForm} = funciones;
 
-                sincronizarUsuario(usuario, {
-                    avatar,
-                    name,
-                    email,
-                    telefono,
-                    fechaNacimiento,
-                    calle,
-                    ciudad,
-                    codigoPostal,
-                    facebook,
-                    twitter,
-                    instagram,
-                    bio
-                })
+                sincronizarUsuario(usuario, values)
 
                 setIsEditing(false);
 
-                setUserInfo({
-                    avatar,
-                    name,
-                    email,
-                    telefono,
-                    fechaNacimiento,
-                    calle,
-                    ciudad,
-                    codigoPostal,
-                    facebook,
-                    twitter,
-                    instagram,
-                    bio
-                });
+                setUserInfo(values);
 
                 Swal.fire({
                     title: "Cambios guardados",
