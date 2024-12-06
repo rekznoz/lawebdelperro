@@ -96,21 +96,23 @@ export default function Navbar() {
                     }
                     {/* Botón para ir a favoritos */}
                     {
-                        usuario && (
-                            <>
+                        usuario && paginaActual.pathname !== '/favoritos' && (
                             <li className='enlacesnav'>
                                 <NavLink to='/favoritos' aria-label='Ir a favoritos'>
                                     <img src={fav} alt='Favoritos'/>
                                 </NavLink>
                                 <span className="tooltip-text">Favoritos</span>
                             </li>
+                        )
+                    }
+                    {
+                        usuario && paginaActual.pathname !== '/perfil' && (
                             <li className='enlacesnav'>
                                 <NavLink to='/perfil' aria-label='Ir a perfil'>
                                     <img src={perfil} alt='Perfil'/>
                                 </NavLink>
                                 <span className="tooltip-text">Perfil</span>
                             </li>
-                            </>
                         )
                     }
                     {/* Botón para el modal del Login */}
