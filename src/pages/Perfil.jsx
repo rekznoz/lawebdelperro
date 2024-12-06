@@ -95,7 +95,7 @@ export default function Perfil() {
     return (
         <>
             <div id='area1'>
-                <div className="profile-header">
+                <div className="cabecera-perfil">
                     {
                         userInfo.avatar ? (
                             <img src={userInfo.avatar} alt="Avatar"/>
@@ -103,7 +103,7 @@ export default function Perfil() {
                     }
                     <h1>{userInfo.name}</h1>
                     <p>{usuario.email}</p>
-                    <button onClick={modoEdicion} className="edit-btn">
+                    <button onClick={modoEdicion} className="boton-editar">
                         {isEditing ? 'Cancelar' : 'Editar'}
                     </button>
                 </div>
@@ -112,7 +112,7 @@ export default function Perfil() {
                 {isEditing ? (
                     <Formik initialValues={forumarioDefecto} validationSchema={validationSchema} onSubmit={handleSave}>
                         {({values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting}) => (
-                            <div className="edit-form">
+                            <div className="editar-formulario">
                                 <h2>Editar Perfil</h2>
                                 <div className="form-group">
                                     <label htmlFor="avatar">Avatar</label>
@@ -254,7 +254,7 @@ export default function Perfil() {
                                     {errors.instagram && touched.instagram &&
                                         <div className="FormError">{errors.instagram}</div>}
                                 </div>
-                                <div className="form-group">
+                                <div className="cont-grupo-formulario">
                                     <label htmlFor="bio">Biografía</label>
                                     <textarea
                                         id="bio"
@@ -265,10 +265,12 @@ export default function Perfil() {
                                     />
                                     {errors.bio && touched.bio && <div className="FormError">{errors.bio}</div>}
                                 </div>
-                                <button onClick={handleSubmit} type="submit" disabled={isSubmitting}
-                                        className="save-btn">
-                                    Guardar
-                                </button>
+                                <div className="form-boton">
+                                    <button onClick={handleSubmit} type="submit" disabled={isSubmitting}
+                                            className="boton-guardar">
+                                        Guardar
+                                    </button>
+                                </div>
                             </div>
                         )}
                     </Formik>
