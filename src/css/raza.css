@@ -25,7 +25,7 @@
 .carta-texto-raza p {
     font-size: 1em;
     line-height: 1.6;
-    padding: 1%;
+    padding: 3%;
     margin-bottom: 15px;
     text-align: justify;
     color: var(--color-texto);
@@ -116,3 +116,34 @@
     font-weight: bold;
     color: var(--color-texto);
 }
+
+@media (max-width: 1200px) {
+    .seccion-raza {
+        width: 90%;
+    }
+}
+
+@media (max-width: 900px) {
+    .seccion-raza {
+        width: 100%;
+    }
+
+    .seccion-raza h3 {
+        font-size: 1.3em;
+    }
+
+    .seccion-raza p {
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 600px) {
+    .seccion-raza h3 {
+        font-size: 1.2em;
+    }
+
+    .seccion-raza p {
+        font-size: 0.8em;
+    }
+}
+
