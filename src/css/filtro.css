@@ -3,39 +3,76 @@
     Botones Filtros
  */
 
-.botonesFiltros {
-    position: fixed;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
+.botones-filtros {
+    position: absolute;
+    right: -20px;
+    transform: translateY(-50%);
+    display: grid;
+    gap: 10px;
+    grid-template-rows: 1fr 1fr;
+    z-index: 1001;
+    top: 10%;
+}
+
+.botones-filtros .texto-lado-boton {
+    display: none;
+    position: absolute;
+    left: 60px;
+    top: 50%;
+    transform: translateY(-50%);
     color: white;
-    border: none;
+    font-size: 14px;
+    background-color: #333;
+    padding: 5px;
     border-radius: 5px;
-    z-index: 999;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    z-index: 1001;
 }
 
-.botonAbrirFiltro {
-    bottom: 65px;
-    left: 20px;
-    background-color: #4CAF50;
+.abrirFiltro:hover .texto-lado-boton,
+.limpiarFiltro:hover .texto-lado-boton {
+    display: block;
 }
 
-.botonAbrirFiltro:hover {
-    background-color: #3e8e41;
+.botones-filtros .abrirFiltro {
+    background-color: #008cba;
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+
 }
 
-.limpiarFiltro {
-    bottom: 20px;
-    left: 20px;
-    background-color: #f44336;
+.botones-filtros .limpiarFiltro {
+    background-color: #b12727;
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+
+}
+
+.abrirFiltro:hover {
+    transform: translateX(25%) scale(1.1);
+    background-color: #005f7f;
 }
 
 .limpiarFiltro:hover {
-    background-color: #da190b;
+    transform: translateX(25%) scale(1.1);
+    background-color: #7f1d1d;
 }
 
 /* Filtro */
 
+/* Contenedor de Filtros */
 .contenedorFiltro {
     height: 100%;
     width: 0;
@@ -44,9 +81,12 @@
     top: 0;
     left: 0;
     background-color: #111;
-    overflow-x: hidden;
-    transition: 0.5s;
+    transition: width 0.5s ease;
     padding-top: 60px;
+}
+
+.contenedorFiltro.open {
+    width: 300px; /* Ajusta el ancho del contenedor */
 }
 
 .contenedorFiltro h2 {
@@ -64,26 +104,13 @@
 .contenedorFiltro .cuadroFiltro {
     padding: 20px;
     color: white;
-}
-
-.contenedorFiltro .botonCerrarFiltro {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    color: #a34343;
-    cursor: pointer;
-}
-
-.contenedorFiltro .botonCerrarFiltro:hover, .botonCerrarFiltro:focus {
-    color: #ff0000;
-    text-decoration: none;
-    cursor: pointer;
+    overflow-x: hidden;
 }
 
 .contenedorFiltro .filtros {
     display: flex;
     flex-direction: column;
+    overflow-x: hidden;
 }
 
 .contenedorFiltro .entradaFiltro {

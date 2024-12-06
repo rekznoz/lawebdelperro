@@ -1,13 +1,14 @@
-
 import '../css/filtro.css'
+import {useState} from "react";
 
-function renderFiltroTexto (valor, texto, unidad = '') {
+function renderFiltroTexto(valor, texto, unidad = '') {
     return valor === 0 ? `${texto} = Indefinido` : `${texto} = ${valor}${unidad}`
 }
 
-export default function Filtro( atributos ) {
+export default function Filtro(atributos) {
 
-    const { grupos, filtro, setFiltro, filtroDefault } = atributos
+    const {grupos, filtro, setFiltro, filtroDefault} = atributos
+    const [isOpen, setIsOpen] = useState(true);
 
     const mostrarFiltro = () => {
         const filtro = document.getElementById('contenedorOcultoFiltro')
@@ -64,16 +65,34 @@ export default function Filtro( atributos ) {
 
     return (
         <>
-            <button className="botonesFiltros botonAbrirFiltro" onClick={mostrarFiltro}>Abrir Filtros</button>
-            {
-                filtro.nombre !== '' || filtro.grupo !== '' || filtro.popularidad !== 0 || filtro.altura !== 0 || filtro.peso !== 0 || filtro.vida !== 0
-                    ? <button className="botonesFiltros limpiarFiltro" onClick={limpiarFiltro}>Limpiar Filtros</button>
-                    : null
-            }
+            {/* Contenedor de Filtros */}
+            <div className={`contenedorFiltro ${isOpen ? "open" : ""}`}>
+                {/* Botón flotante */}
+                <div className="botones-filtros">
+                    <button
+                        className="abrirFiltro"
+                        onClick={() => setIsOpen(!isOpen)}
+                    >
+                        {isOpen ? "<" : ">"}
+                        <span className="texto-lado-boton">Abrir Panel</span>
+                    </button>
+                    { /* Texto al lado del boton */}
 
-            <div id="contenedorOcultoFiltro" className="contenedorFiltro">
+                    {/* Botón para limpiar filtros si se estan usando */}
+
+                    {
+                        filtro.nombre !== '' || filtro.grupo !== '' || filtro.popularidad !== 0 || filtro.altura !== 0 || filtro.peso !== 0 || filtro.vida !== 0
+                            ? <button
+                                className="limpiarFiltro"
+                                onClick={limpiarFiltro}
+                            >
+                                X
+                                <span className="texto-lado-boton">Limpiar Filtros</span>
+                            </button> : null
+                    }
+
+                </div>
                 <div className="cuadroFiltro">
-                    <span className="botonCerrarFiltro" onClick={cerrarFiltro}>&times;</span>
                     <h2>Filtros de Búsqueda</h2>
                     <div className="filtros">
                         <p>Nombre:</p>
