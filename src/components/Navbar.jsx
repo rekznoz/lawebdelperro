@@ -2,13 +2,14 @@ import {NavLink, useLocation} from "react-router-dom"
 // Importar imágenes
 import inicio from '../assets/navbar/inicio.png'
 import razas from '../assets/navbar/razas.png'
-import nosotros from '../assets/navbar/nosotros.png'
+import personalidad from '../assets/navbar/personalidad.png'
 import contacto from '../assets/navbar/contacto.png'
 import login from '../assets/navbar/login.png'
 import logout from '../assets/navbar/logout.png'
 import claro from '../assets/navbar/claro.png'
 import oscuro from '../assets/navbar/oscuro.png'
 import fav from '../assets/fav.png'
+import perfil from '../assets/navbar/perfil.png'
 
 import {useContext, useState} from "react"
 import {UsuarioC} from "../context/UsuarioC.jsx"
@@ -19,7 +20,7 @@ import {firebaseLogout} from "../config/FirebaseAuth.jsx";
 const navItems = [
     { to: "/", img: inicio, alt: "Inicio", label: "Ir a la página de inicio" },
     { to: "/razas", img: razas, alt: "Razas", label: "Explorar razas de perros" },
-    { to: "/test", img: nosotros, alt: "Test", label: "Conocer más sobre nosotros" },
+    { to: "/test", img: personalidad, alt: "Test", label: "Conocer más sobre nosotros" },
     { to: "/contacto", img: contacto, alt: "Contacto", label: "Ir a la página de contacto" },
     //{ to: "/login", img: login, alt: "Icono para login", label: "Iniciar sesión o registrarse" },
 ]
@@ -96,12 +97,20 @@ export default function Navbar() {
                     {/* Botón para ir a favoritos */}
                     {
                         usuario && (
+                            <>
                             <li className='enlacesnav'>
                                 <NavLink to='/favoritos' aria-label='Ir a favoritos'>
                                     <img src={fav} alt='Favoritos'/>
                                 </NavLink>
                                 <span className="tooltip-text">Favoritos</span>
                             </li>
+                            <li className='enlacesnav'>
+                                <NavLink to='/perfil' aria-label='Ir a perfil'>
+                                    <img src={perfil} alt='Perfil'/>
+                                </NavLink>
+                                <span className="tooltip-text">Perfil</span>
+                            </li>
+                            </>
                         )
                     }
                     {/* Botón para el modal del Login */}
