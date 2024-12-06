@@ -11,11 +11,15 @@
     background-color: var(--fondo-formulario);
 }
 
-.carta-texto-raza h2 {
+.carta-texto-raza h2, .carta-texto-raza h3 {
     font-size: 1.8em;
     margin-bottom: 10px;
     text-align: center;
     color: var(--color-texto);
+    background-color: var(--fondo-principal);
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .carta-texto-raza p {
@@ -25,6 +29,9 @@
     margin-bottom: 15px;
     text-align: justify;
     color: var(--color-texto);
+    background-color: var(--fondo-principal);
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 @media (max-width: 1200px) {
