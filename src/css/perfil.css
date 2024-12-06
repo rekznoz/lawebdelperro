@@ -1,5 +1,5 @@
 
-.profile-header {
+.cabecera-perfil {
     text-align: center;
     margin-bottom: 20px;
     background-color: var(--fondo-formulario);
@@ -8,7 +8,7 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.profile-header .avatar {
+.cabecera-perfil .avatar {
     border-radius: 50%;
     width: 120px;
     height: 120px;
@@ -18,18 +18,18 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.profile-header h1 {
+.cabecera-perfil h1 {
     font-size: 2rem;
     margin-bottom: 5px;
     color: var(--color-letras-test);
 }
 
-.profile-header p {
+.cabecera-perfil p {
     font-size: 1.2rem;
     color: var(--color-letras-test);
 }
 
-.profile-header .edit-btn {
+.cabecera-perfil .boton-editar {
     background-color: #f36f6f;
     color: var(--color-texto);
     border: none;
@@ -41,7 +41,7 @@
     transition: background-color 0.3s ease;
 }
 
-.profile-header .edit-btn:hover {
+.cabecera-perfil .boton-editar:hover {
     background-color: #e15f5f;
 }
 
@@ -53,7 +53,7 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.perfil-informacion h2, .edit-form h2 {
+.perfil-informacion h2, .editar-formulario h2 {
     font-size: 1.5rem;
     margin-bottom: 20px;
     color: var(--color-letras-test);
@@ -73,7 +73,7 @@
     color: var(--color-letras-test);
 }
 
-.form-group textarea, input[type="text"], input[type="email"], input[type="date"] {
+.cont-grupo-formulario textarea, input[type="text"], input[type="email"], input[type="date"] {
     box-sizing: border-box;
     width: 100%;
     padding: 10px;
@@ -85,12 +85,17 @@
     color: var(--color-letras-test);
 }
 
-.form-group textarea {
+.cont-grupo-formulario textarea {
     height: 100px;
 }
 
-.save-btn {
-    background-color: #4caf50;
+.form-boton {
+    display: flex;
+    justify-content: center;
+}
+
+.boton-guardar {
+    background-color: #0b488c;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -102,31 +107,32 @@
     text-align: center;
 }
 
-.save-btn:hover {
-    background-color: #45a049;
+.boton-guardar:hover {
+    background-color: #007bff;
 }
 
-.edit-form {
+.editar-formulario {
     width: 25%;
     margin-top: 20px;
     background-color: var(--fondo-formulario);
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    align-content: center;
 }
 
-.edit-form label {
+.editar-formulario label {
     display: block;
     font-size: 1rem;
     margin-bottom: 5px;
     color: var(--color-letras-test);
 }
 
-.edit-form input, .edit-form textarea {
+.editar-formulario input, .editar-formulario textarea {
     font-size: 1rem;
 }
 
-.edit-form .FormError {
+.editar-formulario .FormError {
     color: #ff0018;
     font-size: 1em;
     font-weight: bold;
@@ -136,3 +142,16 @@
     margin-bottom: 10px;
     text-align: center;
 }
+
+@media screen and (max-width: 768px) {
+    .editar-formulario {
+        width: 100%;
+    }
+    .perfil-informacion {
+        width: 100%;
+    }
+    .cabecera-perfil {
+        width: 100%;
+    }
+}
+
