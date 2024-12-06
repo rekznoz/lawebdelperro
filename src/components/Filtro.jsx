@@ -8,18 +8,8 @@ function renderFiltroTexto(valor, texto, unidad = '') {
 export default function Filtro(atributos) {
 
     const {grupos, filtro, setFiltro, filtroDefault} = atributos
-    const [isOpen, setIsOpen] = useState(true);
-
-    const mostrarFiltro = () => {
-        const filtro = document.getElementById('contenedorOcultoFiltro')
-        filtro.classList.add('open')
-    }
-
-    const cerrarFiltro = () => {
-        const filtro = document.getElementById('contenedorOcultoFiltro')
-        filtro.classList.remove('open')
-    }
-
+    const [isOpen, setIsOpen] = useState(false);
+    
     const limpiarFiltro = () => {
         setFiltro(filtroDefault)
     }
