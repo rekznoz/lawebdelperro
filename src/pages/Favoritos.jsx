@@ -1,5 +1,5 @@
 import {useContext, useEffect, useState} from "react";
- import {useRazaContext} from "../context/RazasC.jsx";
+import {useRazaContext} from "../context/RazasC.jsx";
 import Bloque from "../components/Bloque.jsx";
 import {Loading} from "../components/Loading.jsx";
 import Filtro from "../components/Filtro.jsx";
@@ -8,6 +8,7 @@ import {filtroRazas} from "./ListaRazas.jsx";
 import {UsuarioC} from "../context/UsuarioC.jsx";
 import {obtenerFavoritos} from "../config/FirebaseDB.jsx";
 import '../css/favoritos.css'
+
 const filtroDefault = {
     nombre: '',
     grupo: '',
@@ -90,8 +91,11 @@ export default function Favoritos() {
 
     return (
         <>
-            <Filtro grupos={grupos} filtro={filtro} setFiltro={setFiltro} filtroDefault={filtroDefault}/>
-
+            {
+                totalPaginas > 1 && (
+                    <Filtro grupos={grupos} filtro={filtro} setFiltro={setFiltro} filtroDefault={filtroDefault}/>
+                )
+            }
             <div id='area1'>
                 <h1>Lista de Favoritos</h1>
             </div>
@@ -99,8 +103,12 @@ export default function Favoritos() {
                 <Bloque mapaElementos={razasActuales}/>
             </div>
             <div id='area3'>
-                <Paginacion pagina={pagina} totalPaginas={totalPaginas} paginacion={paginacion}
-                            pageNumbers={pageNumbers} handlePageInput={handlePageInput}/>
+                {
+                    totalPaginas > 1 && (
+                        <Paginacion pagina={pagina} totalPaginas={totalPaginas} paginacion={paginacion}
+                                    pageNumbers={pageNumbers} handlePageInput={handlePageInput}/>
+                    )
+                }
             </div>
         </>
     )

@@ -9,7 +9,7 @@ export default function Filtro(atributos) {
 
     const {grupos, filtro, setFiltro, filtroDefault} = atributos
     const [isOpen, setIsOpen] = useState(false);
-    
+
     const limpiarFiltro = () => {
         setFiltro(filtroDefault)
     }

@@ -1,4 +1,3 @@
-
 /*
     Botones Filtros
  */
@@ -124,14 +123,37 @@
 }
 
 @media screen and (max-height: 450px) {
-    .contenedorFiltro {padding-top: 15px;}
-    .contenedorFiltro h2 {font-size: 18px;}
-    .contenedorFiltro .entradaFiltro {font-size: 14px;}
+    .contenedorFiltro {
+        padding-top: 15px;
+    }
+
+    .contenedorFiltro h2 {
+        font-size: 18px;
+    }
+
+    .contenedorFiltro .entradaFiltro {
+        font-size: 14px;
+    }
 }
 
 @media screen and (max-width: 768px) {
+
     .contenedorFiltro.open {
         width: 100%;
+    }
+
+    .contenedorFiltro.open .texto-lado-boton {
+        left: -100px;
+    }
+
+    .contenedorFiltro.open .abrirFiltro:hover {
+        transform: translateX(-25%) scale(1.1);
+        background-color: #005f7f;
+    }
+
+    .contenedorFiltro.open .limpiarFiltro:hover {
+        transform: translateX(-25%) scale(1.1);
+        background-color: #7f1d1d;
     }
 
     .botonAbrirFiltro {
