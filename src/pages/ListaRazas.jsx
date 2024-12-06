@@ -5,6 +5,8 @@ import Bloque from "../components/Bloque.jsx";
 import {useRazaContext} from "../context/RazasC.jsx";
 import {Loading} from "../components/Loading.jsx";
 
+import '../css/listaRazas.css'
+
 const filtroDefault = {
     nombre: '',
     grupo: '',
