@@ -131,7 +131,11 @@ export default function Personalidad() {
     return (
         <>
             <div id="area1">
-                <h1 className="test-titulo">Test de Personalidad - ¿Qué Raza de Perro Eres?</h1>
+                <h1 className="test-titulo">
+                    Test de Personalidad
+                    <h1 className="test-titulo">¿Qué Raza de Perro Eres?</h1>
+                </h1>
+
             </div>
             <div id="area2">
                 <div className="contenedor-test">
