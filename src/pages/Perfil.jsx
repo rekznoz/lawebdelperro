@@ -309,34 +309,56 @@ export default function Perfil() {
                     <div className="perfil-informacion">
                         <h2>Información de Perfil</h2>
                         <p>
-                            <span>Nombre:</span> {userInfo.name}
+                            <span>Nombre:</span> {
+                                userInfo.name ? userInfo.name : ''
+                        }
                         </p>
                         <p>
-                            <span>Email:</span> {userInfo.email}
+                            <span>Email:</span> {
+                                userInfo.email ? userInfo.email : ''
+                        }
                         </p>
                         <p>
-                            <span>Teléfono:</span> {userInfo.telefono}
+                            <span>Teléfono:</span> {
+                                userInfo.telefono ? userInfo.telefono : ''
+                        }
                         </p>
                         <p>
-                            <span>Fecha de Nacimiento:</span> {userInfo.fechaNacimiento}
+                            <span>Fecha de Nacimiento:</span> {
+                                userInfo.fechaNacimiento ? userInfo.fechaNacimiento : ''
+                        }
                         </p>
                         <p>
-                            <span>Dirección:</span> {userInfo.calle}, {userInfo.ciudad}, {userInfo.codigoPostal}
+                            <span>Dirección:</span> {
+                                userInfo.calle ? userInfo.calle : ''
+                        }, {
+                                userInfo.ciudad ? userInfo.ciudad : ''
+                        }, {
+                                userInfo.codigoPostal ? userInfo.codigoPostal : ''
+                        }
                         </p>
                         <p>
                             <span>Redes Sociales:</span>
                         </p>
                         <p>
-                            <span>Facebook:</span> {userInfo.facebook}
+                            <span>Facebook:</span> {
+                                userInfo.facebook ? userInfo.facebook : ''
+                        }
                         </p>
                         <p>
-                            <span>Twitter:</span> {userInfo.twitter}
+                            <span>Twitter:</span> {
+                                userInfo.twitter ? userInfo.twitter : ''
+                        }
                         </p>
                         <p>
-                            <span>Instagram:</span> {userInfo.instagram}
+                            <span>Instagram:</span> {
+                                userInfo.instagram ? userInfo.instagram : ''
+                        }
                         </p>
                         <p>
-                            <span>Biografía:</span> {userInfo.bio}
+                            <span>Biografía:</span> {
+                                userInfo.bio ? userInfo.bio : ''
+                        }
                         </p>
                     </div>
                 )}
