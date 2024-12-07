@@ -48,6 +48,11 @@ export function ActualizarUsuario(nombreDB, data, id) {
     return setDocumentFireStore(nombreDB, data, id)
 }
 
+/*
+ * Obtiene los documentos de una colección
+ * @param {string} collectionName - Nombre de la coleccion
+ * @returns {Array} - Lista de documentos
+ */
 export const sincronizarFavoritos = async (uid, favoritos) => {
     if (!uid) return // Solo sincroniza si el usuario está autenticado
     const userDocRef = doc(db, "favoritos", uid)
@@ -59,6 +64,11 @@ export const sincronizarFavoritos = async (uid, favoritos) => {
     }
 }
 
+/*
+ * Obtiene los favoritos de un usuario
+ * @param {string} uid - ID del usuario
+ * @returns {Array} - Lista de favoritos
+ */
 export const obtenerFavoritos = async (uid) => {
     if (!uid) return []
     const userDocRef = doc(db, "favoritos", uid)
@@ -72,6 +82,11 @@ export const obtenerFavoritos = async (uid) => {
     }
 }
 
+/*
+ * Sincroniza el perfil de un usuario
+ * @param {string} uid - ID del usuario
+ * @param {Object} perfil - Datos del usuario
+ */
 export const sincronizarUsuario = async (uid, perfil) => {
     if (!uid) return
     const userDocRef = doc(db, "usuarios", uid)
@@ -83,6 +98,11 @@ export const sincronizarUsuario = async (uid, perfil) => {
     }
 }
 
+/*
+ * Obtiene los datos de un usuario
+ * @param {string} uid - ID del usuario
+ * @returns {Object} - Datos del usuario
+ */
 export const obtenerUsuario = async (uid) => {
     if (!uid) return {}
     const userDocRef = doc(db, "usuarios", uid)
@@ -95,6 +115,47 @@ export const obtenerUsuario = async (uid) => {
     }
 }
 
+/*
+ * Obtiene los IDs de los usuarios
+ * @returns {Array} - Lista de IDs de usuarios
+ */
+export const obtenerIDsUsuarios = async () => {
+    const usuariosCollection = collection(db, "usuarios")
+    try {
+        const usuariosDocs = await getDocs(usuariosCollection)
+        return usuariosDocs.docs.map(doc => doc.id)
+    } catch (error) {
+        console.error("Error al obtener usuarios:", error)
+        return []
+    }
+}
+
+/*
+ * Obtiene los favoritos de un usuario
+ * @param {Object} params - Parametros de la petición
+ * @param {string} params.id - ID del usuario
+ * @returns {Array} - Lista de favoritos
+ */
+export const obtenerFavoritosPublico = async ({params}) => {
+    if (!params.id) {
+        throw new Response('El usuario no existe', {status: 404}, {message: 'Not Found'})
+    }
+    const userDocRef = doc(db, "favoritos", params.id)
+    try {
+        const userDoc = await getDoc(userDocRef)
+        return userDoc.exists() ? userDoc.data().favoritos : []
+    } catch (error) {
+        console.error("Error al obtener favoritos:", error)
+        return []
+    }
+}
+
+/*
+ * Obtiene los datos de un usuario
+ * @param {Object} params - Parametros de la petición
+ * @param {string} params.id - ID del usuario
+ * @returns {Object} - Datos del usuario
+ */
 export const obtenerUsuarioPublico = async ({params}) => {
     if (!params.id) {
         throw new Response('El usuario no existe', {status: 404}, {message: 'Not Found'})
