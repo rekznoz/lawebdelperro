@@ -23,24 +23,40 @@ let forumarioDefecto = {
 }
 
 const validationSchema = object({
-    avatar: string(),
+    avatar: string()
+        .url('La URL no es válida')
+        .max(255, 'La URL debe tener como máximo 255 caracteres'),
     name: string()
+        .trim()
+        .matches(/^[a-zA-Z\s]*$/, 'El nombre solo puede contener letras')
         .required('El campo nombre es obligatorio')
         .min(3, 'El nombre debe tener al menos 3 caracteres')
         .max(50, 'El nombre debe tener como máximo 50 caracteres'),
     telefono: string()
+        .trim()
+        .matches(/^[0-9]*$/, 'El teléfono solo puede contener números')
         .required('El campo teléfono es obligatorio')
         .min(8, 'El teléfono debe tener al menos 8 caracteres')
         .max(15, 'El teléfono debe tener como máximo 15 caracteres'),
     fechaNacimiento: string(),
     calle: string(),
     ciudad: string()
+        .trim()
+        .matches(/^[a-zA-Z\s]*$/, 'La ciudad solo puede contener letras')
         .required('El campo ciudad es obligatorio'),
     codigoPostal: string()
+        .trim()
+        .matches(/^[0-9]*$/, 'El código postal solo puede contener números')
         .required('El campo código postal es obligatorio'),
-    facebook: string(),
-    twitter: string(),
-    instagram: string(),
+    facebook: string()
+        .url('La URL no es válida')
+        .max(255, 'La URL debe tener como máximo 255 caracteres'),
+    twitter: string()
+        .url('La URL no es válida')
+        .max(255, 'La URL debe tener como máximo 255 caracteres'),
+    instagram: string()
+        .url('La URL no es válida')
+        .max(255, 'La URL debe tener como máximo 255 caracteres'),
     bio: string()
         .max(100, 'La biografía debe tener como máximo 100 caracteres')
 })
