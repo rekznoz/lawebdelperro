@@ -35,11 +35,6 @@ export default function PerfilPublico() {
                     }
                     </p>
                     <p>
-                        <span>Email:</span> {
-                        usuario.email ? usuario.email : ''
-                    }
-                    </p>
-                    <p>
                         <span>Teléfono:</span> {
                         datosUsuario.telefono ? datosUsuario.telefono : ''
                     }
