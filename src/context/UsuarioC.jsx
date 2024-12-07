@@ -14,7 +14,7 @@ export default function UsuarioProvider({children}) {
         const unsubscribe = auth.onAuthStateChanged(async (user) => {
             if (user) {
                 setUsuario(user)
-                obtenerUsuario(user).then(data => {
+                obtenerUsuario(user.uid).then(data => {
                     setDatosUsuario(data)
                 })
             } else {

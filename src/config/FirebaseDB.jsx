@@ -48,9 +48,9 @@ export function ActualizarUsuario(nombreDB, data, id) {
     return setDocumentFireStore(nombreDB, data, id)
 }
 
-export const sincronizarFavoritos = async (usuario, favoritos) => {
-    if (!usuario) return // Solo sincroniza si el usuario está autenticado
-    const userDocRef = doc(db, "favoritos", usuario.uid)
+export const sincronizarFavoritos = async (uid, favoritos) => {
+    if (!uid) return // Solo sincroniza si el usuario está autenticado
+    const userDocRef = doc(db, "favoritos", uid)
     try {
         await setDoc(userDocRef, { favoritos }, { merge: true })
         console.log("Favoritos sincronizados con Firestore")
@@ -59,9 +59,9 @@ export const sincronizarFavoritos = async (usuario, favoritos) => {
     }
 }
 
-export const obtenerFavoritos = async (usuario) => {
-    if (!usuario) return []
-    const userDocRef = doc(db, "favoritos", usuario.uid)
+export const obtenerFavoritos = async (uid) => {
+    if (!uid) return []
+    const userDocRef = doc(db, "favoritos", uid)
 
     try {
         const userDoc = await getDoc(userDocRef)
@@ -72,9 +72,9 @@ export const obtenerFavoritos = async (usuario) => {
     }
 }
 
-export const sincronizarUsuario = async (usuario, perfil) => {
-    if (!usuario) return
-    const userDocRef = doc(db, "usuarios", usuario.uid)
+export const sincronizarUsuario = async (uid, perfil) => {
+    if (!uid) return
+    const userDocRef = doc(db, "usuarios", uid)
     try {
         await setDoc(userDocRef, perfil, { merge: true })
         console.log("Perfil sincronizado con Firestore")
@@ -83,14 +83,33 @@ export const sincronizarUsuario = async (usuario, perfil) => {
     }
 }
 
-export const obtenerUsuario = async (usuario) => {
-    if (!usuario) return {}
-    const userDocRef = doc(db, "usuarios", usuario.uid)
+export const obtenerUsuario = async (uid) => {
+    if (!uid) return {}
+    const userDocRef = doc(db, "usuarios", uid)
     try {
         const userDoc = await getDoc(userDocRef)
         return userDoc.exists() ? userDoc.data() : {}
     } catch (error) {
         console.error("Error al obtener perfil:", error)
         return {}
+    }
+}
+
+export const obtenerUsuarioPublico = async ({params}) => {
+    if (!params.id) {
+        throw new Response('El usuario no existe', {status: 404}, {message: 'Not Found'})
+    }
+    const userDocRef = doc(db, "usuarios", params.id)
+    try {
+        const userDoc = await getDoc(userDocRef)
+        if (userDoc.exists()) {
+            console.log("Usuario encontrado:", userDoc.data())
+            return userDoc.data()
+        } else {
+            throw new Response('El usuario no existe', {status: 404}, {message: 'Not Found'})
+        }
+    } catch (error) {
+        console.error("Error al obtener perfil:", error)
+        throw new Response('El usuario no existe', {status: 404}, {message: 'Not Found'})
     }
 }

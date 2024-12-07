@@ -34,7 +34,7 @@ export default function Favoritos() {
 
     useEffect(() => {
         if (usuario) {
-            obtenerFavoritos(usuario).then(favs => setFavoritos(favs));
+            obtenerFavoritos(usuario.uid).then(favs => setFavoritos(favs));
         }
     })
 

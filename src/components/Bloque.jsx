@@ -14,7 +14,7 @@ export default function Bloque(atributos) {
 
     useEffect(() => {
         if (usuario) {
-            obtenerFavoritos(usuario).then(favs => setFavoritos(favs))
+            obtenerFavoritos(usuario.uid).then(favs => setFavoritos(favs))
         }
     }, [usuario])
 
@@ -27,7 +27,7 @@ export default function Bloque(atributos) {
         setFavoritos(nuevosFavoritos)
 
         if (usuario) {
-            sincronizarFavoritos(usuario, nuevosFavoritos) // Sincroniza con Firestore
+            sincronizarFavoritos(usuario.uid, nuevosFavoritos) // Sincroniza con Firestore
         }
     }
 

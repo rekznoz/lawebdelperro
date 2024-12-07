@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 import {sincronizarUsuario} from "../config/FirebaseDB.jsx";
 import {UsuarioC} from "../context/UsuarioC.jsx";
 import {Loading} from "../components/Loading.jsx";
+import {Link} from "react-router-dom";
 
 let forumarioDefecto = {
     avatar: '',
@@ -92,7 +93,7 @@ export default function Perfil() {
 
                 setDatosUsuario(values);
 
-                sincronizarUsuario(usuario, values)
+                sincronizarUsuario(usuario.uid, values)
 
                 setIsEditing(false);
 
@@ -118,6 +119,9 @@ export default function Perfil() {
                     }
                     <h1>{datosUsuario.name}</h1>
                     <p>{usuario.email}</p>
+                    <Link to={`/perfil/${usuario.uid}`} className="boton-ver-perfil">
+                        Ver Perfil Público
+                    </Link>
                     <button onClick={modoEdicion} className="boton-editar">
                         {isEditing ? 'Cancelar' : 'Editar'}
                     </button>

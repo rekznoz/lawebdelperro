@@ -1,5 +1,5 @@
 import {createBrowserRouter} from "react-router-dom"
-import {Suspense} from "react"
+import {lazy, Suspense} from "react"
 
 import {Principal} from "./principal.jsx"
 import {Inicio} from "./inicio.jsx"
@@ -11,12 +11,16 @@ import {Favoritos} from "./favoritos.jsx"
 import {Error} from "./error.jsx";
 import {Perfil} from "./perfil.jsx";
 
+export const PerfilPublico = lazy(() => import("../pages/PerfilPublico.jsx"))
+
 import PrivadoFavoritos from "../layouts/PrivadoFavoritos.jsx"
 
 // import {getRazas} from "../hooks/GetRazas.jsx";
 import {GetDataRaza} from "../hooks/GetDataRaza.jsx";
 
 import {Loading} from "../components/Loading.jsx";
+import {obtenerUsuario, obtenerUsuarioPublico} from "../config/FirebaseDB.jsx";
+
 
 /*
     Configuración de las rutas de la aplicación
@@ -119,6 +123,15 @@ export const router = createBrowserRouter([
                         ),
                     }
                 ]
+            },
+            {
+                path: '/perfil/:id',
+                element: (
+                    <Suspense fallback={<Loading/>}>
+                        <PerfilPublico/>
+                    </Suspense>
+                ),
+                loader: obtenerUsuarioPublico,
             },
         ],
     },
