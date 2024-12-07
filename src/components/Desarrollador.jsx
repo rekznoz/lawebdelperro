@@ -39,7 +39,7 @@ export default function Desarrollador({nombre, imagen, descripcion, color, perfi
             <img src={imagen} alt="Avatar"/>
             <h1>{nombre}</h1>
             <p>{descripcion}</p>
-            <p><Link to={`/perfil/${perfil}`}>Ver perfil</Link></p>
+            <button className="boton-perfil-desarrolladores"><Link to={`/perfil/${perfil}`}>Ver perfil</Link></button>
         </div>
     )
 }

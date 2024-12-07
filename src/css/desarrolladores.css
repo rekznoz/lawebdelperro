@@ -89,6 +89,23 @@
     text-align: center;
 }
 
+.boton-perfil-desarrolladores {
+    background-color: rgb(0, 0, 0, 0);
+    border: 2px solid white;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-bottom: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.boton-perfil-desarrolladores:hover {
+    background-color: white;
+    color: black;
+}
+
 .contenedor-desarolladores .carta:hover {
     transform: scale(1.1, 1.1);
 }
