@@ -4,13 +4,17 @@
 
 .botones-filtros {
     position: absolute;
-    right: -20px;
+    right: -30px;
     transform: translateY(-50%);
     display: grid;
     gap: 10px;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 1fr;
     z-index: 1001;
-    top: 10%;
+    top: 20%;
+}
+
+.contenedorFiltro.open .botones-filtros {
+    right: -15px;
 }
 
 .botones-filtros .texto-lado-boton {
