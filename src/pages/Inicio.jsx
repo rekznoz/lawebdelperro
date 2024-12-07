@@ -57,7 +57,7 @@ const listaDesarrolladores = [
     {
         nombre: 'Gustavo',
         imagen: gustavo,
-        descripcion: 'Dio apoyo moral y entretenimiento al equipo',
+        descripcion: 'Jugó todo el dia Age of Empires y EA Sports FC, pero aportó en cuestion de diseño',
         color: "rojo",
         perfil: '6dpXodtGvwZSMJ3ADyC8jHEFv8y1'
     },
@@ -71,7 +71,7 @@ const listaDesarrolladores = [
     {
         nombre: 'Sergio',
         imagen: sergio,
-        descripcion: 'Es el lider del equipo y el que mas aporta en cuestion de ideas',
+        descripcion: 'No paró de molestar con sus ruidos y quejas continuas',
         color: "naranja",
         perfil: 'FSPR77VGiWYQxbV2AfH99CzjfC32'
     },
