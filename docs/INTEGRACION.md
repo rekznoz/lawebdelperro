@@ -1,3 +1,9 @@
+
+---
+
+## ℹ️ **Nota Importante**
+Si llegaste aquí, te recomendamos visitar esta sección directamente en el repositorio de **GitHub**, ya que los enlaces de **Codigo** no se muestran correctamente en **GitHub Pages**. 😊
+
 ------
 
 
