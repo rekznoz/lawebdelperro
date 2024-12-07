@@ -50,6 +50,8 @@ https://github.com/user-attachments/assets/699e5071-514b-4362-862a-f8e453fe37f0
 
 ### **📷 Detalles de Raza**
 
+https://github.com/user-attachments/assets/b2865bdb-7b26-4863-89de-ea50ccdd3e36
+
 ## **👥 Personalidad**
 
 ### **📝 Descripción:**
@@ -60,6 +62,8 @@ https://github.com/user-attachments/assets/699e5071-514b-4362-862a-f8e453fe37f0
 - **Resultados**: Se muestran los resultados del test con la raza recomendada y una descripción detallada de las características de la raza.
 
 ### **📷 Test de Personalidad**
+
+https://github.com/user-attachments/assets/a3b0b080-4f09-4190-8113-a6406e11af38
 
 ## **📚 Formulario de Contacto**
 
@@ -73,6 +77,8 @@ https://github.com/user-attachments/assets/699e5071-514b-4362-862a-f8e453fe37f0
 - **Notificación de Envío**: Se muestra una notificación al usuario cuando el mensaje se envía correctamente.
 
 ### **📷 Formulario de Contacto**
+
+https://github.com/user-attachments/assets/7997c59a-0191-4f4b-ad33-3a1a9dd8a0ec
 
 ## **🔒 Autenticación**
 
@@ -92,4 +98,8 @@ https://github.com/user-attachments/assets/699e5071-514b-4362-862a-f8e453fe37f0
     - 
 ### **📷 Autenticación**
 
+https://github.com/user-attachments/assets/e7061f46-77ef-4981-a009-c8bb9c56b9b4
+
 ### **📷 Perfil Publico de Usuario y Favoritos**
+
+https://github.com/user-attachments/assets/db983e23-3fa9-420d-ab19-fcc487e7b633
