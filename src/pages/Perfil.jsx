@@ -9,6 +9,10 @@ import {UsuarioC} from "../context/UsuarioC.jsx";
 import {Loading} from "../components/Loading.jsx";
 import {Link} from "react-router-dom";
 
+import Facebook from '../assets/perfil/facebook.png'
+import Instagram from '../assets/perfil/instagram.png'
+import Twitter from '../assets/perfil/twitter.png'
+
 let forumarioDefecto = {
     avatar: '',
     name: '',
@@ -118,10 +122,10 @@ export default function Perfil() {
                         ) : null
                     }
                     <h1>{datosUsuario.name}</h1>
-                    <p>{usuario.email}</p>
-                    <Link to={`/perfil/${usuario.uid}`} className="boton-ver-perfil">
+                    <h2><Link to={`/perfil/${usuario.uid}`} className="boton-ver-perfil">
                         Ver Perfil Público
-                    </Link>
+                    </Link></h2>
+                    <p>{usuario.email}</p>
                     <button onClick={modoEdicion} className="boton-editar">
                         {isEditing ? 'Cancelar' : 'Editar'}
                     </button>
@@ -329,19 +333,31 @@ export default function Perfil() {
                             <span>Redes Sociales:</span>
                         </p>
                         <p>
-                            <span>Facebook:</span> {
-                            datosUsuario.facebook ? datosUsuario.facebook : ''
-                        }
+                            {
+                                datosUsuario.facebook ? (
+                                    <a href={datosUsuario.facebook} target="_blank" rel="noreferrer">
+                                        <img src={Facebook} alt="Facebook"/>
+                                    </a>
+                                ) : ''
+                            }
                         </p>
                         <p>
-                            <span>Twitter:</span> {
-                            datosUsuario.twitter ? datosUsuario.twitter : ''
-                        }
+                            {
+                                datosUsuario.twitter ? (
+                                    <a href={datosUsuario.twitter} target="_blank" rel="noreferrer">
+                                        <img src={Twitter} alt="Twitter"/>
+                                    </a>
+                                ) : ''
+                            }
                         </p>
                         <p>
-                            <span>Instagram:</span> {
-                            datosUsuario.instagram ? datosUsuario.instagram : ''
-                        }
+                            {
+                                datosUsuario.instagram ? (
+                                    <a href={datosUsuario.instagram} target="_blank" rel="noreferrer">
+                                        <img src={Instagram} alt="Instagram"/>
+                                    </a>
+                                ) : ''
+                            }
                         </p>
                         <p>
                             <span>Biografía:</span> {

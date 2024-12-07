@@ -24,6 +24,13 @@
     color: var(--color-letras-test);
 }
 
+.cabecera-perfil h2 {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+    color: var(--color-letras-test);
+    padding: 10px;
+}
+
 .cabecera-perfil p {
     font-size: 1.2rem;
     color: var(--color-letras-test);

@@ -2,12 +2,13 @@ import {useLoaderData} from "react-router-dom";
 
 import '../css/perfil.css'
 import {Loading} from "../components/Loading.jsx";
+import Facebook from "../assets/perfil/facebook.png";
+import Twitter from "../assets/perfil/twitter.png";
+import Instagram from "../assets/perfil/instagram.png";
 
 export default function PerfilPublico() {
 
     const datosUsuario = useLoaderData()
-
-    console.log(datosUsuario)
 
     if (!datosUsuario) {
         return <Loading/>
@@ -56,19 +57,31 @@ export default function PerfilPublico() {
                         <span>Redes Sociales:</span>
                     </p>
                     <p>
-                        <span>Facebook:</span> {
-                        datosUsuario.facebook ? datosUsuario.facebook : ''
-                    }
+                        {
+                            datosUsuario.facebook ? (
+                                <a href={datosUsuario.facebook} target="_blank" rel="noreferrer">
+                                    <img src={Facebook} alt="Facebook"/>
+                                </a>
+                            ) : ''
+                        }
                     </p>
                     <p>
-                        <span>Twitter:</span> {
-                        datosUsuario.twitter ? datosUsuario.twitter : ''
-                    }
+                        {
+                            datosUsuario.twitter ? (
+                                <a href={datosUsuario.twitter} target="_blank" rel="noreferrer">
+                                    <img src={Twitter} alt="Twitter"/>
+                                </a>
+                            ) : ''
+                        }
                     </p>
                     <p>
-                        <span>Instagram:</span> {
-                        datosUsuario.instagram ? datosUsuario.instagram : ''
-                    }
+                        {
+                            datosUsuario.instagram ? (
+                                <a href={datosUsuario.instagram} target="_blank" rel="noreferrer">
+                                    <img src={Instagram} alt="Instagram"/>
+                                </a>
+                            ) : ''
+                        }
                     </p>
                     <p>
                         <span>Biografía:</span> {
