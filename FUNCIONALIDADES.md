@@ -31,7 +31,11 @@ https://github.com/user-attachments/assets/bcf8f59f-67c7-4726-89c9-1466651ace45
 
 ### **📷 Filtro de Razas**
 
+https://github.com/user-attachments/assets/5c655476-ff1e-4632-aa10-25892dbf811a
+
 ### **📷 Paginaciones**
+
+https://github.com/user-attachments/assets/699e5071-514b-4362-862a-f8e453fe37f0
 
 ## **🐕 Raza**
 
