@@ -9,13 +9,13 @@
 
 ### **📷 Carrusel de Imágenes**
 
-[![Carrusel.mp4](./utiles/Carrusel.mp4)](./utiles/Carrusel.mp4)
+[Carrusel.mp4](utiles/Carrusel.mp4)
 
 ### **Presentacion de características**
 
-[![Caracteristicas.mp4](./utiles/Caracteristicas.mp4)](./utiles/Caracteristicas.mp4)
+[Caracteristicas.mp4](utiles/Caracteristicas.mp4)
 
 ### **Presentacion de Desarrolladores**
 
-[![Desarrolladores.mp4](./utiles/Desarrolladores.mp4)](./utiles/Desarrolladores.mp4)
+[Caracteristicas.mp4](utiles/Caracteristicas.mp4)
 
