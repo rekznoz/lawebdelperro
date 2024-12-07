@@ -35,6 +35,11 @@ export default function PerfilPublico() {
                     }
                     </p>
                     <p>
+                        <span>Email:</span> {
+                        usuario.email ? usuario.email : ''
+                    }
+                    </p>
+                    <p>
                         <span>Teléfono:</span> {
                         datosUsuario.telefono ? datosUsuario.telefono : ''
                     }
@@ -54,40 +59,44 @@ export default function PerfilPublico() {
                     }
                     </p>
                     <p>
-                        <span>Redes Sociales:</span>
-                    </p>
-                    <p>
-                        {
-                            datosUsuario.facebook ? (
-                                <a href={datosUsuario.facebook} target="_blank" rel="noreferrer">
-                                    <img src={Facebook} alt="Facebook"/>
-                                </a>
-                            ) : ''
-                        }
-                    </p>
-                    <p>
-                        {
-                            datosUsuario.twitter ? (
-                                <a href={datosUsuario.twitter} target="_blank" rel="noreferrer">
-                                    <img src={Twitter} alt="Twitter"/>
-                                </a>
-                            ) : ''
-                        }
-                    </p>
-                    <p>
-                        {
-                            datosUsuario.instagram ? (
-                                <a href={datosUsuario.instagram} target="_blank" rel="noreferrer">
-                                    <img src={Instagram} alt="Instagram"/>
-                                </a>
-                            ) : ''
-                        }
-                    </p>
-                    <p>
                         <span>Biografía:</span> {
                         datosUsuario.bio ? datosUsuario.bio : ''
                     }
                     </p>
+                    <h2>Redes Sociales</h2>
+                    <div className="redesSociales">
+
+                        {
+                            datosUsuario.facebook ? (
+                                <p>
+                                    <a href={datosUsuario.facebook} target="_blank" rel="noreferrer">
+                                        <img src={Facebook} alt="Facebook"/>
+                                    </a>
+                                </p>
+                            ) : ''
+                        }
+
+                        {
+                            datosUsuario.twitter ? (
+                                <p>
+                                    <a href={datosUsuario.twitter} target="_blank" rel="noreferrer">
+                                        <img src={Twitter} alt="Twitter"/>
+                                    </a>
+                                </p>
+                            ) : ''
+                        }
+
+                        {
+                            datosUsuario.instagram ? (
+                                <p>
+                                    <a href={datosUsuario.instagram} target="_blank" rel="noreferrer">
+                                        <img src={Instagram} alt="Instagram"/>
+                                    </a>
+                                </p>
+                            ) : ''
+                        }
+
+                    </div>
                 </div>
             </div>
             <div id='area3'>

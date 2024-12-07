@@ -103,7 +103,6 @@ export const obtenerUsuarioPublico = async ({params}) => {
     try {
         const userDoc = await getDoc(userDocRef)
         if (userDoc.exists()) {
-            console.log("Usuario encontrado:", userDoc.data())
             return userDoc.data()
         } else {
             throw new Response('El usuario no existe', {status: 404}, {message: 'Not Found'})
