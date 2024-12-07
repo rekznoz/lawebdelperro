@@ -49,7 +49,6 @@ export default function Perfil() {
 
     const {usuario, datosUsuario, setUsuario, cargando} = useContext(UsuarioC);
     const [isEditing, setIsEditing] = useState(false);
-    const [userInfo, setUserInfo] = useState(datosUsuario);
 
     if (cargando) {
         return <Loading/>
@@ -79,7 +78,7 @@ export default function Perfil() {
 
                 setIsEditing(false);
 
-                setUserInfo(values);
+                setUsuario(values);
 
                 Swal.fire({
                     title: "Cambios guardados",
@@ -97,11 +96,11 @@ export default function Perfil() {
             <div id='area1'>
                 <div className="cabecera-perfil">
                     {
-                        userInfo.avatar ? (
-                            <img src={userInfo.avatar} className="avatar" alt="Avatar"/>
+                        datosUsuario.avatar ? (
+                            <img src={datosUsuario.avatar} className="avatar" alt="Avatar"/>
                         ) : null
                     }
-                    <h1>{userInfo.name}</h1>
+                    <h1>{datosUsuario.name}</h1>
                     <p>{usuario.email}</p>
                     <button onClick={modoEdicion} className="boton-editar">
                         {isEditing ? 'Cancelar' : 'Editar'}
@@ -279,7 +278,7 @@ export default function Perfil() {
                         <h2>Información de Perfil</h2>
                         <p>
                             <span>Nombre:</span> {
-                            userInfo.name ? userInfo.name : ''
+                            datosUsuario.name ? datosUsuario.name : ''
                         }
                         </p>
                         <p>
@@ -289,21 +288,21 @@ export default function Perfil() {
                         </p>
                         <p>
                             <span>Teléfono:</span> {
-                            userInfo.telefono ? userInfo.telefono : ''
+                            datosUsuario.telefono ? datosUsuario.telefono : ''
                         }
                         </p>
                         <p>
                             <span>Fecha de Nacimiento:</span> {
-                            userInfo.fechaNacimiento ? userInfo.fechaNacimiento : ''
+                            datosUsuario.fechaNacimiento ? datosUsuario.fechaNacimiento : ''
                         }
                         </p>
                         <p>
                             <span>Dirección:</span> {
-                            userInfo.calle ? userInfo.calle : ''
+                            datosUsuario.calle ? datosUsuario.calle : ''
                         }, {
-                            userInfo.ciudad ? userInfo.ciudad : ''
+                            datosUsuario.ciudad ? datosUsuario.ciudad : ''
                         }, {
-                            userInfo.codigoPostal ? userInfo.codigoPostal : ''
+                            datosUsuario.codigoPostal ? datosUsuario.codigoPostal : ''
                         }
                         </p>
                         <p>
@@ -311,22 +310,22 @@ export default function Perfil() {
                         </p>
                         <p>
                             <span>Facebook:</span> {
-                            userInfo.facebook ? userInfo.facebook : ''
+                            datosUsuario.facebook ? datosUsuario.facebook : ''
                         }
                         </p>
                         <p>
                             <span>Twitter:</span> {
-                            userInfo.twitter ? userInfo.twitter : ''
+                            datosUsuario.twitter ? datosUsuario.twitter : ''
                         }
                         </p>
                         <p>
                             <span>Instagram:</span> {
-                            userInfo.instagram ? userInfo.instagram : ''
+                            datosUsuario.instagram ? datosUsuario.instagram : ''
                         }
                         </p>
                         <p>
                             <span>Biografía:</span> {
-                            userInfo.bio ? userInfo.bio : ''
+                            datosUsuario.bio ? datosUsuario.bio : ''
                         }
                         </p>
                     </div>
