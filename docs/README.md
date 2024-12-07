@@ -9,13 +9,13 @@
 
 ### [🔗 Enlace a la Documentacion](./docs/)
 
-### [🔗 Mini-Guia de Instalacion](./INSTALACION.md)
+### [🔗 Mini-Guia de Instalacion](INSTALACION.md)
 
-### [🔗 Funcionalidades Desarrolladas](./FUNCIONALIDADES.md)
+### [🔗 Funcionalidades Desarrolladas](FUNCIONALIDADES.md)
 
-### [🔗 Documento de Desarrollo](./DESARROLLO.md)
+### [🔗 Documento de Desarrollo](DESARROLLO.md)
 
-### [🔗 Documento de Integración](./INTEGRACION.md)
+### [🔗 Documento de Integración](INTEGRACION.md)
 
 ---
 
