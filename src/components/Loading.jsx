@@ -1,5 +1,5 @@
 // Componente de carga mientras se cargan los demás componentes
-import {Component} from "react";
+import {Component} from "react"
 
 export class Loading extends Component {
     render() {

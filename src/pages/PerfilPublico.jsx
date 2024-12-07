@@ -1,10 +1,10 @@
-import {Link, useLoaderData} from "react-router-dom";
+import {Link, useLoaderData} from "react-router-dom"
 
 import '../css/perfil.css'
-import {Loading} from "../components/Loading.jsx";
-import Facebook from "../assets/perfil/facebook.png";
-import Twitter from "../assets/perfil/twitter.png";
-import Instagram from "../assets/perfil/instagram.png";
+import {Loading} from "../components/Loading.jsx"
+import Facebook from "../assets/perfil/facebook.png"
+import Twitter from "../assets/perfil/twitter.png"
+import Instagram from "../assets/perfil/instagram.png"
 
 export default function PerfilPublico() {
 

@@ -1,11 +1,11 @@
 import '../css/inicio.css'
 
-import Carrusel from "../components/Carrusel.jsx";
+import Carrusel from "../components/Carrusel.jsx"
 
-import BloqueCaracteristicas from "../components/BloqueCaracteristicas.jsx";
-import BloqueDesarrolladores from "../components/BloqueDesarrolladores.jsx";
-import {useRazaContext} from "../context/RazasC.jsx";
-import {Loading} from "../components/Loading.jsx";
+import BloqueCaracteristicas from "../components/BloqueCaracteristicas.jsx"
+import BloqueDesarrolladores from "../components/BloqueDesarrolladores.jsx"
+import {useRazaContext} from "../context/RazasC.jsx"
+import {Loading} from "../components/Loading.jsx"
 
 import filtro from '../assets/inicio/filtro.png'
 import responsivo from '../assets/inicio/responsivo.png'
@@ -44,7 +44,7 @@ const listaCaracteristicas = [
         descripcion: 'Guarda tus razas favoritas para tenerlas a la mano.',
         delay: 1
     }
-];
+]
 
 const listaDesarrolladores = [
     {
@@ -89,12 +89,12 @@ const listaDesarrolladores = [
         color: "morado",
         perfil: 'AAAAA'
     }
-];
+]
 
 export default function Inicio() {
 
     //const {razas} = useLoaderData()
-    const {razas, loading, error} = useRazaContext();
+    const {razas, loading, error} = useRazaContext()
 
     if (loading) {
         return <Loading/>

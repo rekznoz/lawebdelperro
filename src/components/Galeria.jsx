@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import {useEffect, useState} from "react"
 import '../css/galeria.css'
 
 export default function Galeria({ imagenes }) {
@@ -16,17 +16,17 @@ export default function Galeria({ imagenes }) {
     useEffect(() => {
         if (ImagenSeleccionada) {
             // Bloquear el scroll del body
-            document.body.style.overflow = 'hidden';
+            document.body.style.overflow = 'hidden'
         } else {
             // Restaurar el scroll cuando el modal se cierra
-            document.body.style.overflow = 'auto';
+            document.body.style.overflow = 'auto'
         }
 
         // Limpiar el estilo cuando el componente se desmonte
         return () => {
-            document.body.style.overflow = 'auto';
-        };
-    }, [ImagenSeleccionada]);
+            document.body.style.overflow = 'auto'
+        }
+    }, [ImagenSeleccionada])
 
     return (
         <div className="seccion-galeria">

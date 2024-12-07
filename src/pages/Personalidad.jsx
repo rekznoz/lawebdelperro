@@ -2,7 +2,7 @@ import {useState} from "react"
 import {useRazaContext} from "../context/RazasC.jsx"
 import {Loading} from "../components/Loading.jsx"
 import "../css/personalidad.css"
-import {Link} from "react-router-dom";
+import {Link} from "react-router-dom"
 
 export default function Personalidad() {
 
@@ -120,7 +120,7 @@ export default function Personalidad() {
         const bestBreed = razas.find(
             (breed) => breed.general.name === bestMatch
         )
-        
+
         setResult(bestBreed)
     }
 

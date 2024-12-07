@@ -13,7 +13,7 @@ import perfil from '../assets/navbar/perfil.png'
 
 import {useContext, useState} from "react"
 import {UsuarioC} from "../context/UsuarioC.jsx"
-import {firebaseLogout} from "../config/FirebaseAuth.jsx";
+import {firebaseLogout} from "../config/FirebaseAuth.jsx"
 
 // Array de objetos con las rutas y sus respectivas imágenes
 // Se selecciona un Array porque permite una mejor ampliacion de rutas y manejo de las mismas

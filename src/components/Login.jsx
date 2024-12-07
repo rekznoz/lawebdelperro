@@ -1,16 +1,16 @@
 import {useContext, useState} from "react"
-import {firebaseLogin, firebaseRegistro, auth} from "../config/FirebaseAuth.jsx";
-import {UsuarioC} from "../context/UsuarioC.jsx";
+import {firebaseLogin, firebaseRegistro, auth} from "../config/FirebaseAuth.jsx"
+import {UsuarioC} from "../context/UsuarioC.jsx"
 
 // Recoge los datos del formulario
-import {Formik} from 'formik';
+import {Formik} from 'formik'
 // https://formik.org/docs/overview
 
 // Validar los datos del formulario con Yup
-import {bool, object, string} from 'yup';
-import Swal from "sweetalert2";
-import {Link} from "react-router-dom";
-import {AgregarUsuario} from "../config/FirebaseDB.jsx";
+import {bool, object, string} from 'yup'
+import Swal from "sweetalert2"
+import {Link} from "react-router-dom"
+import {AgregarUsuario} from "../config/FirebaseDB.jsx"
 // https://www.npmjs.com/package/yup
 
 const validationSchema = object({

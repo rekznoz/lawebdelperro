@@ -1,35 +1,35 @@
-import {useEffect, useRef, useState} from "react";
-import {Link} from "react-router-dom";
+import {useEffect, useRef, useState} from "react"
+import {Link} from "react-router-dom"
 
 export default function Desarrollador({nombre, imagen, descripcion, color, perfil}) {
 
-    const [isVisible, setIsVisible] = useState(false);
-    const ref = useRef(null);
+    const [isVisible, setIsVisible] = useState(false)
+    const ref = useRef(null)
 
     useEffect(() => {
         const observer = new IntersectionObserver(
             ([entry]) => {
                 if (entry.isIntersecting) {
-                    setIsVisible(true);
+                    setIsVisible(true)
                 } else {
-                    setIsVisible(false);
+                    setIsVisible(false)
                 }
             },
             {
                 threshold: 0.9,
             }
-        );
+        )
 
         if (ref.current) {
-            observer.observe(ref.current);
+            observer.observe(ref.current)
         }
 
         return () => {
             if (ref.current) {
-                observer.unobserve(ref.current);
+                observer.unobserve(ref.current)
             }
-        };
-    }, []);
+        }
+    }, [])
 
     return (
         <div

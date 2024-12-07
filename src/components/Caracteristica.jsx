@@ -1,4 +1,4 @@
-import {useEffect, useRef, useState} from "react";
+import {useEffect, useRef, useState} from "react"
 
 // Caracteristica con IntersectionObserver
 
@@ -6,33 +6,33 @@ import {useEffect, useRef, useState} from "react";
 
 const Caracteristica = ({ titulo, icon, descripcion, delay }) => {
 
-    const [isVisible, setIsVisible] = useState(false);
-    const ref = useRef(null);
+    const [isVisible, setIsVisible] = useState(false)
+    const ref = useRef(null)
 
     useEffect(() => {
         const observer = new IntersectionObserver(
             ([entry]) => {
                 if (entry.isIntersecting) {
-                    setIsVisible(true);
+                    setIsVisible(true)
                 } else {
-                    setIsVisible(false);
+                    setIsVisible(false)
                 }
             },
             {
                 threshold: 0.5,
             }
-        );
+        )
 
         if (ref.current) {
-            observer.observe(ref.current);
+            observer.observe(ref.current)
         }
 
         return () => {
             if (ref.current) {
-                observer.unobserve(ref.current);
+                observer.unobserve(ref.current)
             }
-        };
-    }, []);
+        }
+    }, [])
 
     return (
         <div
@@ -46,42 +46,42 @@ const Caracteristica = ({ titulo, icon, descripcion, delay }) => {
             <h2>{titulo}</h2>
             <p>{descripcion}</p>
         </div>
-    );
-};
+    )
+}
 
  */
 
 // Caracteristica con Scroll
 
 const Caracteristica = ({ titulo, icon, descripcion, delay }) => {
-    const [isVisible, setIsVisible] = useState(false);
-    const ref = useRef(null);
+    const [isVisible, setIsVisible] = useState(false)
+    const ref = useRef(null)
 
     // Función que comprueba si el elemento está en el viewport
     const checkVisibility = () => {
         if (ref.current) {
-            const rect = ref.current.getBoundingClientRect();
+            const rect = ref.current.getBoundingClientRect()
             // 80% de visibilidad
             if (rect.top >= 0 && rect.bottom <= window.innerHeight * 0.9) {
-                setIsVisible(true);
+                setIsVisible(true)
             } else {
-                setIsVisible(false);
+                setIsVisible(false)
             }
         }
-    };
+    }
 
     // El evento de scroll se ejecuta cada vez que se hace scroll
     useEffect(() => {
-        checkVisibility();
+        checkVisibility()
 
         // agregar el listener al evento de scroll
-        window.addEventListener('scroll', checkVisibility);
+        window.addEventListener('scroll', checkVisibility)
 
         // Limpiar el evento
         return () => {
-            window.removeEventListener('scroll', checkVisibility);
-        };
-    }, []);
+            window.removeEventListener('scroll', checkVisibility)
+        }
+    }, [])
 
     return (
         <div
@@ -95,7 +95,7 @@ const Caracteristica = ({ titulo, icon, descripcion, delay }) => {
             <h2>{titulo}</h2>
             <p>{descripcion}</p>
         </div>
-    );
-};
+    )
+}
 
-export default Caracteristica;
+export default Caracteristica

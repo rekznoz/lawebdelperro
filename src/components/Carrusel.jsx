@@ -1,5 +1,5 @@
-import {useWindowSize} from "../hooks/UseWindowSize.jsx";
-import {useEffect, useState} from "react";
+import {useWindowSize} from "../hooks/UseWindowSize.jsx"
+import {useEffect, useState} from "react"
 import '../css/carrusel.css'
 
 export default function Carrusel({imagenes}) {
@@ -7,12 +7,12 @@ export default function Carrusel({imagenes}) {
     let totalImagenes = 3
     let intervalo
 
-    const size = useWindowSize();
+    const size = useWindowSize()
     const [indiceActual, setIndiceActual] = useState(0)
 
     useEffect(() => {
         setIndiceActual(0)
-    }, [size.width]);
+    }, [size.width])
 
     if (size.width < 600) {
         totalImagenes = 1

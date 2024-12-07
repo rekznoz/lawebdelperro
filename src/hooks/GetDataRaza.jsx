@@ -1,5 +1,4 @@
-import {getRazas} from "./GetRazas.jsx";
-
+import {getRazas} from "./GetRazas.jsx"
 
 export async function GetDataRaza({params}) {
     try {

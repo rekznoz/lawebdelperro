@@ -1,13 +1,13 @@
-import {useContext, useState} from "react";
+import {useContext, useState} from "react"
 
 import '../css/perfil.css'
-import {Formik} from "formik";
-import {object, string} from 'yup';
-import Swal from "sweetalert2";
-import {sincronizarUsuario} from "../config/FirebaseDB.jsx";
-import {UsuarioC} from "../context/UsuarioC.jsx";
-import {Loading} from "../components/Loading.jsx";
-import {Link} from "react-router-dom";
+import {Formik} from "formik"
+import {object, string} from 'yup'
+import Swal from "sweetalert2"
+import {sincronizarUsuario} from "../config/FirebaseDB.jsx"
+import {UsuarioC} from "../context/UsuarioC.jsx"
+import {Loading} from "../components/Loading.jsx"
+import {Link} from "react-router-dom"
 
 import Facebook from '../assets/perfil/facebook.png'
 import Instagram from '../assets/perfil/instagram.png'
@@ -68,16 +68,16 @@ const validationSchema = object({
 
 export default function Perfil() {
 
-    const {usuario, _, datosUsuario, setDatosUsuario, cargando} = useContext(UsuarioC);
-    const [isEditing, setIsEditing] = useState(false);
+    const {usuario, _, datosUsuario, setDatosUsuario, cargando} = useContext(UsuarioC)
+    const [isEditing, setIsEditing] = useState(false)
 
     if (cargando) {
         return <Loading/>
     }
 
     const modoEdicion = () => {
-        setIsEditing(!isEditing);
-        forumarioDefecto = datosUsuario;
+        setIsEditing(!isEditing)
+        forumarioDefecto = datosUsuario
     }
 
     const handleSave = (values, funciones) => {
@@ -93,24 +93,24 @@ export default function Perfil() {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                const {resetForm} = funciones;
+                const {resetForm} = funciones
 
-                setDatosUsuario(values);
+                setDatosUsuario(values)
 
                 sincronizarUsuario(usuario.uid, values)
 
-                setIsEditing(false);
+                setIsEditing(false)
 
                 Swal.fire({
                     title: "Cambios guardados",
                     text: "Los cambios en tu perfil han sido guardados correctamente.",
                     icon: "success"
-                });
+                })
 
-                resetForm();
+                resetForm()
             }
-        });
-    };
+        })
+    }
 
     return (
         <>

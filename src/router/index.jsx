@@ -8,18 +8,18 @@ import {ListaRazas} from "./listaRazas.jsx"
 import {Raza} from "./raza.jsx"
 import {Contacto} from "./contacto.jsx"
 import {Favoritos} from "./favoritos.jsx"
-import {Error} from "./error.jsx";
-import {Perfil} from "./perfil.jsx";
-import {PerfilPublico} from "./perfilPublico.jsx";
-import {FavoritosPublico} from "./favoritosPublico.jsx";
+import {Error} from "./error.jsx"
+import {Perfil} from "./perfil.jsx"
+import {PerfilPublico} from "./perfilPublico.jsx"
+import {FavoritosPublico} from "./favoritosPublico.jsx"
 
 import PrivadoFavoritos from "../layouts/PrivadoFavoritos.jsx"
 
-// import {getRazas} from "../hooks/GetRazas.jsx";
-import {GetDataRaza} from "../hooks/GetDataRaza.jsx";
+// import {getRazas} from "../hooks/GetRazas.jsx"
+import {GetDataRaza} from "../hooks/GetDataRaza.jsx"
 
-import {Loading} from "../components/Loading.jsx";
-import {obtenerFavoritosPublico, obtenerUsuarioPublico} from "../config/FirebaseDB.jsx";
+import {Loading} from "../components/Loading.jsx"
+import {obtenerFavoritosPublico, obtenerUsuarioPublico} from "../config/FirebaseDB.jsx"
 
 /*
     Configuración de las rutas de la aplicación

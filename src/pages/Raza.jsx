@@ -1,6 +1,6 @@
-import {useLoaderData} from "react-router-dom";
+import {useLoaderData} from "react-router-dom"
 import '../css/raza.css'
-import Galeria from "../components/Galeria.jsx";
+import Galeria from "../components/Galeria.jsx"
 
 export default function Raza() {
 

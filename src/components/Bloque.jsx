@@ -5,7 +5,7 @@ import fav from '../assets/fav.png'
 import rfav from '../assets/rfav.png'
 import {UsuarioC} from "../context/UsuarioC.jsx"
 import {obtenerFavoritos, sincronizarFavoritos} from "../config/FirebaseDB.jsx"
-import Notificacion from "./Notificacion.jsx";
+import Notificacion from "./Notificacion.jsx"
 
 export default function Bloque(atributos) {
 

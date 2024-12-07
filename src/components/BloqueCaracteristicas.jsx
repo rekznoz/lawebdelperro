@@ -1,4 +1,4 @@
-import Caracteristica from "./Caracteristica.jsx";
+import Caracteristica from "./Caracteristica.jsx"
 import '../css/caracteristicas.css'
 
 export default function BloqueCaracteristicas({ listaCaracteristicas }) {

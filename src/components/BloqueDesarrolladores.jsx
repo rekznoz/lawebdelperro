@@ -1,6 +1,6 @@
 
 import '../css/desarrolladores.css'
-import Desarrollador from "./Desarrollador.jsx";
+import Desarrollador from "./Desarrollador.jsx"
 
 export default function BloqueDesarrolladores({listaDesarrolladores}) {
     return (
