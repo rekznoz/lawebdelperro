@@ -12,6 +12,7 @@ import {Error} from "./error.jsx";
 import {Perfil} from "./perfil.jsx";
 
 export const PerfilPublico = lazy(() => import("../pages/PerfilPublico.jsx"))
+export const FavoritosPublico = lazy(() => import("../pages/FavoritosPublico.jsx"))
 
 import PrivadoFavoritos from "../layouts/PrivadoFavoritos.jsx"
 
@@ -19,7 +20,7 @@ import PrivadoFavoritos from "../layouts/PrivadoFavoritos.jsx"
 import {GetDataRaza} from "../hooks/GetDataRaza.jsx";
 
 import {Loading} from "../components/Loading.jsx";
-import {obtenerUsuario, obtenerUsuarioPublico} from "../config/FirebaseDB.jsx";
+import {obtenerFavoritosPublico, obtenerUsuario, obtenerUsuarioPublico} from "../config/FirebaseDB.jsx";
 
 
 /*
@@ -105,6 +106,15 @@ export const router = createBrowserRouter([
                         ),
                     }
                 ]
+            },
+            {
+                path: '/favoritos/:id',
+                element: (
+                    <Suspense fallback={<Loading/>}>
+                        <FavoritosPublico/>
+                    </Suspense>
+                ),
+                loader: obtenerFavoritosPublico,
             },
             {
                 path: '/perfil',
