@@ -20,7 +20,6 @@ const filtroDefault = {
  * Función para filtrar las razas
  * @param razas
  * @param filtro
- * @returns {*|*[]}
  */
 export function filtroRazas(razas, filtro) {
     if (!razas) {
