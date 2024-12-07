@@ -51,37 +51,43 @@ const listaDesarrolladores = [
         nombre: 'Rafael',
         imagen: rafael,
         descripcion: 'Hizo el frontend de la aplicacion y el diseño de la misma',
-        color: "azul"
+        color: "azul",
+        perfil: 'A2vE7Aihw3TMTtw7JYxqQXSHzjK2'
     },
     {
         nombre: 'Gustavo',
         imagen: gustavo,
         descripcion: 'Dio apoyo moral y entretenimiento al equipo',
-        color: "rojo"
+        color: "rojo",
+        perfil: '6dpXodtGvwZSMJ3ADyC8jHEFv8y1'
     },
     {
         nombre: 'Cristian',
         imagen: cristian,
         descripcion: 'Es el mas trabajador del equipo y el que mas aporta en cuestion de esfuerzo',
-        color: "verde"
+        color: "verde",
+        perfil: 'AAAAA'
     },
     {
         nombre: 'Sergio',
         imagen: sergio,
         descripcion: 'Es el lider del equipo y el que mas aporta en cuestion de ideas',
-        color: "naranja"
+        color: "naranja",
+        perfil: 'AAAAA'
     },
     {
         nombre: 'Serafin',
         imagen: serafin,
         descripcion: 'Molesto al equipo con sus chistes malos y su falta de sueño',
-        color: "amarillo"
+        color: "amarillo",
+        perfil: 'AAAAA'
     },
     {
         nombre: 'Ana',
         imagen: ana,
         descripcion: 'Es la que mas aporta en cuestion de organizacion y logistica',
-        color: "morado"
+        color: "morado",
+        perfil: 'AAAAA'
     }
 ];
 
@@ -97,6 +103,8 @@ export default function Inicio() {
     if (error) {
         throw new Response('Error al obtener las razas', {status: 404})
     }
+
+    console.log(razas)
 
     // array de imagenes de las razas
     const imagenes = razas.map(raza => raza["images"]["small"]["outdoors"])

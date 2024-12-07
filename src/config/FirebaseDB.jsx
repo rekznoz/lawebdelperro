@@ -143,7 +143,11 @@ export const obtenerFavoritosPublico = async ({params}) => {
     const userDocRef = doc(db, "favoritos", params.id)
     try {
         const userDoc = await getDoc(userDocRef)
-        return userDoc.exists() ? userDoc.data().favoritos : []
+        if (userDoc.exists()) {
+            return userDoc.data().favoritos
+        } else {
+            throw new Response('El usuario no existe', {status: 404}, {message: 'Not Found'})
+        }
     } catch (error) {
         console.error("Error al obtener favoritos:", error)
         return []
@@ -164,7 +168,7 @@ export const obtenerUsuarioPublico = async ({params}) => {
     try {
         const userDoc = await getDoc(userDocRef)
         if (userDoc.exists()) {
-            return userDoc.data()
+            return {...userDoc.data(), uid: userDoc.id}
         } else {
             throw new Response('El usuario no existe', {status: 404}, {message: 'Not Found'})
         }

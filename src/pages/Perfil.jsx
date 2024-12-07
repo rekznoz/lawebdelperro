@@ -122,13 +122,17 @@ export default function Perfil() {
                         ) : null
                     }
                     <h1>{datosUsuario.name}</h1>
-                    <h2><Link to={`/perfil/${usuario.uid}`} className="boton-ver-perfil">
-                        Ver Perfil Público
-                    </Link></h2>
                     <p>{usuario.email}</p>
-                    <button onClick={modoEdicion} className="boton-editar">
-                        {isEditing ? 'Cancelar' : 'Editar'}
-                    </button>
+                    <div className="botones-cabecera">
+                        <button className="boton-ver-perfilpublico">
+                            <Link to={`/perfil/${usuario.uid}`} className="boton-ver-perfil">
+                                Ver Perfil Público
+                            </Link>
+                        </button>
+                        <button onClick={modoEdicion} className="boton-editar">
+                            {isEditing ? 'Cancelar' : 'Editar'}
+                        </button>
+                    </div>
                 </div>
             </div>
             <div id='area2'>
@@ -367,6 +371,10 @@ export default function Perfil() {
                                 ) : ''
                             }
 
+                        </div>
+                        <div className="contenedor-favoritos">
+                            <Link className="boton-favoritos-perfil" to={`/favoritos/${usuario.uid}`}>Ver favoritos de {
+                                datosUsuario.name ? datosUsuario.name : "Usuario"}</Link>
                         </div>
                     </div>
                 )}

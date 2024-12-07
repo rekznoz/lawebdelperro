@@ -1,6 +1,7 @@
 import {useEffect, useRef, useState} from "react";
+import {Link} from "react-router-dom";
 
-export default function Desarrollador({nombre, imagen, descripcion, color}) {
+export default function Desarrollador({nombre, imagen, descripcion, color, perfil}) {
 
     const [isVisible, setIsVisible] = useState(false);
     const ref = useRef(null);
@@ -38,6 +39,7 @@ export default function Desarrollador({nombre, imagen, descripcion, color}) {
             <img src={imagen} alt="Avatar"/>
             <h1>{nombre}</h1>
             <p>{descripcion}</p>
+            <p><Link to={`/perfil/${perfil}`}>Ver perfil</Link></p>
         </div>
     )
 }

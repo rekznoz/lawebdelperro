@@ -8,6 +8,7 @@ import {filtroRazas} from "./ListaRazas.jsx";
 import {UsuarioC} from "../context/UsuarioC.jsx";
 import {obtenerFavoritos} from "../config/FirebaseDB.jsx";
 import '../css/favoritos.css'
+import {useLoaderData} from "react-router-dom";
 
 const filtroDefault = {
     nombre: '',
@@ -18,9 +19,11 @@ const filtroDefault = {
     vida: 0
 }
 
-export default function Favoritos() {
+export default function FavoritosPublico() {
 
     //const {razas} = useLoaderData()
+    const datosUsuario = useLoaderData()
+
     const {razas, loading, error} = useRazaContext();
     const [pagina, setPagina] = useState(1)
     const [filtro, setFiltro] = useState(filtroDefault)
@@ -42,7 +45,6 @@ export default function Favoritos() {
         setPagina(1)
     }, [filtro])
 
-
     if (loading) {
         return <Loading/>
     }
@@ -51,7 +53,11 @@ export default function Favoritos() {
         throw new Response('Error al obtener las razas', {status: 404})
     }
 
-    const razasFavoritas = razas.filter(raza => favoritos.includes(raza["general"]["name"]))
+    if (!datosUsuario) {
+        return <Loading/>
+    }
+
+    const razasFavoritas = razas.filter(raza => datosUsuario.includes(raza["general"]["name"]))
 
     if (razasFavoritas.length === 0) {
         return (

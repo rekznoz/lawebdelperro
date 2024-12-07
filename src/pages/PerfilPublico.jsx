@@ -1,4 +1,4 @@
-import {useLoaderData} from "react-router-dom";
+import {Link, useLoaderData} from "react-router-dom";
 
 import '../css/perfil.css'
 import {Loading} from "../components/Loading.jsx";
@@ -9,6 +9,8 @@ import Instagram from "../assets/perfil/instagram.png";
 export default function PerfilPublico() {
 
     const datosUsuario = useLoaderData()
+
+    console.log(datosUsuario)
 
     if (!datosUsuario) {
         return <Loading/>
@@ -90,11 +92,13 @@ export default function PerfilPublico() {
                                 </p>
                             ) : ''
                         }
-
+                    </div>
+                    <div className="contenedor-favoritos">
+                        <Link className="boton-favoritos-perfil" to={`/favoritos/${datosUsuario.uid}`}>Ver favoritos
+                            de {
+                                datosUsuario.name ? datosUsuario.name : "Usuario"}</Link>
                     </div>
                 </div>
-            </div>
-            <div id='area3'>
             </div>
         </>
     )

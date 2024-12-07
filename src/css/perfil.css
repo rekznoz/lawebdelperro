@@ -29,6 +29,8 @@
     margin-bottom: 5px;
     color: var(--color-letras-test);
     padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .cabecera-perfil p {
@@ -36,16 +38,38 @@
     color: var(--color-letras-test);
 }
 
+.cabecera-perfil .botones-cabecera {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 5px;
+    margin-top: 20px;
+}
+
 .cabecera-perfil .boton-editar {
-    background-color: #f36f6f;
+    background-color: #da2f2f;
     color: var(--color-texto);
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
     font-size: 1rem;
-    margin-top: 15px;
     transition: background-color 0.3s ease;
+}
+
+.cabecera-perfil .boton-ver-perfilpublico {
+    background-color: #0b488c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+    text-align: center;
+}
+
+.cabecera-perfil .boton-ver-perfilpublico:hover {
+    background-color: #007bff;
 }
 
 .cabecera-perfil .boton-editar:hover {
@@ -65,6 +89,7 @@
     margin-bottom: 20px;
     color: var(--color-letras-test);
     text-align: center;
+    padding-top: 20px;
     padding-bottom: 20px;
     border-bottom: #2087f4 2px solid;
 }
@@ -94,6 +119,32 @@
 .perfil-informacion .redesSociales p a img {
     width: 50px;
     height: 50px;
+}
+
+.perfil-informacion .redesSociales p a img:hover {
+    transform: scale(1.1);
+}
+
+.perfil-informacion .contenedor-favoritos {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.perfil-informacion .boton-favoritos-perfil {
+    background-color: #0b488c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 15px;
+    transition: background-color 0.3s ease;
+    text-align: center;
+}
+
+.perfil-informacion .boton-favoritos-perfil:hover {
+    background-color: #007bff;
 }
 
 .cont-grupo-formulario textarea, input[type="text"], input[type="email"], input[type="date"] {

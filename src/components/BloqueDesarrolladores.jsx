@@ -15,6 +15,7 @@ export default function BloqueDesarrolladores({listaDesarrolladores}) {
                             imagen={desarrollador.imagen}
                             descripcion={desarrollador.descripcion}
                             color={desarrollador.color}
+                            perfil={desarrollador.perfil}
                         />
                     ))
                 }
