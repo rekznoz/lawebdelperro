@@ -10,8 +10,6 @@ export default function PerfilPublico() {
 
     const datosUsuario = useLoaderData()
 
-    console.log(datosUsuario)
-
     if (!datosUsuario) {
         return <Loading/>
     }

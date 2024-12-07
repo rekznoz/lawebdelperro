@@ -73,7 +73,7 @@ const listaDesarrolladores = [
         imagen: sergio,
         descripcion: 'Es el lider del equipo y el que mas aporta en cuestion de ideas',
         color: "naranja",
-        perfil: 'AAAAA'
+        perfil: 'FSPR77VGiWYQxbV2AfH99CzjfC32'
     },
     {
         nombre: 'Serafin',
@@ -103,8 +103,6 @@ export default function Inicio() {
     if (error) {
         throw new Response('Error al obtener las razas', {status: 404})
     }
-
-    console.log(razas)
 
     // array de imagenes de las razas
     const imagenes = razas.map(raza => raza["images"]["small"]["outdoors"])
