@@ -7,6 +7,13 @@ import {UsuarioC} from "../context/UsuarioC.jsx"
 import {obtenerFavoritos, sincronizarFavoritos} from "../config/FirebaseDB.jsx"
 import Notificacion from "./Notificacion.jsx"
 
+
+/*
+ * Componente que muestra una lista de razas de perros
+ * @param {Object} atributos - Atributos del componente
+ * @param {Array} atributos.mapaElementos - Lista de razas de perros
+ * @returns {JSX.Element} Componente
+ */
 export default function Bloque(atributos) {
 
     const {usuario} = useContext(UsuarioC)

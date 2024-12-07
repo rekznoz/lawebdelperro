@@ -1,6 +1,16 @@
 import {useEffect, useRef, useState} from "react"
 import {Link} from "react-router-dom"
 
+/*
+ * Componente que muestra un desarrollador
+ * @param {Object} atributos - Atributos del componente
+ * @param {string} atributos.nombre - Nombre del desarrollador
+ * @param {string} atributos.imagen - Imagen del desarrollador
+ * @param {string} atributos.descripcion - Descripción del desarrollador
+ * @param {string} atributos.color - Color de la carta
+ * @param {string} atributos.perfil - Perfil del desarrollador
+ * @returns {JSX.Element} Componente
+ */
 export default function Desarrollador({nombre, imagen, descripcion, color, perfil}) {
 
     const [isVisible, setIsVisible] = useState(false)

@@ -53,6 +53,15 @@ const Caracteristica = ({ titulo, icon, descripcion, delay }) => {
 
 // Caracteristica con Scroll
 
+/*
+ * Componente que muestra una característica
+ * @param {Object} atributos - Atributos del componente
+ * @param {string} atributos.titulo - Título de la característica
+ * @param {string} atributos.icon - Icono de la característica
+ * @param {string} atributos.descripcion - Descripción de la característica
+ * @param {number} atributos.delay - Retraso de la animación
+ * @returns {JSX.Element} Componente
+ */
 const Caracteristica = ({ titulo, icon, descripcion, delay }) => {
     const [isVisible, setIsVisible] = useState(false)
     const ref = useRef(null)

@@ -91,6 +91,10 @@ const listaDesarrolladores = [
     }
 ]
 
+/**
+ * Componente de la página de inicio
+ * @returns {JSX.Element} Componente
+ */
 export default function Inicio() {
 
     //const {razas} = useLoaderData()

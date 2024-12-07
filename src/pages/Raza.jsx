@@ -2,6 +2,11 @@ import {useLoaderData} from "react-router-dom"
 import '../css/raza.css'
 import Galeria from "../components/Galeria.jsx"
 
+/**
+ * Componente que muestra la página de una raza
+ * @returns {JSX.Element}
+ * @constructor
+ */
 export default function Raza() {
 
     const {raza} = useLoaderData()

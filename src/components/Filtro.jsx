@@ -5,6 +5,15 @@ function renderFiltroTexto(valor, texto, unidad = '') {
     return valor === 0 ? `${texto} = Indefinido` : `${texto} = ${valor}${unidad}`
 }
 
+/*
+ * Componente que muestra un filtro de búsqueda
+ * @param {Object} atributos - Atributos del componente
+ * @param {Array} atributos.grupos - Lista de grupos
+ * @param {Object} atributos.filtro - Filtro actual
+ * @param {Function} atributos.setFiltro - Función para cambiar el filtro
+ * @param {Object} atributos.filtroDefault - Filtro por defecto
+ * @returns {JSX.Element} Componente
+ */
 export default function Filtro(atributos) {
 
     const {grupos, filtro, setFiltro, filtroDefault} = atributos

@@ -8,6 +8,12 @@ export const useRazaContext = () => {
     return useContext(RazaContext)
 }
 
+/**
+ * Proveedor de razas
+ * @param {Object} props - Atributos del componente
+ * @param {Object} props.children - Componentes hijos
+ * @returns {JSX.Element} Componente
+ */
 export const RazasProvider = ({ children }) => {
     const [razas, setRazas] = useState(null)
     const [loading, setLoading] = useState(true)

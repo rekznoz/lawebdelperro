@@ -19,6 +19,11 @@ const filtroDefault = {
     vida: 0
 }
 
+/**
+ * Página de Favoritos Públicos
+ * @returns {JSX.Element}
+ * @constructor
+ */
 export default function FavoritosPublico() {
 
     //const {razas} = useLoaderData()

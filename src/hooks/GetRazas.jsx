@@ -1,3 +1,9 @@
+
+/*
+ * Hook para obtener las razas de perros
+ * @param {Object} razasContext - Contexto de razas
+ * @returns {Object} - Razas de perros
+ */
 export async function getRazas(razasContext = null) {
     if (razasContext) {
         return razasContext

@@ -16,6 +16,12 @@ const filtroDefault = {
     vida: 0
 }
 
+/**
+ * Función para filtrar las razas
+ * @param razas
+ * @param filtro
+ * @returns {*|*[]}
+ */
 export function filtroRazas(razas, filtro) {
     if (!razas) {
         return []
@@ -53,6 +59,11 @@ export function filtroRazas(razas, filtro) {
     })
 }
 
+/**
+ * Componente que muestra una lista de razas
+ * @returns {JSX.Element}
+ * @constructor
+ */
 export default function ListaRazas() {
 
     //const {razas} = useLoaderData()

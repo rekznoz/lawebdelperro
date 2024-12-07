@@ -4,6 +4,11 @@
 
 // Iconos de Flaticon
 // https://www.flaticon.es/
+
+/*
+ * Componente que muestra el footer
+ * @returns {JSX.Element} Componente
+ */
 export default function Footer() {
     return (
         <footer className='footer'>

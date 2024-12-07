@@ -1,5 +1,9 @@
 import {useEffect, useState} from "react"
 
+/**
+ * Hook que obtiene el tamaño de la ventana
+ * @returns {Object} Tamaño de la ventana
+ */
 export function useWindowSize() {
     const [windowSize, setWindowSize] = useState({
         width: window.innerWidth,

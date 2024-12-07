@@ -18,6 +18,11 @@ const filtroDefault = {
     vida: 0
 }
 
+/**
+ * Componente de Favoritos
+ * @returns {JSX.Element}
+ * @constructor
+ */
 export default function Favoritos() {
 
     //const {razas} = useLoaderData()

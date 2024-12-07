@@ -4,6 +4,11 @@ import {Loading} from "../components/Loading.jsx"
 import "../css/personalidad.css"
 import {Link} from "react-router-dom"
 
+/**
+ * Componente de Personalidad
+ * @returns {JSX.Element}
+ * @constructor
+ */
 export default function Personalidad() {
 
     const {razas, loading, error} = useRazaContext()

@@ -6,6 +6,11 @@ import Facebook from "../assets/perfil/facebook.png"
 import Twitter from "../assets/perfil/twitter.png"
 import Instagram from "../assets/perfil/instagram.png"
 
+/**
+ * Componente que muestra el perfil público de un usuario
+ * @returns {JSX.Element}
+ * @constructor
+ */
 export default function PerfilPublico() {
 
     const datosUsuario = useLoaderData()

@@ -1,6 +1,12 @@
 import {useEffect, useState} from "react"
 import '../css/galeria.css'
 
+/*
+ * Componente que muestra una galería de imágenes
+ * @param {Object} atributos - Atributos del componente
+ * @param {Array} atributos.imagenes - Lista de imágenes
+ * @returns {JSX.Element} Componente
+ */
 export default function Galeria({ imagenes }) {
 
     const [ImagenSeleccionada, setImagenSeleccionada] = useState(null)

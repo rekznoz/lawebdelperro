@@ -43,6 +43,10 @@ const contieneInteres = (intereses, interes) => {
     return intereses.includes(interes)
 }
 
+/**
+ * Componente que muestra el formulario de contacto
+ * @returns {JSX.Element} Componente
+ */
 export default function Contacto() {
 
     const onSubmit = (values, funciones) => {

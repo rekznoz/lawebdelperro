@@ -8,17 +8,30 @@ import app from "./FirebaseConfig.jsx"
 // Inicializar autenticación
 export const auth = getAuth(app)
 
-// Login de usuario
+/*
+ * Función que realiza el login en Firebase
+ * @param {string} email - Email del usuario
+ * @param {string} password - Contraseña del usuario
+ * @returns {Promise} Promesa con el resultado
+ */
 export function firebaseLogin(email, password) {
     return signInWithEmailAndPassword(auth, email, password)
 }
 
-// Registro de usuario
+/*
+ * Función que realiza el registro en Firebase
+ * @param {string} email - Email del usuario
+ * @param {string} password - Contraseña del usuario
+ * @returns {Promise} Promesa con el resultado
+ */
 export function firebaseRegistro(email, password) {
     return createUserWithEmailAndPassword(auth, email, password)
 }
 
-// Log out
+/*
+ * Función que realiza el logout en Firebase
+ * @returns {Promise} Promesa con el resultado
+ */
 export function firebaseLogout() {
     return auth.signOut()
 }

@@ -36,6 +36,10 @@ async function setDocumentFireStore(collectionName, data, id) {
 
 /*
  * Agrega un documento a la base de datos
+ * @param {string} nombreDB - Nombre de la coleccion
+ * @param {Object} data - Datos del documento
+ * @param {string} id - ID del documento
+ * @returns {Promise} - Promesa con el resultado
  */
 export function AgregarUsuario(nombreDB, data, id) {
     return addDocumentFireStore(nombreDB, data, id)
@@ -43,6 +47,10 @@ export function AgregarUsuario(nombreDB, data, id) {
 
 /*
  * Actualiza un documento de la base de datos
+ * @param {string} nombreDB - Nombre de la coleccion
+ * @param {Object} data - Datos del documento
+ * @param {string} id - ID del documento
+ * @returns {Promise} - Promesa con el resultado
  */
 export function ActualizarUsuario(nombreDB, data, id) {
     return setDocumentFireStore(nombreDB, data, id)

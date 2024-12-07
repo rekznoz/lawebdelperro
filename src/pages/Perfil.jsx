@@ -27,6 +27,10 @@ let forumarioDefecto = {
     bio: ''
 }
 
+/**
+ * Esquema de validación para el formulario de perfil
+ * @type {ObjectSchema<_<TypeFromShape<{twitter: StringSchema<string | undefined, AnyObject, undefined, "">, codigoPostal: StringSchema<NonNullable<string | undefined>, AnyObject, undefined, "">, fechaNacimiento: StringSchema, ciudad: StringSchema<NonNullable<string | undefined>, AnyObject, undefined, "">, calle: StringSchema, facebook: StringSchema<string | undefined, AnyObject, undefined, "">, name: StringSchema<NonNullable<string | undefined>, AnyObject, undefined, "">, bio: StringSchema<string | undefined, AnyObject, undefined, "">, avatar: StringSchema<string | undefined, AnyObject, undefined, "">, instagram: StringSchema<string | undefined, AnyObject, undefined, "">, telefono: StringSchema<NonNullable<string | undefined>, AnyObject, undefined, "">}, AnyObject>>, AnyObject, _<DefaultFromShape<{twitter: StringSchema<string | undefined, AnyObject, undefined, "">, codigoPostal: StringSchema<NonNullable<string | undefined>, AnyObject, undefined, "">, fechaNacimiento: StringSchema, ciudad: StringSchema<NonNullable<string | undefined>, AnyObject, undefined, "">, calle: StringSchema, facebook: StringSchema<string | undefined, AnyObject, undefined, "">, name: StringSchema<NonNullable<string | undefined>, AnyObject, undefined, "">, bio: StringSchema<string | undefined, AnyObject, undefined, "">, avatar: StringSchema<string | undefined, AnyObject, undefined, "">, instagram: StringSchema<string | undefined, AnyObject, undefined, "">, telefono: StringSchema<NonNullable<string | undefined>, AnyObject, undefined, "">}>>, "">}
+ */
 const validationSchema = object({
     avatar: string()
         .url('La URL no es válida')
@@ -66,6 +70,11 @@ const validationSchema = object({
         .max(100, 'La biografía debe tener como máximo 100 caracteres')
 })
 
+/**
+ * Componente de la página de perfil
+ * @returns {JSX.Element}
+ * @constructor
+ */
 export default function Perfil() {
 
     const {usuario, _, datosUsuario, setDatosUsuario, cargando} = useContext(UsuarioC)

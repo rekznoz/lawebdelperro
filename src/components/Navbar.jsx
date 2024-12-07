@@ -25,13 +25,10 @@ const navItems = [
     //{ to: "/login", img: login, alt: "Icono para login", label: "Iniciar sesión o registrarse" },
 ]
 
-/*
-    Componente Navbar
-    - Muestra la barra de navegación
-    - Contiene un botón para cambiar el color de la página
-    - Recibe la ruta para condicionarla
+/**
+ * Componente que muestra el Navbar
+ * @returns {JSX.Element} Componente
  */
-
 export default function Navbar() {
 
     // Obtener la ruta actual para condicionarla despues

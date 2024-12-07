@@ -1,5 +1,11 @@
 import {getRazas} from "./GetRazas.jsx"
 
+/**
+ * Hook para obtener una raza
+ * @param {Object} params - Parámetros de la petición
+ * @param {string} params.id - Id de la raza
+ * @returns {Object} Datos de la raza
+ */
 export async function GetDataRaza({params}) {
     try {
 

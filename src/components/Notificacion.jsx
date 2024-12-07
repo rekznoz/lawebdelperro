@@ -1,4 +1,11 @@
 
+/*
+ * Componente Notificacion
+ * @param {Object} atributos Atributos del componente
+ * @param {string} atributos.mensaje Mensaje de la notificación
+ * @param {string} atributos.tipo Tipo de notificación
+ * @returns {JSX.Element} Componente
+ */
 export default function Notificacion(atributos) {
 
     const {mensaje, tipo} = atributos

@@ -1,5 +1,15 @@
 import "../css/paginacion.css"
 
+/*
+ * Componente que muestra la paginación
+ * @param {Object} atributos - Atributos del componente
+ * @param {number} atributos.pagina - Página actual
+ * @param {number} atributos.totalPaginas - Total de páginas
+ * @param {Function} atributos.paginacion - Función para cambiar de página
+ * @param {Array} atributos.pageNumbers - Números de página
+ * @param {Function} atributos.handlePageInput - Función para cambiar de página
+ * @returns {JSX.Element} Componente
+ */
 export default function Paginacion(atributos) {
 
     const {pagina, totalPaginas, paginacion, pageNumbers, handlePageInput} = atributos
