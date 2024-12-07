@@ -32,7 +32,7 @@ https://github.com/rekznoz/lawebdelperro/blob/39c308b7c7e70e28241fffd284351a908f
 Una lista interactiva generada dinámicamente desde los datos proporcionados por la API. Los usuarios pueden buscar y
 navegar por razas específicas.
 
-![Lista de Razas](./fotos_intg/lista_razas_1.png)
+![Lista de Razas](utiles/lista_razas_1.png)
 
 https://github.com/rekznoz/lawebdelperro/blob/39c308b7c7e70e28241fffd284351a908fbc9083/src/components/Bloque.jsx#L8-L58
 ---
@@ -42,7 +42,7 @@ https://github.com/rekznoz/lawebdelperro/blob/39c308b7c7e70e28241fffd284351a908f
 Para manejar eficientemente un gran volumen de datos, se han implementado paginaciones que organizan los registros de
 manera ordenada y visualmente atractiva.
 
-![Paginaciones](./fotos_intg/lista_razas_2.png)
+![Paginaciones](utiles/lista_razas_2.png)
 
 https://github.com/rekznoz/lawebdelperro/blob/39c308b7c7e70e28241fffd284351a908fbc9083/src/components/Galeria.jsx#L4-L58
 
@@ -56,7 +56,7 @@ Proporcionamos información detallada de cada raza, incluyendo:
 - 📷 Imágenes de alta calidad.
 - 📊 Datos específicos sobre tamaño, temperamento, entre otros.
 
-![Detalles de Raza](./fotos_intg/raza_1.png)
+![Detalles de Raza](utiles/raza_1.png)
 
 ---
 
@@ -69,13 +69,13 @@ registran problemas para los administradores.
 
 Se muestra un mensaje claro al usuario si intenta acceder a una página inexistente:
 
-![Error 404](./fotos_intg/error_1.png)
+![Error 404](utiles/error_1.png)
 
 ### **⚠️ Errores en la API**
 
 Si ocurre un problema con la conexión a la API, se despliega un mensaje amigable con la opción de intentar nuevamente.
 
-![Error API](./fotos_intg/error_2.png)
+![Error API](utiles/error_2.png)
 
 ---
 
