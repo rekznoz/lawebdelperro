@@ -47,3 +47,49 @@ https://github.com/user-attachments/assets/699e5071-514b-4362-862a-f8e453fe37f0
     - 🐕 Descripción de características.
     - 📷 Imágenes de alta calidad.
     - 📊 Datos específicos sobre tamaño, temperamento, entre otros.
+
+### **📷 Detalles de Raza**
+
+## **👥 Personalidad**
+
+### **📝 Descripción:**
+
+- **Página**: `Personalidad`
+- **Descripción**: Test de personalidad para seleccionar la raza ideal.
+- **Información**: Los usuarios pueden realizar un test de personalidad para conocer qué raza de perro se adapta mejor a sus características y preferencias.
+- **Resultados**: Se muestran los resultados del test con la raza recomendada y una descripción detallada de las características de la raza.
+
+### **📷 Test de Personalidad**
+
+## **📚 Formulario de Contacto**
+
+### **📝 Descripción:**
+
+- **Página**: `Contacto`
+- **Descripción**: Formulario de contacto para enviar consultas y comentarios.
+- **Validación**: Se implementa una validación de formularios para garantizar la integridad de los datos ingresados por los usuarios.
+- **Envío de Mensajes**: Los usuarios pueden enviar mensajes a través del formulario de contacto.
+- **Errores Visuales**: En caso de datos incorrectos, se muestran errores visuales para indicar al usuario los campos que requieren corrección.
+- **Notificación de Envío**: Se muestra una notificación al usuario cuando el mensaje se envía correctamente.
+
+### **📷 Formulario de Contacto**
+
+## **🔒 Autenticación**
+
+### **📝 Descripción:**
+
+- **Página**: `Autenticación`
+- **Descripción**: Registro e inicio de sesión de usuarios.
+- **Funcionalidades**: 
+    - **`Login`**: Modal de inicio de sesión.
+    - **`Registro`**: Modal de creación de cuenta.
+    - **`Firebase`**: Configuración y manejo de autenticación.
+    - **`Contexto de Usuario`**: Almacenamiento de datos de usuario autenticado.
+    - **`Proteccion de Rutas`**: Implementación de protección de rutas privadas.
+    - **`Actualización de Perfil`**: Funcionalidad para actualizar la información del usuario.
+    - **`Favoritos`**: Página para mostrar las razas favoritas del usuario.
+    - **`Agregar a Favoritos`**: Funcionalidad para agregar y quitar razas de favoritos.
+    - 
+### **📷 Autenticación**
+
+### **📷 Perfil Publico de Usuario y Favoritos**
