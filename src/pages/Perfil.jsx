@@ -47,7 +47,7 @@ const validationSchema = object({
 
 export default function Perfil() {
 
-    const {usuario, datosUsuario, setUsuario, cargando} = useContext(UsuarioC);
+    const {usuario, _, datosUsuario, setDatosUsuario, cargando} = useContext(UsuarioC);
     const [isEditing, setIsEditing] = useState(false);
 
     if (cargando) {
@@ -74,11 +74,11 @@ export default function Perfil() {
 
                 const {resetForm} = funciones;
 
+                setDatosUsuario(values);
+
                 sincronizarUsuario(usuario, values)
 
                 setIsEditing(false);
-
-                setUsuario(values);
 
                 Swal.fire({
                     title: "Cambios guardados",
