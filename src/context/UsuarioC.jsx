@@ -32,7 +32,7 @@ export default function UsuarioProvider({children}) {
     }
 
     return (
-        <UsuarioC.Provider value={{usuario, datosUsuario, setUsuario, cargando}}>
+        <UsuarioC.Provider value={{usuario, setUsuario, datosUsuario, setDatosUsuario, cargando}}>
             {children}
         </UsuarioC.Provider>
     )
