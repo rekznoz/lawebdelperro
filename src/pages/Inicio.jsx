@@ -66,7 +66,7 @@ const listaDesarrolladores = [
         imagen: cristian,
         descripcion: 'Es el mas trabajador del equipo y el que mas aporta en cuestion de esfuerzo',
         color: "verde",
-        perfil: 'AAAAA'
+        perfil: 'fugaNckZyRPiVoJYSbZfUd9CMav1'
     },
     {
         nombre: 'Sergio',
