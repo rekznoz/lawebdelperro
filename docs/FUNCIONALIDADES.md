@@ -9,7 +9,7 @@
 
 ### **📷 Carrusel de Imágenes**
 
-https://github.com/user-attachments/assets/b37f6b90-efd3-4077-9fbb-ac6a199f1f3d
+![Video del Carrusen](https://github.com/user-attachments/assets/b37f6b90-efd3-4077-9fbb-ac6a199f1f3d)
 
 ### **Presentacion de características**
 
