@@ -64,7 +64,9 @@ export default function Filtro(atributos) {
                         onClick={() => setIsOpen(!isOpen)}
                     >
                         {isOpen ? "<" : ">"}
-                        <span className="texto-lado-boton">Abrir Panel</span>
+                        <span className="texto-lado-boton">{
+                            isOpen ? "Cerrar Filtros" : "Abrir Filtros"
+                        }</span>
                     </button>
                     { /* Texto al lado del boton */}
 
