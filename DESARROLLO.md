@@ -114,4 +114,28 @@ Se utiliza **`createBrowserRouter`** para gestionar las rutas y definir la estru
     - **`Responsive`**: Ajustes para una mejor visualización en dispositivos móviles.
     - **`Tema Oscuro`**: Implementación de un tema oscuro para la aplicación.
 
+15. **Perfiles de Usuario**:
+    - **`Perfil de Usuario`**: Página para mostrar y editar la información del usuario.
+    - **`Actualización de Perfil`**: Funcionalidad para actualizar la información del usuario.
+
+16. **Favoritos**: 
+    - **`Favoritos`**: Página para mostrar las razas favoritas del usuario.
+    - **`Agregar a Favoritos`**: Funcionalidad para agregar y quitar razas de favoritos.
+
+17. **Perfiles publicos de usuario y favoritos**:
+    - **`Perfiles Publicos`**: Página para mostrar la información de un usuario.
+    - **`Favoritos Publicos`**: Página para mostrar las razas favoritas de un usuario.
+
+18. **Test de personalidad**:
+    - **`Test de Personalidad`**: Página para realizar un test de `personalidad` para saber que raza de perro es la ideal.
+    - **`Resultados del Test`**: Página para mostrar los resultados del test.
+
+19. **Pagina de Inicio**:
+    - **`Pagina de Inicio`**: Página de inicio con información general sobre el proyecto.
+    - **`Animaciones`**: Agregado de animaciones y transiciones.
+
+20. **Carrusel de Imagenes**:
+    - **`Carrusel`**: Componente para mostrar imágenes en un carrusel.
+    - **`Animaciones`**: Agregado de animaciones y transiciones.
+
 ---

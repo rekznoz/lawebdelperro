@@ -7,6 +7,12 @@
 
 ## Enlaces internos
 
+### [🔗 Enlace a la Documentacion](./docs/)
+
+### [🔗 Mini-Guia de Instalacion](./INSTALACION.md)
+
+### [🔗 Funcionalidades Desarrolladas](./FUNCIONALIDADES.md)
+
 ### [🔗 Documento de Desarrollo](./DESARROLLO.md)
 
 ### [🔗 Documento de Integración](./INTEGRACION.md)
@@ -165,6 +171,11 @@ Existen varias webs dedicadas a los perros, pero la mayoría se centran en la ve
     - 📂 **Lista de favoritos**: Mostrar las razas guardadas en una sección especial.
 
 **Objetivo:** Permitir a los usuarios marcar y organizar las razas que les interesan para futuras consultas y comparaciones.
+
+### 6. 📖 **Perfil de Usuario**
+
+- **Creación de perfiles de usuario** para personalizar la experiencia y guardar preferencias:
+    - 📝 **Información personal**: Nombre, correo electrónico, dirección, etc.
 
 ---
 
