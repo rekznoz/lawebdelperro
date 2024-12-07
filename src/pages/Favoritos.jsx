@@ -1,12 +1,12 @@
-import {useContext, useEffect, useState} from "react";
-import {useRazaContext} from "../context/RazasC.jsx";
-import Bloque from "../components/Bloque.jsx";
-import {Loading} from "../components/Loading.jsx";
-import Filtro from "../components/Filtro.jsx";
-import Paginacion from "../components/Paginacion.jsx";
-import {filtroRazas} from "./ListaRazas.jsx";
-import {UsuarioC} from "../context/UsuarioC.jsx";
-import {obtenerFavoritos} from "../config/FirebaseDB.jsx";
+import {useContext, useEffect, useState} from "react"
+import {useRazaContext} from "../context/RazasC.jsx"
+import Bloque from "../components/Bloque.jsx"
+import {Loading} from "../components/Loading.jsx"
+import Filtro from "../components/Filtro.jsx"
+import Paginacion from "../components/Paginacion.jsx"
+import {filtroRazas} from "./ListaRazas.jsx"
+import {UsuarioC} from "../context/UsuarioC.jsx"
+import {obtenerFavoritos} from "../config/FirebaseDB.jsx"
 import '../css/favoritos.css'
 
 const filtroDefault = {
@@ -21,7 +21,7 @@ const filtroDefault = {
 export default function Favoritos() {
 
     //const {razas} = useLoaderData()
-    const {razas, loading, error} = useRazaContext();
+    const {razas, loading, error} = useRazaContext()
     const [pagina, setPagina] = useState(1)
     const [filtro, setFiltro] = useState(filtroDefault)
 
@@ -29,12 +29,12 @@ export default function Favoritos() {
     const pageNumbers = []
 
     // RAZAS FAVORITAS
-    const [favoritos, setFavoritos] = useState([]);
-    const {usuario} = useContext(UsuarioC);
+    const [favoritos, setFavoritos] = useState([])
+    const {usuario} = useContext(UsuarioC)
 
     useEffect(() => {
         if (usuario) {
-            obtenerFavoritos(usuario.uid).then(favs => setFavoritos(favs));
+            obtenerFavoritos(usuario.uid).then(favs => setFavoritos(favs))
         }
     }, [usuario])
 

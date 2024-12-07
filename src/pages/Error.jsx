@@ -1,4 +1,4 @@
-import {Link, useRouteError} from "react-router-dom";
+import {Link, useRouteError} from "react-router-dom"
 
 import dog_error from '../assets/error/error_dog.gif'
 

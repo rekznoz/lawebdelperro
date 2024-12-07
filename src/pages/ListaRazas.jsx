@@ -1,9 +1,9 @@
 import {useEffect, useState} from "react"
 import Filtro from "../components/Filtro.jsx"
 import Paginacion from "../components/Paginacion.jsx"
-import Bloque from "../components/Bloque.jsx";
-import {useRazaContext} from "../context/RazasC.jsx";
-import {Loading} from "../components/Loading.jsx";
+import Bloque from "../components/Bloque.jsx"
+import {useRazaContext} from "../context/RazasC.jsx"
+import {Loading} from "../components/Loading.jsx"
 
 import '../css/listaRazas.css'
 
@@ -56,7 +56,7 @@ export function filtroRazas(razas, filtro) {
 export default function ListaRazas() {
 
     //const {razas} = useLoaderData()
-    const {razas, loading, error} = useRazaContext();
+    const {razas, loading, error} = useRazaContext()
     const [pagina, setPagina] = useState(1)
     const [filtro, setFiltro] = useState(filtroDefault)
 

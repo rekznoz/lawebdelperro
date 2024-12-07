@@ -1,5 +1,5 @@
 import '../css/filtro.css'
-import {useState} from "react";
+import {useState} from "react"
 
 function renderFiltroTexto(valor, texto, unidad = '') {
     return valor === 0 ? `${texto} = Indefinido` : `${texto} = ${valor}${unidad}`
@@ -8,7 +8,7 @@ function renderFiltroTexto(valor, texto, unidad = '') {
 export default function Filtro(atributos) {
 
     const {grupos, filtro, setFiltro, filtroDefault} = atributos
-    const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(false)
 
     const limpiarFiltro = () => {
         setFiltro(filtroDefault)

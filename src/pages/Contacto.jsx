@@ -2,11 +2,11 @@ import '../css/formulario.css'
 import Swal from "sweetalert2"
 
 // Recoge los datos del formulario
-import {Formik} from 'formik';
+import {Formik} from 'formik'
 // https://formik.org/docs/overview
 
 // Validar los datos del formulario con Yup
-import {object, string, array} from 'yup';
+import {object, string, array} from 'yup'
 // https://www.npmjs.com/package/yup
 
 const forumarioDefecto = {
