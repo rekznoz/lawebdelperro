@@ -9,21 +9,12 @@
 
 ### **📷 Carrusel de Imágenes**
 
-<video width="100%" controls>
-  <source src="utiles/Carrusel.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+https://github.com/rekznoz/lawebdelperro/tree/main/utiles/Carruselel.mp4
 
 ### **Presentacion de características**
 
-<video width="100%" controls>
-  <source src="utiles/Caracteristicas.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-</video>
+https://github.com/rekznoz/lawebdelperro/tree/main/utiles/Caracteristicas.mp4
 
 ### **Presentacion de Desarrolladores**
 
-<video width="100%" controls>
-  <source src="utiles/Desarrolladores.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-</video>
+https://github.com/rekznoz/lawebdelperro/tree/main/utiles/Desarrolladores.mp4
