@@ -5,12 +5,15 @@ import fav from '../assets/fav.png'
 import rfav from '../assets/rfav.png'
 import {UsuarioC} from "../context/UsuarioC.jsx"
 import {obtenerFavoritos, sincronizarFavoritos} from "../config/FirebaseDB.jsx"
+import Notificacion from "./Notificacion.jsx";
 
 export default function Bloque(atributos) {
 
     const {usuario} = useContext(UsuarioC)
     const [favoritos, setFavoritos] = useState([])
     const {mapaElementos} = atributos
+    const [mensaje, setMensaje] = useState('')
+    const [tipo, setTipo] = useState('success')
 
     useEffect(() => {
         if (usuario) {
@@ -28,11 +31,19 @@ export default function Bloque(atributos) {
 
         if (usuario) {
             sincronizarFavoritos(usuario.uid, nuevosFavoritos) // Sincroniza con Firestore
+            setMensaje(`Raza ${nuevosFavoritos.includes(idElemento) ? 'agregada' : 'eliminada'} de favoritos`)
+            if (nuevosFavoritos.includes(idElemento)) {
+                setTipo('success')
+            } else {
+                setTipo('alert')
+            }
+            setTimeout(() => setMensaje(''), 2000)
         }
     }
 
     return (
         <>
+            <Notificacion mensaje={mensaje} tipo={tipo}/>
             <ul className="contenedorRazas">
                 {mapaElementos.map(elemento => (
                     <li className="cartaRazas" key={elemento["general"]["name"]}>

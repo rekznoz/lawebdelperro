@@ -120,11 +120,7 @@ export default function Personalidad() {
         const bestBreed = razas.find(
             (breed) => breed.general.name === bestMatch
         )
-
-        console.log(scores)
-        console.log(bestMatch)
-
-
+        
         setResult(bestBreed)
     }
 
@@ -133,7 +129,7 @@ export default function Personalidad() {
             <div id="area1">
                 <h1 className="test-titulo">
                     Test de Personalidad
-                    <h1 className="test-titulo">¿Qué Raza de Perro Eres?</h1>
+                    <p className="test-titulo">¿Qué Raza de Perro Eres?</p>
                 </h1>
 
             </div>
