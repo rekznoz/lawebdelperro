@@ -48,7 +48,7 @@ export default function Carrusel({imagenes}) {
             setIndiceActual((indicePrevio) =>
                 indicePrevio >= imagenes.length - totalImagenes ? 0 : indicePrevio + 1
             )
-        }, 5000)
+        }, 10000)
         return () => clearInterval(intervalo)
     }, [indiceActual])
     
