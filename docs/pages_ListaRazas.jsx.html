@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: pages/ListaRazas.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: pages/ListaRazas.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import {useEffect, useState} from "react"
+import Filtro from "../components/Filtro.jsx"
+import Paginacion from "../components/Paginacion.jsx"
+import Bloque from "../components/Bloque.jsx"
+import {useRazaContext} from "../context/RazasC.jsx"
+import {Loading} from "../components/Loading.jsx"
+
+import '../css/listaRazas.css'
+
+const filtroDefault = {
+    nombre: '',
+    grupo: '',
+    popularidad: 0,
+    altura: 0,
+    peso: 0,
+    vida: 0
+}
+
+/**
+ * Función para filtrar las razas
+ * @param razas
+ * @param filtro
+ */
+export function filtroRazas(razas, filtro) {
+    if (!razas) {
+        return []
+    }
+    return razas.filter(raza => {
+        if (filtro["nombre"] === '') {
+            return true
+        }
+        return raza["general"]["name"].toLowerCase().includes(filtro["nombre"].toLowerCase())
+    }).filter(raza => {
+        if (filtro["grupo"] === '') {
+            return true
+        }
+        return raza["general"]["group"] === filtro["grupo"]
+    }).filter(raza => {
+        if (filtro["popularidad"] === 0) {
+            return true
+        }
+        return raza["general"]["popularity"] === filtro["popularidad"]
+    }).filter(raza => {
+        if (filtro["altura"] === 0) {
+            return true
+        }
+        return raza["general"]["height"] === filtro["altura"]
+    }).filter(raza => {
+        if (filtro["peso"] === 0) {
+            return true
+        }
+        return raza["general"]["weight"] === filtro["peso"]
+    }).filter(raza => {
+        if (filtro["vida"] === 0) {
+            return true
+        }
+        return raza["general"]["lifespan"] === filtro["vida"]
+    })
+}
+
+/**
+ * Componente que muestra una lista de razas
+ * @returns {JSX.Element}
+ * @constructor
+ */
+export default function ListaRazas() {
+
+    //const {razas} = useLoaderData()
+    const {razas, loading, error} = useRazaContext()
+    const [pagina, setPagina] = useState(1)
+    const [filtro, setFiltro] = useState(filtroDefault)
+
+    const objetosPorPagina = 6
+    const pageNumbers = []
+
+    // Filtro de Nombre
+    const razasFiltradas = filtroRazas(razas, filtro)
+
+    const indiceUltimoObjeto = pagina * objetosPorPagina
+    const indicePrimerObjeto = indiceUltimoObjeto - objetosPorPagina
+    const razasActuales = razasFiltradas.slice(indicePrimerObjeto, indiceUltimoObjeto)
+
+    const paginacion = (numeroPagina) => {
+        setPagina(numeroPagina)
+    }
+
+    const totalPaginas = Math.ceil(razasFiltradas.length / objetosPorPagina)
+
+    // Crear grupos de perros
+    let grupos = []
+    if (razas) {
+        grupos = razas.map(raza => raza["general"]["group"])
+        grupos = [...new Set(grupos)]
+    }
+
+    for (let i = Math.max(1, pagina - 2); i &lt;= Math.min(totalPaginas, pagina + 2); i++) {
+        pageNumbers.push(i)
+    }
+
+    useEffect(() => {
+        setPagina(1)
+    }, [filtro])
+
+    if (loading) {
+        return &lt;Loading/>
+    }
+
+    if (error) {
+        throw new Response('Error al obtener las razas', {status: 404})
+    }
+
+    if (!razasFiltradas) {
+        throw new Response('Error al obtener la lista de Razas', {status: 404})
+    }
+
+    // Función para manejar el input de página
+    const handlePageInput = (event) => {
+        let page = parseInt(event.target.value)
+        if (page >= 1 &amp;&amp; page &lt;= totalPaginas) {
+            paginacion(page)
+        }
+    }
+
+    return (
+        &lt;>
+            &lt;Filtro grupos={grupos} filtro={filtro} setFiltro={setFiltro} filtroDefault={filtroDefault}/>
+
+            &lt;div id='area1'>
+                &lt;h1>Lista de Razas&lt;/h1>
+            &lt;/div>
+            &lt;div id='area2'>
+                &lt;Bloque mapaElementos={razasActuales}/>
+            &lt;/div>
+            &lt;div id='area3'>
+                &lt;Paginacion pagina={pagina} totalPaginas={totalPaginas} paginacion={paginacion}
+                            pageNumbers={pageNumbers} handlePageInput={handlePageInput}/>
+            &lt;/div>
+        &lt;/>
+    )
+}
+
+// registry.dog/api/v1
+
+/*
+
+{
+  "status": "success",
+  "data": [
+    {
+      "general": {
+        "name": "Chihuahua",
+        "group": "Companion",
+        "personalityTraits": [
+          "Companionable",
+          "Dignified",
+          "Lively"
+        ],
+        "shortDescription": "The Chihuahua is a tiny, vivacious companion with a huge personality and captivating charm.",
+        "longDescription": "The Chihuahua is a tiny dog with a huge personality, making it an ideal companion for those who appreciate a vivacious and captivating pet. Weighing around 5 pounds and standing at 7 inches tall, this elegant breed is renowned for its expressive, luminous eyes and characteristic 'apple' head. Chihuahuas are highly loyal and exude a big-dog attitude despite their small size, often displaying a protective instinct that belies their stature.\n They are adaptable and thrive in city environments, enjoying quality time on their owner's lap. Known for their smooth, straight coats in various colors and patterns, Chihuahuas require minimal grooming but do need training to prevent them from becoming overly dominant. While they are playful and affectionate with their families, their small size makes them unsuitable for rough play with children.\n Highly vocal and alert, Chihuahuas make excellent watchdogs, bringing both joy and companionship to any home. With a lifespan of up to 15 years, these dogs are a long-term commitment, offering endless love and amusement to those who embrace their spirited nature.",
+        "popularity": 5,
+        "height": 7,
+        "weight": 5,
+        "lifespan": 15
+      },
+      "physical": {
+        "size": 1,
+        "lifespan": 4,
+        "droolingFrequency": 1,
+        "coatStyle": "Straight",
+        "coatTexture": "Smooth",
+        "coatLength": 2,
+        "doubleCoat": false
+      },
+      "behavior": {
+        "familyAffection": 4,
+        "childFriendly": 1,
+        "dogSociability": 3,
+        "friendlinessToStrangers": 2,
+        "playfulness": 4,
+        "protectiveInstincts": 4,
+        "adaptability": 4,
+        "barkingFrequency": 5
+      },
+      "care": {
+        "sheddingAmount": 2,
+        "groomingFrequency": 1,
+        "exerciseNeeds": 4,
+        "mentalStimulationNeeds": 3,
+        "trainingDifficulty": 3
+      },
+      "images": {
+        "small": {
+          "indoors": "https://raw.githubusercontent.com/chase-manning/open-dog-registry/main/images/chihuahua/small/indoors.jpg",
+          "outdoors": "https://raw.githubusercontent.com/chase-manning/open-dog-registry/main/images/chihuahua/small/outdoors.jpg",
+          "studio": "https://raw.githubusercontent.com/chase-manning/open-dog-registry/main/images/chihuahua/small/studio.jpg"
+        },
+        "large": {
+          "indoors": "https://raw.githubusercontent.com/chase-manning/open-dog-registry/main/images/chihuahua/large/indoors.png",
+          "outdoors": "https://raw.githubusercontent.com/chase-manning/open-dog-registry/main/images/chihuahua/large/outdoors.png",
+          "studio": "https://raw.githubusercontent.com/chase-manning/open-dog-registry/main/images/chihuahua/large/studio.png"
+        }
+      },
+      "id": "chihuahua"
+    },
+}
+
+*/</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Loading.html">Loading</a></li><li><a href="module.html#.exports">exports</a></li></ul><h3>Global</h3><ul><li><a href="global.html#ActualizarUsuario">ActualizarUsuario</a></li><li><a href="global.html#AgregarUsuario">AgregarUsuario</a></li><li><a href="global.html#Caracteristica">Caracteristica</a></li><li><a href="global.html#GetDataRaza">GetDataRaza</a></li><li><a href="global.html#RazasProvider">RazasProvider</a></li><li><a href="global.html#filtroRazas">filtroRazas</a></li><li><a href="global.html#firebaseLogin">firebaseLogin</a></li><li><a href="global.html#firebaseLogout">firebaseLogout</a></li><li><a href="global.html#firebaseRegistro">firebaseRegistro</a></li><li><a href="global.html#getRazas">getRazas</a></li><li><a href="global.html#obtenerFavoritos">obtenerFavoritos</a></li><li><a href="global.html#obtenerFavoritosPublico">obtenerFavoritosPublico</a></li><li><a href="global.html#obtenerIDsUsuarios">obtenerIDsUsuarios</a></li><li><a href="global.html#obtenerUsuario">obtenerUsuario</a></li><li><a href="global.html#obtenerUsuarioPublico">obtenerUsuarioPublico</a></li><li><a href="global.html#setDocumentFireStore">setDocumentFireStore</a></li><li><a href="global.html#sincronizarFavoritos">sincronizarFavoritos</a></li><li><a href="global.html#sincronizarUsuario">sincronizarUsuario</a></li><li><a href="global.html#useWindowSize">useWindowSize</a></li><li><a href="global.html#validationSchema">validationSchema</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Sat Dec 07 2024 16:35:01 GMT+0100 (hora estándar de Europa central)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

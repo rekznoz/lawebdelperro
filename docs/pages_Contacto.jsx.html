@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: pages/Contacto.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: pages/Contacto.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import '../css/formulario.css'
+import Swal from "sweetalert2"
+
+// Recoge los datos del formulario
+import {Formik} from 'formik'
+// https://formik.org/docs/overview
+
+// Validar los datos del formulario con Yup
+import {object, string, array} from 'yup'
+// https://www.npmjs.com/package/yup
+
+const forumarioDefecto = {
+    nombre: '',
+    email: '',
+    telefono: '',
+    intereses: [],
+    tienePerros: 'no',
+    razaFavorita: '',
+    mensaje: ''
+}
+
+const validationSchema = object({
+    nombre: string()
+        .required('El campo nombre es obligatorio')
+        .min(3, 'El nombre debe tener al menos 3 caracteres')
+        .max(50, 'El nombre debe tener como máximo 50 caracteres'),
+    email: string()
+        .required('El campo email es obligatorio')
+        .email('El email no es válido'),
+    telefono: string()
+        .required('El campo teléfono es obligatorio')
+        .min(8, 'El teléfono debe tener al menos 8 caracteres')
+        .max(15, 'El teléfono debe tener como máximo 15 caracteres'),
+    intereses: array()
+        .required('El campo intereses es obligatorio'),
+    razaFavorita: string()
+        .required('El campo raza favorita es obligatorio'),
+    mensaje: string()
+        .max(100, 'El mensaje debe tener como máximo 100 caracteres')
+})
+
+const contieneInteres = (intereses, interes) => {
+    return intereses.includes(interes)
+}
+
+/**
+ * Componente que muestra el formulario de contacto
+ * @returns {JSX.Element} Componente
+ */
+export default function Contacto() {
+
+    const onSubmit = (values, funciones) => {
+        const {nombre, email, telefono, intereses, tienePerros, razaFavorita, mensaje} = values
+        const {resetForm} = funciones
+        Swal.fire({
+            title: 'Mensaje Enviado',
+            text: `Gracias por contactarnos ${nombre}.`,
+            icon: 'success',
+            confirmButtonText: 'Aceptar'
+        })
+
+        console.log('Nombre:', nombre)
+        console.log('Email:', email)
+        console.log('Teléfono:', telefono)
+        console.log('Intereses:', intereses)
+        console.log('Tiene perros:', tienePerros)
+        console.log('Raza favorita:', razaFavorita)
+        console.log('Mensaje:', mensaje)
+
+        resetForm()
+    }
+
+    return (
+        &lt;>
+            &lt;div id='area1'>
+                &lt;h1>Contacto&lt;/h1>
+            &lt;/div>
+            &lt;div id='area2'>
+                &lt;Formik initialValues={forumarioDefecto} validationSchema={validationSchema} onSubmit={onSubmit}>
+                    {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
+                        &lt;div className="contFormContacto">
+                            &lt;h3>¿Tienes alguna duda o comentario sobre razas de perros?&lt;/h3>
+                            &lt;h3>¡Nos encantaría ayudarte!&lt;/h3>
+                            &lt;form onSubmit={handleSubmit}>
+
+                                &lt;div className="opciones">
+                                    &lt;label htmlFor="nombre">&lt;span className='requiere'>*&lt;/span> Nombre:&lt;/label>
+                                    &lt;input type="text" id="nombre" name="nombre" placeholder="Tu nombre completo"
+                                           value={values.nombre}
+                                           onBlur={handleBlur} onChange={handleChange}/>
+                                    {touched.nombre &amp;&amp; errors.nombre ? &lt;p className="FormError">{errors.nombre}&lt;/p> : null}
+                                &lt;/div>
+
+                                &lt;div className="opciones">
+                                    &lt;label htmlFor="email">&lt;span className='requiere'>*&lt;/span> Correo
+                                        Electrónico:&lt;/label>
+                                    &lt;input type="email" id="email" name="email" placeholder="Tu correo electrónico"
+                                           value={values.email} onBlur={handleBlur} onChange={handleChange}/>
+                                    {touched.email &amp;&amp; errors.email ? &lt;p className="FormError">{errors.email}&lt;/p> : null}
+                                &lt;/div>
+
+                                &lt;div className="opciones">
+                                    &lt;label htmlFor="telefono">&lt;span className='requiere'>*&lt;/span> Número de
+                                        Teléfono:&lt;/label>
+                                    &lt;input type="number" id="telefono" name="telefono"
+                                           placeholder="Tu número de teléfono"
+                                           value={values.telefono} onBlur={handleBlur} onChange={handleChange}/>
+                                    {touched.telefono &amp;&amp; errors.telefono ? &lt;p className="FormError">{errors.telefono}&lt;/p> : null}
+                                &lt;/div>
+
+                                &lt;div className="opciones centrarcuadros">
+
+                                    &lt;div className="gruporadio">
+                                        &lt;label>
+                                            &lt;p>&lt;span className='requiere'>*&lt;/span> ¿Tienes perros?&lt;/p>
+                                        &lt;/label>
+                                        &lt;label>
+                                            &lt;input type="radio" name="tienePerros" value="si" onChange={handleChange}
+                                                   checked={values.tienePerros === 'si'}/>
+                                            &lt;span>Si&lt;/span>
+                                        &lt;/label>
+                                        &lt;label>
+                                            &lt;input type="radio" name="tienePerros" value="no" onChange={handleChange}
+                                                   checked={values.tienePerros === 'no'}/>
+                                            &lt;span>No&lt;/span>
+                                        &lt;/label>
+                                    &lt;/div>
+
+                                    &lt;div className="grupocheck">
+                                        &lt;label className="contenedorCheck">
+                                            &lt;input type="checkbox" name="intereses" value="razas"
+                                                   onChange={handleChange} checked={contieneInteres(values.intereses, 'razas')}/>
+                                            &lt;span>Razas de Perros &lt;/span>
+                                        &lt;/label>
+                                        &lt;label className="contenedorCheck">
+                                            &lt;input type="checkbox" name="intereses" value="cuidados"
+                                                   onChange={handleChange} checked={contieneInteres(values.intereses, 'cuidados')}/>
+                                            &lt;span>Cuidados de Perros &lt;/span>
+                                        &lt;/label>
+                                        &lt;label className="contenedorCheck">
+                                            &lt;input type="checkbox" name="intereses" value="alimentacion"
+                                                   onChange={handleChange} checked={contieneInteres(values.intereses, 'alimentacion')}/>
+                                            &lt;span>Alimentación de Perros &lt;/span>
+                                        &lt;/label>
+                                        &lt;label className="contenedorCheck">
+                                            &lt;input type="checkbox" name="intereses" value="salud"
+                                                   onChange={handleChange} checked={contieneInteres(values.intereses, 'salud')}/>
+                                            &lt;span>Salud de Perros &lt;/span>
+                                        &lt;/label>
+                                    &lt;/div>
+
+                                &lt;/div>
+
+                                &lt;div className="opciones">
+                                    &lt;label htmlFor="razaFavorita">&lt;span className='requiere'>*&lt;/span> Raza de Perro
+                                        Favorita:&lt;/label>
+                                    &lt;select id="razaFavorita" name="razaFavorita" onBlur={handleBlur} onChange={handleChange}>
+                                        &lt;option value="">Selecciona una raza&lt;/option>
+                                        &lt;option value="labrador">Labrador Retriever&lt;/option>
+                                        &lt;option value="pastorAleman">Pastor Alemán&lt;/option>
+                                        &lt;option value="bulldog">Bulldog&lt;/option>
+                                        &lt;option value="poodle">Poodle&lt;/option>
+                                        &lt;option value="golden">Golden Retriever&lt;/option>
+                                    &lt;/select>
+                                    {touched.razaFavorita &amp;&amp; errors.razaFavorita ?
+                                        &lt;p className="FormError">{errors.razaFavorita}&lt;/p> : null}
+                                &lt;/div>
+
+                                &lt;div className="opciones">
+                                    &lt;label htmlFor="mensaje">Mensaje:&lt;/label>
+                                    &lt;textarea id="mensaje" name="mensaje" placeholder="Escribe tu mensaje aquí"
+                                              value={values.mensaje}
+                                              onBlur={handleBlur}
+                                              onChange={handleChange}/>
+                                &lt;/div>
+
+                                &lt;button type="submit" disabled={isSubmitting}>Enviar&lt;/button>
+                            &lt;/form>
+                        &lt;/div>
+                    )}
+                &lt;/Formik>
+            &lt;/div>
+        &lt;/>
+    )
+
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Loading.html">Loading</a></li><li><a href="module.html#.exports">exports</a></li></ul><h3>Global</h3><ul><li><a href="global.html#ActualizarUsuario">ActualizarUsuario</a></li><li><a href="global.html#AgregarUsuario">AgregarUsuario</a></li><li><a href="global.html#Caracteristica">Caracteristica</a></li><li><a href="global.html#GetDataRaza">GetDataRaza</a></li><li><a href="global.html#RazasProvider">RazasProvider</a></li><li><a href="global.html#filtroRazas">filtroRazas</a></li><li><a href="global.html#firebaseLogin">firebaseLogin</a></li><li><a href="global.html#firebaseLogout">firebaseLogout</a></li><li><a href="global.html#firebaseRegistro">firebaseRegistro</a></li><li><a href="global.html#getRazas">getRazas</a></li><li><a href="global.html#obtenerFavoritos">obtenerFavoritos</a></li><li><a href="global.html#obtenerFavoritosPublico">obtenerFavoritosPublico</a></li><li><a href="global.html#obtenerIDsUsuarios">obtenerIDsUsuarios</a></li><li><a href="global.html#obtenerUsuario">obtenerUsuario</a></li><li><a href="global.html#obtenerUsuarioPublico">obtenerUsuarioPublico</a></li><li><a href="global.html#setDocumentFireStore">setDocumentFireStore</a></li><li><a href="global.html#sincronizarFavoritos">sincronizarFavoritos</a></li><li><a href="global.html#sincronizarUsuario">sincronizarUsuario</a></li><li><a href="global.html#useWindowSize">useWindowSize</a></li><li><a href="global.html#validationSchema">validationSchema</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Sat Dec 07 2024 16:35:01 GMT+0100 (hora estándar de Europa central)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: pages/FavoritosPublico.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: pages/FavoritosPublico.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import {useContext, useEffect, useState} from "react"
+import {useRazaContext} from "../context/RazasC.jsx"
+import Bloque from "../components/Bloque.jsx"
+import {Loading} from "../components/Loading.jsx"
+import Filtro from "../components/Filtro.jsx"
+import Paginacion from "../components/Paginacion.jsx"
+import {filtroRazas} from "./ListaRazas.jsx"
+import {UsuarioC} from "../context/UsuarioC.jsx"
+import {obtenerFavoritos} from "../config/FirebaseDB.jsx"
+import '../css/favoritos.css'
+import {useLoaderData} from "react-router-dom"
+
+const filtroDefault = {
+    nombre: '',
+    grupo: '',
+    popularidad: 0,
+    altura: 0,
+    peso: 0,
+    vida: 0
+}
+
+/**
+ * Página de Favoritos Públicos
+ * @returns {JSX.Element}
+ * @constructor
+ */
+export default function FavoritosPublico() {
+
+    //const {razas} = useLoaderData()
+    const datosUsuario = useLoaderData()
+
+    const {razas, loading, error} = useRazaContext()
+    const [pagina, setPagina] = useState(1)
+    const [filtro, setFiltro] = useState(filtroDefault)
+
+    const objetosPorPagina = 6
+    const pageNumbers = []
+
+    // RAZAS FAVORITAS
+    const [favoritos, setFavoritos] = useState([])
+    const {usuario} = useContext(UsuarioC)
+
+    useEffect(() => {
+        if (usuario) {
+            obtenerFavoritos(usuario.uid).then(favs => setFavoritos(favs))
+        }
+    }, [usuario])
+
+    useEffect(() => {
+        setPagina(1)
+    }, [filtro])
+
+    if (loading) {
+        return &lt;Loading/>
+    }
+
+    if (error) {
+        throw new Response('Error al obtener las razas', {status: 404})
+    }
+
+    if (!datosUsuario) {
+        return &lt;Loading/>
+    }
+
+    const razasFavoritas = razas.filter(raza => datosUsuario.includes(raza["general"]["name"]))
+
+    if (razasFavoritas.length === 0) {
+        return (
+            &lt;div id='area1'>
+                &lt;h1>No hay favoritos&lt;/h1>
+            &lt;/div>
+        )
+    }
+
+    // Filtro de Nombre
+    const razasFiltradas = filtroRazas(razasFavoritas, filtro)
+
+    const indiceUltimoObjeto = pagina * objetosPorPagina
+    const indicePrimerObjeto = indiceUltimoObjeto - objetosPorPagina
+    const razasActuales = razasFiltradas.slice(indicePrimerObjeto, indiceUltimoObjeto)
+
+    const paginacion = (numeroPagina) => {
+        setPagina(numeroPagina)
+    }
+
+    const totalPaginas = Math.ceil(razasFiltradas.length / objetosPorPagina)
+
+    // Crear grupos de perros
+    let grupos = []
+    if (razas) {
+        grupos = razas.map(raza => raza["general"]["group"])
+        grupos = [...new Set(grupos)]
+    }
+
+    for (let i = Math.max(1, pagina - 2); i &lt;= Math.min(totalPaginas, pagina + 2); i++) {
+        pageNumbers.push(i)
+    }
+
+    if (!razasFiltradas) {
+        throw new Response('Error al obtener la lista de Razas', {status: 404})
+    }
+
+    // Función para manejar el input de página
+    const handlePageInput = (event) => {
+        let page = parseInt(event.target.value)
+        if (page >= 1 &amp;&amp; page &lt;= totalPaginas) {
+            paginacion(page)
+        }
+    }
+
+    return (
+        &lt;>
+            {
+                totalPaginas > 1 &amp;&amp; (
+                    &lt;Filtro grupos={grupos} filtro={filtro} setFiltro={setFiltro} filtroDefault={filtroDefault}/>
+                )
+            }
+            &lt;div id='area1'>
+                &lt;h1>Lista de Favoritos&lt;/h1>
+            &lt;/div>
+            &lt;div id='area2'>
+                &lt;Bloque mapaElementos={razasActuales}/>
+            &lt;/div>
+            &lt;div id='area3'>
+                {
+                    totalPaginas > 1 &amp;&amp; (
+                        &lt;Paginacion pagina={pagina} totalPaginas={totalPaginas} paginacion={paginacion}
+                                    pageNumbers={pageNumbers} handlePageInput={handlePageInput}/>
+                    )
+                }
+            &lt;/div>
+        &lt;/>
+    )
+
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Loading.html">Loading</a></li><li><a href="module.html#.exports">exports</a></li></ul><h3>Global</h3><ul><li><a href="global.html#ActualizarUsuario">ActualizarUsuario</a></li><li><a href="global.html#AgregarUsuario">AgregarUsuario</a></li><li><a href="global.html#Caracteristica">Caracteristica</a></li><li><a href="global.html#GetDataRaza">GetDataRaza</a></li><li><a href="global.html#RazasProvider">RazasProvider</a></li><li><a href="global.html#filtroRazas">filtroRazas</a></li><li><a href="global.html#firebaseLogin">firebaseLogin</a></li><li><a href="global.html#firebaseLogout">firebaseLogout</a></li><li><a href="global.html#firebaseRegistro">firebaseRegistro</a></li><li><a href="global.html#getRazas">getRazas</a></li><li><a href="global.html#obtenerFavoritos">obtenerFavoritos</a></li><li><a href="global.html#obtenerFavoritosPublico">obtenerFavoritosPublico</a></li><li><a href="global.html#obtenerIDsUsuarios">obtenerIDsUsuarios</a></li><li><a href="global.html#obtenerUsuario">obtenerUsuario</a></li><li><a href="global.html#obtenerUsuarioPublico">obtenerUsuarioPublico</a></li><li><a href="global.html#setDocumentFireStore">setDocumentFireStore</a></li><li><a href="global.html#sincronizarFavoritos">sincronizarFavoritos</a></li><li><a href="global.html#sincronizarUsuario">sincronizarUsuario</a></li><li><a href="global.html#useWindowSize">useWindowSize</a></li><li><a href="global.html#validationSchema">validationSchema</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Sat Dec 07 2024 16:35:01 GMT+0100 (hora estándar de Europa central)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

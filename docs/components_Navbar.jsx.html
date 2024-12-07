@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/Navbar.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/Navbar.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import {NavLink, useLocation} from "react-router-dom"
+// Importar imágenes
+import inicio from '../assets/navbar/inicio.png'
+import razas from '../assets/navbar/razas.png'
+import personalidad from '../assets/navbar/personalidad.png'
+import contacto from '../assets/navbar/contacto.png'
+import login from '../assets/navbar/login.png'
+import logout from '../assets/navbar/logout.png'
+import claro from '../assets/navbar/claro.png'
+import oscuro from '../assets/navbar/oscuro.png'
+import fav from '../assets/fav.png'
+import perfil from '../assets/navbar/perfil.png'
+
+import {useContext, useState} from "react"
+import {UsuarioC} from "../context/UsuarioC.jsx"
+import {firebaseLogout} from "../config/FirebaseAuth.jsx"
+
+// Array de objetos con las rutas y sus respectivas imágenes
+// Se selecciona un Array porque permite una mejor ampliacion de rutas y manejo de las mismas
+const navItems = [
+    { to: "/", img: inicio, alt: "Inicio", label: "Ir a la página de inicio" },
+    { to: "/razas", img: razas, alt: "Razas", label: "Explorar razas de perros" },
+    { to: "/test", img: personalidad, alt: "Test", label: "Conocer más sobre nosotros" },
+    { to: "/contacto", img: contacto, alt: "Contacto", label: "Ir a la página de contacto" },
+    //{ to: "/login", img: login, alt: "Icono para login", label: "Iniciar sesión o registrarse" },
+]
+
+/**
+ * Componente que muestra el Navbar
+ * @returns {JSX.Element} Componente
+ */
+export default function Navbar() {
+
+    // Obtener la ruta actual para condicionarla despues
+    const paginaActual = useLocation()
+    const [modo, setModo] = useState('claro')
+    const [fade, setFade] = useState(false)  // Estado para controlar la animación fade
+    const {usuario, setUsuario} = useContext(UsuarioC)
+
+    const cambiarModo = () => {
+        // Iniciar la animación fade
+        setFade(true)
+        setTimeout(() => {
+            // Cambiar el modo después de la animación
+            const nuevoModo = modo === 'claro' ? 'oscuro' : 'claro'
+            setModo(nuevoModo)
+            document.body.classList.toggle('dark-mode')
+            // Finalizar la animación fade
+            setFade(false)
+        }, 300) // Tiempo que coincide con la duración del fade en CSS
+    }
+
+    const mostarLogin = () => {
+        // Mostrar el modal de Login
+        const modal = document.getElementById('modal-login-registro')
+        modal.style.display = 'block'
+    }
+
+    const desloguearUsuario = async () => {
+        await firebaseLogout()
+            .then(() => {
+                setUsuario(null)
+            })
+            .catch(error => {
+                console.error(error)
+            })
+    }
+
+    return (
+        &lt;header className='contenedorHeader'>
+            &lt;NavLink to={'/'} aria-label='Ir a la página de inicio'>
+                &lt;h1 className='titulo'>La Web del Perro!&lt;/h1>
+            &lt;/NavLink>
+            &lt;nav className='navbar'>
+                &lt;ul>
+                    {
+                        /*
+                           Mapeo de las rutas para mostrar los enlaces
+                            - Se filtra la ruta actual para no mostrarla
+                            - Se mapean las rutas restantes
+                         */
+                        navItems
+                        // Filtro de la pagina actual
+                        .filter(pagina => pagina.to !== paginaActual.pathname)
+                        .map((pagina, index) => (
+                            &lt;li className='enlacesnav' key={index}>
+                                &lt;NavLink to={pagina.to} aria-label={pagina.label}>
+                                    &lt;img src={pagina.img} alt={pagina.alt}/>
+                                &lt;/NavLink>
+                                &lt;span className="tooltip-text">{pagina.alt}&lt;/span>
+                            &lt;/li>
+                        ))
+                    }
+                    {/* Botón para ir a favoritos */}
+                    {
+                        usuario &amp;&amp; paginaActual.pathname !== '/favoritos' &amp;&amp; (
+                            &lt;li className='enlacesnav'>
+                                &lt;NavLink to='/favoritos' aria-label='Ir a favoritos'>
+                                    &lt;img src={fav} alt='Favoritos'/>
+                                &lt;/NavLink>
+                                &lt;span className="tooltip-text">Favoritos&lt;/span>
+                            &lt;/li>
+                        )
+                    }
+                    {
+                        usuario &amp;&amp; paginaActual.pathname !== '/perfil' &amp;&amp; (
+                            &lt;li className='enlacesnav'>
+                                &lt;NavLink to='/perfil' aria-label='Ir a perfil'>
+                                    &lt;img src={perfil} alt='Perfil'/>
+                                &lt;/NavLink>
+                                &lt;span className="tooltip-text">Perfil&lt;/span>
+                            &lt;/li>
+                        )
+                    }
+                    {/* Botón para el modal del Login */}
+                    &lt;li className='enlacesnav'>
+                        {
+                            usuario ? (
+                                &lt;img src={logout} alt='Logout' onClick={desloguearUsuario}/>
+                            ) : (
+                                &lt;img src={login} alt='Login' onClick={mostarLogin}/>
+                            )
+                        }
+                        &lt;span className="tooltip-text">
+                            {usuario ? 'Logout' : 'Login'}
+                        &lt;/span>
+                    &lt;/li>
+                    {/* Botón para cambiar el modo */}
+                    &lt;li className={`enlacesnav ${fade ? 'fade' : ''}`} >
+                        &lt;img
+                            src={modo === 'claro' ? oscuro : claro}
+                            alt={`Cambiar a modo ${modo === 'claro' ? 'claro' : 'oscuro'}`}
+                            onClick={cambiarModo}
+                        />
+                        &lt;span className="tooltip-text">{modo === 'claro' ? 'Oscuro' : 'Claro'}&lt;/span>
+                    &lt;/li>
+                &lt;/ul>
+            &lt;/nav>
+        &lt;/header>
+    )
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Loading.html">Loading</a></li><li><a href="module.html#.exports">exports</a></li></ul><h3>Global</h3><ul><li><a href="global.html#ActualizarUsuario">ActualizarUsuario</a></li><li><a href="global.html#AgregarUsuario">AgregarUsuario</a></li><li><a href="global.html#Caracteristica">Caracteristica</a></li><li><a href="global.html#GetDataRaza">GetDataRaza</a></li><li><a href="global.html#RazasProvider">RazasProvider</a></li><li><a href="global.html#filtroRazas">filtroRazas</a></li><li><a href="global.html#firebaseLogin">firebaseLogin</a></li><li><a href="global.html#firebaseLogout">firebaseLogout</a></li><li><a href="global.html#firebaseRegistro">firebaseRegistro</a></li><li><a href="global.html#getRazas">getRazas</a></li><li><a href="global.html#obtenerFavoritos">obtenerFavoritos</a></li><li><a href="global.html#obtenerFavoritosPublico">obtenerFavoritosPublico</a></li><li><a href="global.html#obtenerIDsUsuarios">obtenerIDsUsuarios</a></li><li><a href="global.html#obtenerUsuario">obtenerUsuario</a></li><li><a href="global.html#obtenerUsuarioPublico">obtenerUsuarioPublico</a></li><li><a href="global.html#setDocumentFireStore">setDocumentFireStore</a></li><li><a href="global.html#sincronizarFavoritos">sincronizarFavoritos</a></li><li><a href="global.html#sincronizarUsuario">sincronizarUsuario</a></li><li><a href="global.html#useWindowSize">useWindowSize</a></li><li><a href="global.html#validationSchema">validationSchema</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Sat Dec 07 2024 16:35:01 GMT+0100 (hora estándar de Europa central)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

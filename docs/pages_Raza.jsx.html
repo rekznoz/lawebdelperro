@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: pages/Raza.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: pages/Raza.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import {useLoaderData} from "react-router-dom"
+import '../css/raza.css'
+import Galeria from "../components/Galeria.jsx"
+
+/**
+ * Componente que muestra la página de una raza
+ * @returns {JSX.Element}
+ * @constructor
+ */
+export default function Raza() {
+
+    const {raza} = useLoaderData()
+
+    if (!raza) {
+        throw new Response('Error al obtener la raza', {status: 404})
+    }
+
+    const imagenes = [
+        raza["images"]["large"]["indoors"],
+        raza["images"]["large"]["outdoors"],
+        raza["images"]["large"]["studio"]
+    ]
+
+    return (
+        &lt;>
+            &lt;div id='area1'>
+                &lt;div className="carta-texto-raza">
+                    &lt;h2>{raza["general"]["name"]}&lt;/h2>
+                    &lt;h3>{raza["general"]["shortDescription"]}&lt;/h3>
+                    &lt;p>{raza["general"]["longDescription"]}&lt;/p>
+                &lt;/div>
+            &lt;/div>
+            &lt;div id='area2'>
+
+                &lt;div className='estadisticas-raza'>
+                    &lt;div className="seccion-raza animacion-hover">
+                        &lt;h3>General&lt;/h3>
+                        &lt;p>&lt;span className="negrita-raza">Grupo:&lt;/span> {raza["general"]["group"]}&lt;/p>
+                        &lt;p>&lt;span
+                            className="negrita-raza">Personalidad:&lt;/span> {raza["general"]["personalityTraits"].join(', ')}
+                        &lt;/p>
+                        &lt;p>&lt;span className="negrita-raza">Popularidad:&lt;/span> {raza["general"]["popularity"]}
+                        &lt;/p>
+                        &lt;p>&lt;span className="negrita-raza">Altura:&lt;/span> {raza["general"]["height"]}&lt;/p>
+                        &lt;p>&lt;span className="negrita-raza">Peso:&lt;/span> {raza["general"]["weight"]}&lt;/p>
+                        &lt;p>&lt;span
+                            className="negrita-raza">Esperanza de vida:&lt;/span> {raza["general"]["lifespan"]}&lt;/p>
+                    &lt;/div>
+
+                    &lt;div className="seccion-raza animacion-hover">
+                        &lt;h3>Físico&lt;/h3>
+                        &lt;p>&lt;span className="negrita-raza">Tamaño:&lt;/span> {raza["physical"]["size"]}&lt;/p>
+                        &lt;p>&lt;span
+                            className="negrita-raza">Esperanza de vida:&lt;/span> {raza["physical"]["lifespan"]}
+                        &lt;/p>
+                        &lt;p>&lt;span
+                            className="negrita-raza">Frecuencia de babeo:&lt;/span> {raza["physical"]["droolingFrequency"]}
+                        &lt;/p>
+                        &lt;p>&lt;span
+                            className="negrita-raza">Estilo de pelaje:&lt;/span> {raza["physical"]["coatStyle"]}
+                        &lt;/p>
+                        &lt;p>&lt;span
+                            className="negrita-raza">Textura de pelaje:&lt;/span> {raza["physical"]["coatTexture"]}
+                        &lt;/p>
+                        &lt;p>&lt;span
+                            className="negrita-raza">Largo de pelaje:&lt;/span> {raza["physical"]["coatLength"]}
+                        &lt;/p>
+                        &lt;p>&lt;span
+                            className="negrita-raza">Doble capa:&lt;/span> {raza["physical"]["doubleCoat"] ? 'Sí' : 'No'}
+                        &lt;/p>
+                    &lt;/div>
+
+                    &lt;div className="seccion-raza animacion-hover">
+                        &lt;h3>Comportamiento&lt;/h3>
+                        &lt;p>&lt;span
+                            className="negrita-raza">Afecto familiar:&lt;/span> {raza["behavior"]["familyAffection"]}
+                        &lt;/p>
+                        &lt;p>&lt;span
+                            className="negrita-raza">Amigable con los niños:&lt;/span> {raza["behavior"]["childFriendly"]}
+                        &lt;/p>
+                        &lt;p>&lt;span
+                            className="negrita-raza">Sociabilidad con otros perros:&lt;/span> {raza["behavior"]["dogSociability"]}
+                        &lt;/p>
+                        &lt;p>&lt;span
+                            className="negrita-raza">Amigable con extraños:&lt;/span> {raza["behavior"]["friendlinessToStrangers"]}
+                        &lt;/p>
+                        &lt;p>&lt;span className="negrita-raza">Juguetón:&lt;/span> {raza["behavior"]["playfulness"]}&lt;/p>
+                        &lt;p>&lt;span
+                            className="negrita-raza">Instintos protectores:&lt;/span> {raza["behavior"]["protectiveInstincts"]}
+                        &lt;/p>
+                        &lt;p>&lt;span
+                            className="negrita-raza">Adaptabilidad:&lt;/span> {raza["behavior"]["adaptability"]}
+                        &lt;/p>
+                        &lt;p>&lt;span
+                            className="negrita-raza">Frecuencia de ladrido:&lt;/span> {raza["behavior"]["barkingFrequency"]}
+                        &lt;/p>
+                    &lt;/div>
+
+                    &lt;div className="seccion-raza animacion-hover">
+                        &lt;h3>Cuidados&lt;/h3>
+                        &lt;p>&lt;span
+                            className="negrita-raza">Cantidad de muda:&lt;/span> {raza["care"]["sheddingAmount"]}
+                        &lt;/p>
+                        &lt;p>&lt;span
+                            className="negrita-raza">Frecuencia de aseo:&lt;/span> {raza["care"]["groomingFrequency"]}
+                        &lt;/p>
+                        &lt;p>&lt;span
+                            className="negrita-raza">Necesidades de ejercicio:&lt;/span> {raza["care"]["exerciseNeeds"]}
+                        &lt;/p>
+                        &lt;p>&lt;span
+                            className="negrita-raza">Necesidades de estimulación mental:&lt;/span> {raza["care"]["mentalStimulationNeeds"]}
+                        &lt;/p>
+                        &lt;p>&lt;span
+                            className="negrita-raza">Dificultad de entrenamiento:&lt;/span> {raza["care"]["trainingDifficulty"]}
+                        &lt;/p>
+                    &lt;/div>
+                &lt;/div>
+            &lt;/div>
+            &lt;div id='area3'>
+                &lt;Galeria imagenes={imagenes}/>
+            &lt;/div>
+        &lt;/>
+    )
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Loading.html">Loading</a></li><li><a href="module.html#.exports">exports</a></li></ul><h3>Global</h3><ul><li><a href="global.html#ActualizarUsuario">ActualizarUsuario</a></li><li><a href="global.html#AgregarUsuario">AgregarUsuario</a></li><li><a href="global.html#Caracteristica">Caracteristica</a></li><li><a href="global.html#GetDataRaza">GetDataRaza</a></li><li><a href="global.html#RazasProvider">RazasProvider</a></li><li><a href="global.html#filtroRazas">filtroRazas</a></li><li><a href="global.html#firebaseLogin">firebaseLogin</a></li><li><a href="global.html#firebaseLogout">firebaseLogout</a></li><li><a href="global.html#firebaseRegistro">firebaseRegistro</a></li><li><a href="global.html#getRazas">getRazas</a></li><li><a href="global.html#obtenerFavoritos">obtenerFavoritos</a></li><li><a href="global.html#obtenerFavoritosPublico">obtenerFavoritosPublico</a></li><li><a href="global.html#obtenerIDsUsuarios">obtenerIDsUsuarios</a></li><li><a href="global.html#obtenerUsuario">obtenerUsuario</a></li><li><a href="global.html#obtenerUsuarioPublico">obtenerUsuarioPublico</a></li><li><a href="global.html#setDocumentFireStore">setDocumentFireStore</a></li><li><a href="global.html#sincronizarFavoritos">sincronizarFavoritos</a></li><li><a href="global.html#sincronizarUsuario">sincronizarUsuario</a></li><li><a href="global.html#useWindowSize">useWindowSize</a></li><li><a href="global.html#validationSchema">validationSchema</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Sat Dec 07 2024 16:35:01 GMT+0100 (hora estándar de Europa central)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
