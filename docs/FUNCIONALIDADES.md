@@ -1,5 +1,12 @@
 # Funcionalidades actuales
 
+---
+
+## ℹ️ **Nota Importante**
+Si llegaste aquí, te recomendamos visitar esta sección directamente en el repositorio de **GitHub**, ya que los videos no se muestran correctamente en **GitHub Pages**. 😊
+
+---
+
 ## **📊 Inicio**
 
 ### **📝 Descripción:**
