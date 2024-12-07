@@ -80,7 +80,7 @@ const listaDesarrolladores = [
         imagen: serafin,
         descripcion: 'Molesto al equipo con sus chistes malos y su falta de sueño',
         color: "amarillo",
-        perfil: 'AAAAA'
+        perfil: 'oa8GV71hIrfLJZI9PfCtvhdUbaq2'
     },
     {
         nombre: 'Ana',
