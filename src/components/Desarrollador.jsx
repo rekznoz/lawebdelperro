@@ -1,7 +1,7 @@
 import {useEffect, useRef, useState} from "react"
 import {Link} from "react-router-dom"
 
-/*
+/**
  * Componente que muestra un desarrollador
  * @param {Object} atributos - Atributos del componente
  * @param {string} atributos.nombre - Nombre del desarrollador

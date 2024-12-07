@@ -21,7 +21,7 @@ async function addDocumentFireStore(collectionName, data, id = null) {
     }
 }
 
-/*
+/**
  * Actualiza un documento de la base de datos
  * @param {string} collectionName - Nombre de la coleccion
  * @param {Object} data - Datos del documento
@@ -34,7 +34,7 @@ async function setDocumentFireStore(collectionName, data, id) {
 }
 
 
-/*
+/**
  * Agrega un documento a la base de datos
  * @param {string} nombreDB - Nombre de la coleccion
  * @param {Object} data - Datos del documento
@@ -45,7 +45,7 @@ export function AgregarUsuario(nombreDB, data, id) {
     return addDocumentFireStore(nombreDB, data, id)
 }
 
-/*
+/**
  * Actualiza un documento de la base de datos
  * @param {string} nombreDB - Nombre de la coleccion
  * @param {Object} data - Datos del documento
@@ -56,7 +56,7 @@ export function ActualizarUsuario(nombreDB, data, id) {
     return setDocumentFireStore(nombreDB, data, id)
 }
 
-/*
+/**
  * Obtiene los documentos de una colección
  * @param {string} collectionName - Nombre de la coleccion
  * @returns {Array} - Lista de documentos
@@ -72,7 +72,7 @@ export const sincronizarFavoritos = async (uid, favoritos) => {
     }
 }
 
-/*
+/**
  * Obtiene los favoritos de un usuario
  * @param {string} uid - ID del usuario
  * @returns {Array} - Lista de favoritos
@@ -90,7 +90,7 @@ export const obtenerFavoritos = async (uid) => {
     }
 }
 
-/*
+/**
  * Sincroniza el perfil de un usuario
  * @param {string} uid - ID del usuario
  * @param {Object} perfil - Datos del usuario
@@ -106,7 +106,7 @@ export const sincronizarUsuario = async (uid, perfil) => {
     }
 }
 
-/*
+/**
  * Obtiene los datos de un usuario
  * @param {string} uid - ID del usuario
  * @returns {Object} - Datos del usuario
@@ -123,7 +123,7 @@ export const obtenerUsuario = async (uid) => {
     }
 }
 
-/*
+/**
  * Obtiene los IDs de los usuarios
  * @returns {Array} - Lista de IDs de usuarios
  */
@@ -138,7 +138,7 @@ export const obtenerIDsUsuarios = async () => {
     }
 }
 
-/*
+/**
  * Obtiene los favoritos de un usuario
  * @param {Object} params - Parametros de la petición
  * @param {string} params.id - ID del usuario
@@ -162,7 +162,7 @@ export const obtenerFavoritosPublico = async ({params}) => {
     }
 }
 
-/*
+/**
  * Obtiene los datos de un usuario
  * @param {Object} params - Parametros de la petición
  * @param {string} params.id - ID del usuario

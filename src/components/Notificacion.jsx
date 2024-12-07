@@ -1,5 +1,5 @@
 
-/*
+/**
  * Componente Notificacion
  * @param {Object} atributos Atributos del componente
  * @param {string} atributos.mensaje Mensaje de la notificación

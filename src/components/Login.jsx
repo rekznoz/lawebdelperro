@@ -45,7 +45,7 @@ const fireBaseDataBase = {
     bio: ''
 }
 
-/*
+/**
  * Componente que muestra el modal de Login
  * @returns {JSX.Element} Componente
  */

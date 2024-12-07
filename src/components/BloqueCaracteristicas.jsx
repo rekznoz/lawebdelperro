@@ -1,7 +1,7 @@
 import Caracteristica from "./Caracteristica.jsx"
 import '../css/caracteristicas.css'
 
-/*
+/**
  * Componente que muestra un bloque de características
  * @param {Object} atributos - Atributos del componente
  * @param {Array} atributos.listaCaracteristicas - Lista de características

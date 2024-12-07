@@ -2,7 +2,7 @@ import {useWindowSize} from "../hooks/UseWindowSize.jsx"
 import {useEffect, useState} from "react"
 import '../css/carrusel.css'
 
-/*
+/**
  * Componente que muestra un carrusel de imágenes
  * @param {Object} atributos - Atributos del componente
  * @param {Array} atributos.imagenes - Lista de imágenes

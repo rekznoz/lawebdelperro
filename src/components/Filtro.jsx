@@ -5,7 +5,7 @@ function renderFiltroTexto(valor, texto, unidad = '') {
     return valor === 0 ? `${texto} = Indefinido` : `${texto} = ${valor}${unidad}`
 }
 
-/*
+/**
  * Componente que muestra un filtro de búsqueda
  * @param {Object} atributos - Atributos del componente
  * @param {Array} atributos.grupos - Lista de grupos

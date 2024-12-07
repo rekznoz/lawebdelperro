@@ -53,7 +53,7 @@ const Caracteristica = ({ titulo, icon, descripcion, delay }) => {
 
 // Caracteristica con Scroll
 
-/*
+/**
  * Componente que muestra una característica
  * @param {Object} atributos - Atributos del componente
  * @param {string} atributos.titulo - Título de la característica

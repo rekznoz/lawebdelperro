@@ -1,5 +1,5 @@
 
-/*
+/**
  * Hook para obtener las razas de perros
  * @param {Object} razasContext - Contexto de razas
  * @returns {Object} - Razas de perros

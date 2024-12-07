@@ -4,7 +4,7 @@ import {obtenerFavoritos, obtenerUsuario} from "../config/FirebaseDB.jsx"
 
 export const UsuarioC = createContext()
 
-/*
+/**
  * Proveedor de usuario
  * @param {Object} props - Atributos del componente
  * @param {Object} props.children - Componentes hijos

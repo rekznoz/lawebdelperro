@@ -1,6 +1,6 @@
 import "../css/paginacion.css"
 
-/*
+/**
  * Componente que muestra la paginación
  * @param {Object} atributos - Atributos del componente
  * @param {number} atributos.pagina - Página actual

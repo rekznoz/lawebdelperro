@@ -3,7 +3,7 @@ import Footer from "../components/Footer.jsx"
 import {Outlet} from "react-router-dom"
 import Login from "../components/Login.jsx"
 
-/*
+/**
  * Componente que muestra el layout principal
  * @param {Object} atributos - Atributos del componente
  * @param {JSX.Element} atributos.children - Componentes hijos
