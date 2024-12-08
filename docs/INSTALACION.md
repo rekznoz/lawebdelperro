@@ -51,5 +51,5 @@ Sigue estos pasos para instalar y configurar el proyecto en tu máquina local:
     ```bash
     http://localhost:3000
     ```
-   
+
    puede que el puerto sea diferente, en ese caso se mostrará en la terminal.
