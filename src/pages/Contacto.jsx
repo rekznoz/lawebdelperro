@@ -21,13 +21,20 @@ const forumarioDefecto = {
 
 const validationSchema = object({
     nombre: string()
+        .trim()
+        .matches(/^[a-zA-Z\s]*$/, 'El nombre solo puede contener letras y espacios')
         .required('El campo nombre es obligatorio')
         .min(3, 'El nombre debe tener al menos 3 caracteres')
         .max(50, 'El nombre debe tener como máximo 50 caracteres'),
     email: string()
+        .trim()
+        .lowercase()
+        .matches(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/, 'El email no es válido')
         .required('El campo email es obligatorio')
         .email('El email no es válido'),
     telefono: string()
+        .trim()
+        .matches(/^[0-9]*$/, 'El teléfono solo puede contener números')
         .required('El campo teléfono es obligatorio')
         .min(8, 'El teléfono debe tener al menos 8 caracteres')
         .max(15, 'El teléfono debe tener como máximo 15 caracteres'),
