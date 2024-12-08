@@ -9,7 +9,6 @@ implemnentacion de la API, el Frontend y la documentación.
 
 Aquí tienes una versión con iconos para que sea aún más visualmente atractiva:
 
-
 - **1ª Semana**
     - 🗂️ **Estructura del proyecto**
     - 🛣️ **Rutas principales**
@@ -40,7 +39,6 @@ Aquí tienes una versión con iconos para que sea aún más visualmente atractiv
     - 🧠 **Test de personalidad**
     - 🏠 **Página de inicio**
     - 🎠 **Carrusel de imágenes**
-
 
 Los iconos añaden un toque visual que hace que cada tarea sea más fácil de identificar a simple vista.
 
