@@ -97,11 +97,11 @@ Se utiliza **`createBrowserRouter`** para gestionar las rutas y definir la estru
     - **`Raza`**: Página para mostrar los detalles de una raza específica.
     - **`Galeria`**: Componente para mostrar imágenes de la raza.
 
-11. **Manejo de Errores**: 
+11. **Manejo de Errores**:
     - **`Error`**: Página para mostrar errores en la aplicación.
     - **`Error de busqueda`**: Página para mostrar errores en la búsqueda de razas.
 
-12. **Protección de Rutas**: 
+12. **Protección de Rutas**:
     - **`Proteccion de Rutas`**: Implementación de protección de rutas privadas.
 
 13. **Validacion de Formularios**:
@@ -118,7 +118,7 @@ Se utiliza **`createBrowserRouter`** para gestionar las rutas y definir la estru
     - **`Perfil de Usuario`**: Página para mostrar y editar la información del usuario.
     - **`Actualización de Perfil`**: Funcionalidad para actualizar la información del usuario.
 
-16. **Favoritos**: 
+16. **Favoritos**:
     - **`Favoritos`**: Página para mostrar las razas favoritas del usuario.
     - **`Agregar a Favoritos`**: Funcionalidad para agregar y quitar razas de favoritos.
 
@@ -127,7 +127,8 @@ Se utiliza **`createBrowserRouter`** para gestionar las rutas y definir la estru
     - **`Favoritos Publicos`**: Página para mostrar las razas favoritas de un usuario.
 
 18. **Test de personalidad**:
-    - **`Test de Personalidad`**: Página para realizar un test de `personalidad` para saber que raza de perro es la ideal.
+    - **`Test de Personalidad`**: Página para realizar un test de `personalidad` para saber que raza de perro es la
+      ideal.
     - **`Resultados del Test`**: Página para mostrar los resultados del test.
 
 19. **Pagina de Inicio**:
