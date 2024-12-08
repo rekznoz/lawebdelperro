@@ -1,6 +1,6 @@
 import {createContext, useEffect, useState} from "react"
 import {auth} from "../config/FirebaseAuth.jsx"
-import {obtenerFavoritos, obtenerUsuario} from "../config/FirebaseDB.jsx"
+import {obtenerUsuario} from "../config/FirebaseDB.jsx"
 
 export const UsuarioC = createContext()
 
@@ -33,13 +33,11 @@ export default function UsuarioProvider({children}) {
         return () => unsubscribe() // Limpia el suscriptor
     }, [])
 
-    if (cargando) {
-        return <p>Cargando...</p>
+    if (!cargando) {
+        return (
+            <UsuarioC.Provider value={{usuario, setUsuario, datosUsuario, setDatosUsuario, cargando}}>
+                {children}
+            </UsuarioC.Provider>
+        )
     }
-
-    return (
-        <UsuarioC.Provider value={{usuario, setUsuario, datosUsuario, setDatosUsuario, cargando}}>
-            {children}
-        </UsuarioC.Provider>
-    )
 }
