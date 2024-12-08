@@ -3,7 +3,9 @@
 ---
 
 ## ℹ️ **Nota Importante**
-Si llegaste aquí, te recomendamos visitar esta sección directamente en el repositorio de **GitHub**, ya que los videos no se muestran correctamente en **GitHub Pages**. 😊
+
+Si llegaste aquí, te recomendamos visitar esta sección directamente en el repositorio de **GitHub**, ya que los videos
+no se muestran correctamente en **GitHub Pages**. 😊
 
 ---
 
@@ -32,8 +34,10 @@ https://github.com/user-attachments/assets/bcf8f59f-67c7-4726-89c9-1466651ace45
 
 - **Página**: `ListaRazas`
 - **Descripción**: Lista de razas disponibles.
-- **Información**: Se muestra una lista interactiva generada dinámicamente desde los datos proporcionados por la API. Los usuarios pueden buscar y navegar por razas específicas.
-- **Paginacion**: Para manejar eficientemente un gran volumen de datos, se han implementado paginaciones que organizan los registros de manera ordenada y visualmente atractiva.
+- **Información**: Se muestra una lista interactiva generada dinámicamente desde los datos proporcionados por la API.
+  Los usuarios pueden buscar y navegar por razas específicas.
+- **Paginacion**: Para manejar eficientemente un gran volumen de datos, se han implementado paginaciones que organizan
+  los registros de manera ordenada y visualmente atractiva.
 - **Filtros**: Los usuarios pueden filtrar las razas por grupo y popularidad entre otros.
 
 ### **🐾 Filtro de Razas**
@@ -65,8 +69,10 @@ https://github.com/user-attachments/assets/b2865bdb-7b26-4863-89de-ea50ccdd3e36
 
 - **Página**: `Personalidad`
 - **Descripción**: Test de personalidad para seleccionar la raza ideal.
-- **Información**: Los usuarios pueden realizar un test de personalidad para conocer qué raza de perro se adapta mejor a sus características y preferencias.
-- **Resultados**: Se muestran los resultados del test con la raza recomendada y una descripción detallada de las características de la raza.
+- **Información**: Los usuarios pueden realizar un test de personalidad para conocer qué raza de perro se adapta mejor a
+  sus características y preferencias.
+- **Resultados**: Se muestran los resultados del test con la raza recomendada y una descripción detallada de las
+  características de la raza.
 
 ### **🧠 Test de Personalidad**
 
@@ -78,9 +84,11 @@ https://github.com/user-attachments/assets/a3b0b080-4f09-4190-8113-a6406e11af38
 
 - **Página**: `Contacto`
 - **Descripción**: Formulario de contacto para enviar consultas y comentarios.
-- **Validación**: Se implementa una validación de formularios para garantizar la integridad de los datos ingresados por los usuarios.
+- **Validación**: Se implementa una validación de formularios para garantizar la integridad de los datos ingresados por
+  los usuarios.
 - **Envío de Mensajes**: Los usuarios pueden enviar mensajes a través del formulario de contacto.
-- **Errores Visuales**: En caso de datos incorrectos, se muestran errores visuales para indicar al usuario los campos que requieren corrección.
+- **Errores Visuales**: En caso de datos incorrectos, se muestran errores visuales para indicar al usuario los campos
+  que requieren corrección.
 - **Notificación de Envío**: Se muestra una notificación al usuario cuando el mensaje se envía correctamente.
 
 ### **📩 Formulario de Contacto**
@@ -93,7 +101,7 @@ https://github.com/user-attachments/assets/7997c59a-0191-4f4b-ad33-3a1a9dd8a0ec
 
 - **Página**: `Autenticación`
 - **Descripción**: Registro e inicio de sesión de usuarios.
-- **Funcionalidades**: 
+- **Funcionalidades**:
     - **`Login`**: Modal de inicio de sesión.
     - **`Registro`**: Modal de creación de cuenta.
     - **`Firebase`**: Configuración y manejo de autenticación.
