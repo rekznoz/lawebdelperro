@@ -1,15 +1,17 @@
-
 ---
 
 ## ℹ️ **Nota Importante**
-Si llegaste aquí, te recomendamos visitar esta sección directamente en el repositorio de **GitHub**, ya que los enlaces de **Codigo** no se muestran correctamente en **GitHub Pages**. 😊
+
+Si llegaste aquí, te recomendamos visitar esta sección directamente en el repositorio de **GitHub**, ya que los enlaces
+de **Codigo** no se muestran correctamente en **GitHub Pages**. 😊
 
 ------
 
-
 ### **🌐 Integración de la API en el Sitio Web de Razas de Perros 🐶**
 
-La API [Dog Registry](https://registry.dog/api/v1) permite que nuestra aplicación acceda en tiempo real a información sobre razas de perros, enriquecida por la colaboración de una comunidad de usuarios. A continuación, se describen los pasos clave para integrar esta API de manera efectiva.
+La API [Dog Registry](https://registry.dog/api/v1) permite que nuestra aplicación acceda en tiempo real a información
+sobre razas de perros, enriquecida por la colaboración de una comunidad de usuarios. A continuación, se describen los
+pasos clave para integrar esta API de manera efectiva.
 
 ---
 
