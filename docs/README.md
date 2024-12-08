@@ -3,6 +3,8 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/3d452d7e-d770-495b-9964-3d564cdd20b5/deploy-status)](https://webdelperro.netlify.app/)
 
+[![Figmaland](https://img.shields.io/badge/Figma-Design-blue)](https://www.figma.com/design/GNzc7M927ho1K9Df5OIDRy/La-web-del-Perro-%3AD)
+
 **La Web del Perro** es una aplicación web que proporciona información detallada sobre razas de perros, permitiendo a los usuarios encontrar la raza ideal para sus necesidades. La aplicación incluye una lista interactiva de razas, detalles específicos de cada raza y un test de personalidad para ayudar a los usuarios a seleccionar la raza más adecuada.
 
 ---
@@ -18,6 +20,8 @@
 ### [🛠️ Documento de Desarrollo](DESARROLLO.md)
 
 ### [🔗 Documento de Integración](INTEGRACION.md)
+
+### [📊 Documento de Reflexion](REFLEXION.md)
 
 ---
 
